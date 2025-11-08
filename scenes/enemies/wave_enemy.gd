@@ -12,6 +12,10 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta: float) -> void:
+	if(state == EnemyState.ACTIVE):
+		_active_physics_process(delta)
+	
+func _active_physics_process(delta: float) -> void:
 	if not player:
 		return
 	
@@ -55,11 +59,7 @@ func shoot(target_pos: Vector2) -> void:
 		get_tree().current_scene.call_deferred("add_child", projectile)
 	
 func take_damage(amount: float) -> void:
-	health -= amount
-	if health <= 0 and not dead:
-		die()
+	super.take_damage(amount)
 
 func die() -> void:
-	died.emit(self)
-	dead = true
-	queue_free()
+	super.die()
