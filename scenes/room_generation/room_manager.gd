@@ -13,6 +13,12 @@ const BRANCH_LENGTH: int = 3;
 # coordinates of START room.
 const START_I = GRID_SIZE - 1;
 const START_J = 0;
+# coordinate of END room
+const END_I = 0;
+const END_J =  GRID_SIZE - 1;
+# rules for map generation / regeneration
+const MAX_ROOM_COUNT = 20;
+const MIN_ROOM_COUNT = 12;
 
 # Stores whether the room is a START, GOAL STATE, or lowkey chill with it
 enum ROOM_TYPE {START, GOAL, NEITHER};
@@ -27,7 +33,7 @@ const ROOM = preload("uid://nwhqrixlnb1d");
 # ------- ROOM GENERATION HELPER FUNCTIONS ---------
 
 # Makes a GRID_SIZE x GRID_SIZE grid for graph initialization.
-func generate_grid() -> Vector2i:
+func generate_grid() -> void:
 	for i in range(GRID_SIZE):
 		grid.append([])
 		for j in range(GRID_SIZE):
@@ -38,7 +44,6 @@ func generate_grid() -> Vector2i:
 	
 	# top right goal state
 	grid[0][GRID_SIZE - 1] = ROOM_TYPE.GOAL;
-	return Vector2i(0, GRID_SIZE - 1);
 
 # Helper for grid conversion to graph for initializing valid rooms.
 func _get_neighbors(i: int, j: int) -> Array:
@@ -119,9 +124,9 @@ func branch_path(path: Array) -> void:
 				else:
 					successful_branches += 1;
 					if not path.has(chosen): path.append(chosen);
-#
+
 # stores the final generated graph in the global rooms object
-func path_to_rooms(path: Array, start: Vector2i, goal: Vector2i):
+func path_to_rooms(path: Array) -> void:
 	# for each node in the path, get all possible neighbors in the graph
 	var adj_list : Dictionary = {};
 	for node in path:
@@ -138,25 +143,31 @@ func path_to_rooms(path: Array, start: Vector2i, goal: Vector2i):
 		var room = ROOM.instantiate();
 		# each node knows the coordinates of its neighbors...
 		room.neighbors = adj_list[node];
+		room.room_coordinate = node;
 		# the autoload maps the coordinate (node) to the room globally
 		Global.rooms[node] = room;
 		
 	
-		
-
 # reset the entire script state
 func reset_state():
 	node_graph = {};
 	grid = [];
+	
+func generate_path():
+	reset_state();
+	generate_grid();
+	grid_to_graph();
+	var path = generate_direct_path(Vector2i(END_I, END_J));
+	while path.is_empty(): path = generate_direct_path(Vector2i(END_I, END_J));
+	branch_path(path);
+	path_to_rooms(path);
+	return path
 
 func _ready():
-	reset_state();
-	var goal = generate_grid();
-	grid_to_graph();
-	var path = generate_direct_path(goal);
-	while path.is_empty(): path = generate_direct_path(goal);
-	branch_path(path);
-	
+	# generate path given conditions
+	var path = []
+	while (len(path) > MAX_ROOM_COUNT) or (len(path) < MIN_ROOM_COUNT): path = generate_path()
+	var goal = Vector2i(END_I, END_J);
 	# DEBUG
 	var hb: HBoxContainer = $"../HBoxContainer";
 	if not hb: return
