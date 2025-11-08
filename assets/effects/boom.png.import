@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu01il4mbs6m1"
-path="res://.godot/imported/breakable_barrel.png-021b129e83ea58163e0fc04faa6d7a6f.ctex"
+uid="uid://b5a42tsiev6gh"
+path="res://.godot/imported/boom.png-426c7d3b1212ac702b3abf937ec9be3b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/breakable_barrel.png"
-dest_files=["res://.godot/imported/breakable_barrel.png-021b129e83ea58163e0fc04faa6d7a6f.ctex"]
+source_file="res://assets/effects/boom.png"
+dest_files=["res://.godot/imported/boom.png-426c7d3b1212ac702b3abf937ec9be3b.ctex"]
 
 [params]
 

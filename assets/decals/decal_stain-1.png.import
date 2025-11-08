@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://43rm1d3cukrm"
-path="res://.godot/imported/Klaxon_Tileset.png-b05be35d44393e957998e014d4283c84.ctex"
+uid="uid://dy5o1npk557ah"
+path="res://.godot/imported/decal_stain-1.png-77ffe2ec0e440007210fc4489e6f5017.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/env tileset/Klaxon_Tileset.png"
-dest_files=["res://.godot/imported/Klaxon_Tileset.png-b05be35d44393e957998e014d4283c84.ctex"]
+source_file="res://assets/decals/decal_stain-1.png"
+dest_files=["res://.godot/imported/decal_stain-1.png-77ffe2ec0e440007210fc4489e6f5017.ctex"]
 
 [params]
 

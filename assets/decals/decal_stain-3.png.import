@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c504vegjnmpn1"
-path="res://.godot/imported/breakable_barrel-yellow.png-d17c45564bab34a80b45fc4a57d4cc10.ctex"
+uid="uid://dbqm587tgqyl6"
+path="res://.godot/imported/decal_stain-3.png-42bd9145f2da8c3c1dd4d7999e8af1ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/breakable_barrel-yellow.png"
-dest_files=["res://.godot/imported/breakable_barrel-yellow.png-d17c45564bab34a80b45fc4a57d4cc10.ctex"]
+source_file="res://assets/decals/decal_stain-3.png"
+dest_files=["res://.godot/imported/decal_stain-3.png-42bd9145f2da8c3c1dd4d7999e8af1ea.ctex"]
 
 [params]
 

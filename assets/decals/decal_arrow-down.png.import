@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgajhr7nak1m1"
-path="res://.godot/imported/breakable_box-metal.png-93f9f04e7c13c0511c45cc7736b7cb70.ctex"
+uid="uid://dat77fboyny1a"
+path="res://.godot/imported/decal_arrow-down.png-e177c3b596be9cf4c30d4d09e08ba07a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/breakable_box-metal.png"
-dest_files=["res://.godot/imported/breakable_box-metal.png-93f9f04e7c13c0511c45cc7736b7cb70.ctex"]
+source_file="res://assets/decals/decal_arrow-down.png"
+dest_files=["res://.godot/imported/decal_arrow-down.png-e177c3b596be9cf4c30d4d09e08ba07a.ctex"]
 
 [params]
 
