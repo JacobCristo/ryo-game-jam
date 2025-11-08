@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://dc12acdrvox18"]
+[gd_scene load_steps=2 format=3 uid="uid://dc12acdrvox18"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
 
 [node name="Tentacle" type="Node2D"]
+
+[node name="Segment" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Segment" type="RigidBody2D" parent="Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Segment" type="RigidBody2D" parent="Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
