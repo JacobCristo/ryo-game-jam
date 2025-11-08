@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dc12acdrvox18"]
 
 [ext_resource type="Texture2D" uid="uid://dmkkfii4vlmyg" path="res://assets/player/placeholder_player-tentbase.png" id="1_um86v"]
-[ext_resource type="PackedScene" uid="uid://dq1as3lwocm1p" path="res://scenes/player/tentaclesegment.tscn" id="2_um86v"]
+[ext_resource type="PackedScene" uid="uid://dq1as3lwocm1p" path="res://scenes/player/tentacle/tentaclesegment.tscn" id="2_um86v"]
 [ext_resource type="Texture2D" uid="uid://ct4dbfbcbootx" path="res://assets/player/placeholder_player-tentend.png" id="3_13sd1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm2in"]
