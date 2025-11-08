@@ -4,6 +4,8 @@ signal died(enemy: Enemy)
 
 const BASIC_PROJECTILE = preload("uid://cqtchbtdssh5n")
 const STUNNED_COOLDOWN_MAX: float = 1.0
+const END_DMG_MULT: float = 2.0
+const VELOCITY_DMG_SCALER: float = 100.0
 
 @export var speed: float = 5000.0
 @export var stunned_speed: float = 5000.0
@@ -20,7 +22,6 @@ const STUNNED_COOLDOWN_MAX: float = 1.0
 var health: float
 var stunned_cool_down: float
 var state: EnemyState
-
 var stunned_dir: Vector2
 
 enum EnemyState {
@@ -134,9 +135,32 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 	# if body is Tentacle or whatever:
 		# take_damage(x amount of damage)
 		# if health is 0 activate die
-	# Set stun to max
+		# might cause issues with reading in class
+	var _dmg_amt: float = 0.0
+	if(body is Segment) :
+		
+		pass
+	
+	if(body is TentacleEnd) :
+		pass
 	# Take damage
 	# Apply force
 	# Change state
 	# Change sprite
 	pass
+	
+func _calc_dmg_amt_segment(body: Node2D) -> float:
+	var dmg_amt: float = 0.0
+	body = body as Segment
+	
+	return dmg_amt
+	
+func _calc_dmg_amt_end(body: Node2D) -> float:
+	var dmg_amt: float = 0.0
+	body = body as TentacleEnd
+	
+	return dmg_amt
+	
+
+	
+	
