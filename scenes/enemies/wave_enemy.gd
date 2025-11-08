@@ -1,22 +1,6 @@
-class_name Enemy extends CharacterBody2D 
+class_name WaveEnemy extends Enemy
 
-signal died(enemy: Enemy)
-
-const BASIC_PROJECTILE = preload("uid://cqtchbtdssh5n")
-
-@export var speed: float = 5000.0
-@export var max_health: float = 25.0
-
-@export_group("Firing Stats")
-@export var sightline_range: float = 250.0
-@export var fire_rate: float = 0.25
-@export var fire_cooldown: float = 0.0
-
-@onready var player: CharacterBody2D = null
-@onready var sightline: RayCast2D = $Sightline
-
-var health: float
-var dead: bool = false
+const WAVE_PROJECTILE = preload("uid://7hs2x83jefnk")
 
 func _ready() -> void:
 	health = max_health
@@ -52,14 +36,22 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func shoot(target_pos: Vector2) -> void:
-	var projectile = BASIC_PROJECTILE.instantiate() as Projectile
+	var total_projectiles := 5
 	
-	projectile.global_position = global_position
-	projectile.direction = Vector2(target_pos - global_position)
+	var base_spread := TAU / 12 # total cone angle: 30 deg
+	var half_spread := base_spread / 2
+	var spread_step := base_spread / (total_projectiles - 1)
+
+	for i in total_projectiles:
+		var projectile = WAVE_PROJECTILE.instantiate() as Projectile
+		projectile.global_position = global_position
+		
+		var dir := (target_pos - global_position).normalized()
+		var angle_offset := -half_spread + spread_step * i
+		projectile.direction = dir.rotated(angle_offset)
+		
+		get_tree().current_scene.call_deferred("add_child", projectile)
 	
-	get_tree().current_scene.call_deferred("add_child", projectile)
-	
-	# reset fire cooldown
 	fire_cooldown = fire_rate
 
 func take_damage(amount: float) -> void:
