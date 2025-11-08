@@ -40,6 +40,7 @@ theme_override_constants/margin_bottom = 255
 [node name="FirstButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Strength"
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -50,6 +51,7 @@ theme_override_constants/margin_bottom = 255
 [node name="SecondButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Health"
 
 [node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -60,3 +62,4 @@ theme_override_constants/margin_bottom = 255
 [node name="ThirdButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "Speed"
