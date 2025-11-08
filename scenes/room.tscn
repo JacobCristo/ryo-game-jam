@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://df1adx274o08r"]
+
+[ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="2_85yof"]
+[ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="2_ffxv4"]
+
+[node name="Room" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_ffxv4")]
+position = Vector2(473, 355)
+
+[node name="SniperEnemy" parent="." instance=ExtResource("2_85yof")]
+position = Vector2(1764, 672)

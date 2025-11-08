@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqtchbtdssh5n"]
+[gd_scene load_steps=3 format=3 uid="uid://dxvheu50y385i"]
 
-[ext_resource type="Script" uid="uid://3g34hhfcmv30" path="res://scenes/enemies/projectiles/basic_projectile.gd" id="1_f3kss"]
+[ext_resource type="Script" uid="uid://dj4j6ppfgvxof" path="res://scenes/enemies/projectiles/sniper_projectile.gd" id="1_blgnl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 30.0
 
-[node name="BasicProjectile" type="Area2D"]
-script = ExtResource("1_f3kss")
+[node name="SniperProjectile" type="Area2D"]
+script = ExtResource("1_blgnl")
+speed = 5000.0
+projectile_size = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6aapk")

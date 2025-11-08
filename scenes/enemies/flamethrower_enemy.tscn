@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://es1aq7ov6nkc"]
+
+[ext_resource type="Script" uid="uid://ds1lxbxf1kti7" path="res://scenes/enemies/flamethrower_enemy.gd" id="1_alsvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+radius = 50.0
+
+[node name="FlamethrowerEnemy" type="CharacterBody2D"]
+script = ExtResource("1_alsvu")
+fire_rate = 2.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8tegq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sightline" type="RayCast2D" parent="."]
+target_position = Vector2(250, 0)

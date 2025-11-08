@@ -1,6 +1,6 @@
 @abstract class_name Projectile extends Area2D
 
-@export var speed: float = 5.0
+@export var speed: float = 1500.0
 @export var damage: float = 10.0
 @export var projectile_size: float = 3.0
 

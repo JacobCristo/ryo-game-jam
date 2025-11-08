@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://b06byf7gpsk0o"]
+
+[ext_resource type="Script" uid="uid://fegeqrymcee4" path="res://scenes/enemies/sniper_enemy.gd" id="1_u5517"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+radius = 50.0
+
+[node name="SniperEnemy" type="CharacterBody2D"]
+script = ExtResource("1_u5517")
+sightline_range = 1250.0
+fire_rate = 3.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8tegq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sightline" type="RayCast2D" parent="."]
+visible = false
+target_position = Vector2(250, 0)
+
+[node name="Laser" type="ColorRect" parent="."]
+offset_top = -1.5
+offset_right = 3567.0
+offset_bottom = 1.5
+color = Color(1, 0, 0, 0)
+metadata/_edit_use_anchors_ = true

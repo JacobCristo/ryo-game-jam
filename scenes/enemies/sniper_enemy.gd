@@ -1,8 +1,8 @@
-class_name MeleeEnemy extends Enemy
+class_name SniperEnemy extends Enemy
 
-@onready var punch_area: Area2D = $PunchArea
+const SNIPER_PROJECTILE = preload("uid://dxvheu50y385i")
 
-@export var damage: float = 5.0
+@onready var laser: ColorRect = $Laser
 
 func _ready() -> void:
 	health = max_health
@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		if fire_cooldown == 0.0:
 			# reset fire cooldown
 			fire_cooldown = fire_rate
-			charge_punch(player.global_position)
+			charge_shot(player.global_position)
 		
 		# return so you don't move when in range of the player
 		return
@@ -39,27 +39,30 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed * delta
 	move_and_slide()
 
-func punch() -> void:
-	print("get punched!")
-	for body in punch_area.get_overlapping_bodies():
-		if body is Player:
-			player = body as Player
-			player.take_damage(damage)
+func charge_shot(target_pos: Vector2) -> void:
+	var charge_time: float = 1.0
 	
-	# reset fire cooldown
-	fire_cooldown = fire_rate
+	laser.rotation = (target_pos - global_position).angle()
+	create_tween().tween_property(laser, "color", Color.RED, charge_time)
+	
+	await get_tree().create_timer(charge_time).timeout
+	shoot(target_pos)
 
-func charge_punch(target_pos: Vector2) -> void:
-	punch_area.rotation = (target_pos - global_position).angle()
+func shoot(target_pos: Vector2) -> void:
+	var projectile = SNIPER_PROJECTILE.instantiate() as Projectile
 	
-	var tween = create_tween()
-	tween.tween_property($PunchArea/AreaHighlight, "size:x", 200.0, 0.5)
+	projectile.global_position = global_position
+	projectile.direction = Vector2(target_pos - global_position)
 	
-	await tween.finished
-	punch()
+	get_tree().current_scene.call_deferred("add_child", projectile)
 	
-	$PunchArea/AreaHighlight.size.x = 16.0
+	# tween laser to transparent
+	create_tween().tween_property(laser, "color:a", 0.0, 0.1)
 	
+	# blow backwards away from shot direction
+	var blowback: Vector2 = global_position + (global_position - target_pos).normalized() * 200
+	create_tween().tween_property(self, "global_position", blowback , 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+
 func take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0 and not dead:

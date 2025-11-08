@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://7hs2x83jefnk"]
 
-[ext_resource type="Script" path="res://scenes/enemies/projectiles/wave_projectile.gd" id="1_6qmfn"]
+[ext_resource type="Script" uid="uid://b6t8anokmg6ld" path="res://scenes/enemies/projectiles/wave_projectile.gd" id="1_6qmfn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 30.0
@@ -18,3 +18,5 @@ shape = SubResource("CircleShape2D_6aapk")
 scale = Vector2(3, 3)
 color = Color(1, 0.88235295, 0, 1)
 polygon = PackedVector2Array(0, -10, -7, -7, -10, 0, -7, 7, 0, 10, 7, 7, 10, 0, 7, -7)
+
+[connection signal="body_entered" from="." to="." method="hit"]

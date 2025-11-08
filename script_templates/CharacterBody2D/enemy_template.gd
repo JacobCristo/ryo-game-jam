@@ -23,6 +23,8 @@ func _physics_process(delta: float) -> void:
 	var ray_collisions = sightline.get_collider()
 	if ray_collisions and ray_collisions is Player:
 		if fire_cooldown == 0.0:
+			# reset fire cooldown
+			fire_cooldown = fire_rate
 			shoot(player.global_position)
 		
 		# return so you don't move when in range of the player
@@ -40,9 +42,6 @@ func shoot(target_pos: Vector2) -> void:
 	projectile.direction = Vector2(target_pos - global_position)
 	
 	get_tree().current_scene.call_deferred("add_child", projectile)
-	
-	# reset fire cooldown
-	fire_cooldown = fire_rate
 
 func take_damage(amount: float) -> void:
 	health -= amount

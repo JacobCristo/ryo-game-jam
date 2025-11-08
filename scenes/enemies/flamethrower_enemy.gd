@@ -1,10 +1,9 @@
-class_name MeleeEnemy extends Enemy
+class_name FlamethrowerEnemy extends Enemy
 
-@onready var punch_area: Area2D = $PunchArea
-
-@export var damage: float = 5.0
+const FIRE_PROJECTILE = preload("uid://v83wjkjo57e5")
 
 func _ready() -> void:
+	
 	health = max_health
 	# set raycast length to sightline range
 	sightline.target_position.x = sightline_range
@@ -29,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		if fire_cooldown == 0.0:
 			# reset fire cooldown
 			fire_cooldown = fire_rate
-			charge_punch(player.global_position)
+			shoot(player.global_position)
 		
 		# return so you don't move when in range of the player
 		return
@@ -39,27 +38,23 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed * delta
 	move_and_slide()
 
-func punch() -> void:
-	print("get punched!")
-	for body in punch_area.get_overlapping_bodies():
-		if body is Player:
-			player = body as Player
-			player.take_damage(damage)
+func shoot(target_pos: Vector2) -> void:
+	var total_projectiles := 25
 	
-	# reset fire cooldown
-	fire_cooldown = fire_rate
+	var base_spread := TAU / 12 # total cone angle: 30 deg
+	var half_spread := base_spread / 2
 
-func charge_punch(target_pos: Vector2) -> void:
-	punch_area.rotation = (target_pos - global_position).angle()
-	
-	var tween = create_tween()
-	tween.tween_property($PunchArea/AreaHighlight, "size:x", 200.0, 0.5)
-	
-	await tween.finished
-	punch()
-	
-	$PunchArea/AreaHighlight.size.x = 16.0
-	
+	for i in total_projectiles:
+		var projectile = FIRE_PROJECTILE.instantiate() as Projectile
+		projectile.global_position = global_position
+		
+		var dir := (target_pos - global_position).normalized()
+		var angle_offset := randf_range(-half_spread, half_spread)
+		projectile.direction = dir.rotated(angle_offset)
+		
+		get_tree().current_scene.call_deferred("add_child", projectile)
+		await get_tree().create_timer(0.05).timeout # wait before shooting next projectile
+
 func take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0 and not dead:
