@@ -8,16 +8,14 @@ const PATH_GENERATION_RANDOM_FACTOR: float = 0.3;
 const BRANCH_GENERATION_RANDOM_FACTOR: float = 0.2;
 # The max branch length
 const MAX_BRANCH_LENGTH: int = 2;
+# coordinates of START room.
+const START_I = 0;
+const START_J = 0;
 
 # Stores whether the room is a START, GOAL STATE, or lowkey chill with it
 enum ROOM_TYPE {START, GOAL, NEITHER};
-
-# The root node of the graph generated.
-var root: Room;
-# The adjacency list of the graph.
-var node_graph = [];
-# The "end room" (goal state)
-var goal_state: Room;
+# The adjacency list of the graph before making the map.
+var node_graph = {};
 # The grid used for generation.
 var grid = [];
 
@@ -25,53 +23,114 @@ var grid = [];
 const ROOM = preload("uid://nwhqrixlnb1d");
 
 # Makes a GRID_SIZE x GRID_SIZE grid for graph initialization.
-func _generate_grid():
-	# init empty arr
+func generate_grid() -> Vector2i:
 	for i in range(GRID_SIZE):
-		grid.append([]);
-		for j in range(GRID_SIZE): grid[i].append(ROOM_TYPE.NEITHER);
+		grid.append([])
+		for j in range(GRID_SIZE):
+			grid[i].append(ROOM_TYPE.NEITHER)
 	
-	# start is always top left
-	grid[0][0] = ROOM_TYPE.START;
+	# Start is always top-left
+	grid[START_I][START_J] = ROOM_TYPE.START
 	
-	# randomly pick a corner for the GOAL
-	var corner = randi() % 3;
+	# Randomly pick a corner for the GOAL
+	var corner = randi() % 3
 	match corner:
 		0:
-			# top right
-			grid[0][GRID_SIZE - 1] = ROOM_TYPE.GOAL;
+			# Top right
+			grid[0][GRID_SIZE - 1] = ROOM_TYPE.GOAL
+			return Vector2i(0, GRID_SIZE - 1)
 		1:
-			# bottom left
-			grid[GRID_SIZE - 1][0] = ROOM_TYPE.GOAL;
-		2:
-			# bottom right
-			grid[GRID_SIZE - 1][GRID_SIZE - 1] = ROOM_TYPE.GOAL;
+			# Bottom left
+			grid[GRID_SIZE - 1][0] = ROOM_TYPE.GOAL
+			return Vector2i(GRID_SIZE - 1, 0)
+		_:
+			# Bottom right
+			grid[GRID_SIZE - 1][GRID_SIZE - 1] = ROOM_TYPE.GOAL
+			return Vector2i(GRID_SIZE - 1, GRID_SIZE - 1)
 
-# Helper for grid conversion to graph.
-func _grid_point_to_node(i, j):
-	# 4-direction neighbors
-	var top;
-	var bottom;
-	var left;
-	var right;
-	
-	if (i != 0): top = grid[i - 1][j];
-	if (i != GRID_SIZE - 1): bottom = grid[i + 1][j];
-	if (j != 0): left = grid[i][j - 1];
-	if (j != GRID_SIZE - 1): right = grid[i][j + 1];
-	
-	# create da node now
-	var res: Room = ROOM.instantiate();
-	res.neighbors = [top, left, bottom, right];
-	return res;
+# Helper for grid conversion to graph for initializing valid rooms.
+func _get_neighbors(i: int, j: int) -> Array:
+	var neighbors: Array = []
+	if i > 0:
+		neighbors.append(Vector2i(i - 1, j))
+	if i < GRID_SIZE - 1:
+		neighbors.append(Vector2i(i + 1, j))
+	if j > 0:
+		neighbors.append(Vector2i(i, j - 1))
+	if j < GRID_SIZE - 1:
+		neighbors.append(Vector2i(i, j + 1))
+	return neighbors
 
+# returns a subset of an array containing at least one element given an rng factor
+func _random_subarray_at_least_one(arr: Array, skip_chance: float) -> Array:
+	var res = []
+	for elem in arr:
+		if randf() > skip_chance:
+			res.append(elem)
+	if res.is_empty():
+		res.append(arr[randi() % arr.size()])
+	return res
+			
 # Create the graph (array of Rooms, storing neighbors inside).
-func _grid_to_graph():
+func grid_to_graph() -> void:
+	node_graph.clear()
 	for i in range(GRID_SIZE):
 		for j in range(GRID_SIZE):
-			node_graph[i*GRID_SIZE + j] = _grid_point_to_node(i, j);
+			node_graph[Vector2i(i, j)] = _get_neighbors(i, j)
+
+# BFS direct path generation with randomization
+func generate_direct_path(goal) -> Array:
+	var start = Vector2i(START_I, START_J);
+	var queue: Array = [start];
+	var path_mappings: Dictionary = {start: null};
+	var visited: Array = [start];
+	
+	while !queue.is_empty() and (!visited.has(goal)):
+		var current = queue.pop_front();
+		var children = _random_subarray_at_least_one(node_graph[current], PATH_GENERATION_RANDOM_FACTOR);
+		# EDGE CASE: next to goal_state, but never reaches it
+		if (node_graph[current].has(goal)) and (not children.has(goal)): children.append(goal);
+		for node in children:
+			if not visited.has(node):
+				visited.append(node);
+				path_mappings[node] = current;
+				queue.append(node);
+	
+	if not path_mappings.has(goal):
+		# unreachable goal
+		print("Unreachable goal state!");
+		return [];
+	
+	# get path
+	var path = [goal];
+	var prev = path_mappings.get(goal);
+	while (prev != null):
+		path.push_front(prev);
+		prev = path_mappings.get(prev);
+		
+	return path;
 	
 func _ready():
-	_generate_grid();
-	_grid_to_graph();
+	var goal = generate_grid();
+	grid_to_graph();
+	var path = generate_direct_path(goal);
+	while path.is_empty(): path = generate_direct_path(goal);
+	
+	# DEBUG
+	var hb: HBoxContainer = $"../HBoxContainer";
+	if not hb: return
+	# display generated path
+	var columns = hb.get_children();
+	for j in GRID_SIZE:
+		var elements = columns[j].get_children();
+		print(path);
+		for i in GRID_SIZE: 
+			if path.has(Vector2i(i, j)):
+				elements[i].color = Color(0, 0, 0, 1);
+			if Vector2i(i, j) == goal: elements[i].color = Color(0, 1, 0, 1);
+			if Vector2i(i, j) == Vector2i(START_I, START_J): elements[i].color = Color(1, 0, 0, 1);
+	
+	
+
+	
 	

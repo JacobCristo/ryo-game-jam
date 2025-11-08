@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjtgyy1dsejxh"]
+
+[ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
+radius = 50.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_pfot2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u8vuu")
+
+[node name="Tentacle" type="Node2D" parent="."]
