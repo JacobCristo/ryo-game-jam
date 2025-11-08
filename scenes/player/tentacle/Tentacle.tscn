@@ -17,119 +17,123 @@ texture_repeat = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
 
 [node name="Tentacle" type="Node2D"]
+position = Vector2(244, 140)
 
 [node name="TentacleBase" type="StaticBody2D" parent="."]
+collision_layer = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="TentacleBase"]
+visible = false
 scale = Vector2(0.347, 0.347)
 texture = ExtResource("1_um86v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase"]
 shape = SubResource("CircleShape2D_mm2in")
 
-[node name="Line2D" type="Line2D" parent="TentacleBase"]
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase"]
+position = Vector2(0, 10)
+node_a = NodePath("..")
+node_b = NodePath("../../Line2D/Segment")
+
+[node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
 points = PackedVector2Array(0.9655762, 0.3547058)
 texture = SubResource("CanvasTexture_ii5g1")
 texture_mode = 1
 script = ExtResource("5_2veqc")
 
-[node name="Segment" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 20)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment2")
 
-[node name="Segment2" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment2" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 40)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment2"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment2"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment3")
 
-[node name="Segment3" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment3" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 60)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment3"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment3"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment4")
 
-[node name="Segment4" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment4" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0.966, 80)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment4"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment4"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment5")
 
-[node name="Segment5" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment5" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 100)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment5"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment5"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment6")
 
-[node name="Segment6" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment6" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 120)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment6"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment6"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment7")
 
-[node name="Segment7" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment7" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 140)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment7"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment7"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment8")
 
-[node name="Segment8" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment8" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 160)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment8"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment8"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment9")
 
-[node name="Segment9" parent="TentacleBase/Line2D" instance=ExtResource("2_um86v")]
+[node name="Segment9" parent="Line2D" instance=ExtResource("2_um86v")]
 position = Vector2(0, 180)
 gravity_scale = 0.0
 
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Line2D/Segment9"]
+[node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment9"]
 position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../End")
 
-[node name="End" type="RigidBody2D" parent="TentacleBase/Line2D"]
+[node name="End" type="RigidBody2D" parent="Line2D"]
 unique_name_in_owner = true
 position = Vector2(0, 200)
+collision_layer = 0
 gravity_scale = 0.0
 script = ExtResource("3_xmn8f")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Line2D/End"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/End"]
 shape = SubResource("CircleShape2D_kxgin")
 
-[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Line2D/End"]
+[node name="Sprite2D" type="Sprite2D" parent="Line2D/End"]
 position = Vector2(8.940697e-08, -1.1920929e-07)
 scale = Vector2(0.347, 0.347)
 texture = ExtResource("3_13sd1")
-
-[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase"]
-position = Vector2(0, 10)
-node_a = NodePath("..")
-node_b = NodePath("../Line2D/Segment")

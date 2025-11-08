@@ -46,14 +46,14 @@ func _read_input() -> void:
 func _apply_force_to_chain(delta) -> void:
 	# Multiply direction by FORCE_AMT
 	_force = _input_dir * FORCE_AMT * delta
-	print(_force)
+	#print(_force)
 	_r_body.apply_central_force(_force)
 	
 func _apply_impulse_to_chain(delta) -> void:
 	# Multiply direction by IMPULSE_AMT
 	# Used when boosting
 	_force = _input_dir * IMPULSE_AMT * delta
-	print(_force)
+	#print(_force)
 	_r_body.apply_central_impulse(_force)
 	
 	
