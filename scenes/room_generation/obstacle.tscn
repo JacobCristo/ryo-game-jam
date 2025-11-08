@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3wmuilxtd6dx"]
+
+[ext_resource type="Script" uid="uid://cynsq33v6nad1" path="res://scenes/room_generation/obstacle.gd" id="1_i5pt2"]
+[ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="1_iwoqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5pt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fclt"]
+atlas = ExtResource("1_iwoqk")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eyhn"]
+atlas = ExtResource("1_iwoqk")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uvhy"]
+atlas = ExtResource("1_iwoqk")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyue3"]
+atlas = ExtResource("1_iwoqk")
+region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d52n4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fclt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eyhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uvhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyue3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[node name="Obstacle" type="RigidBody2D"]
+collision_layer = 4
+collision_mask = 0
+freeze = true
+freeze_mode = 1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_i5pt2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4, 4)
+shape = SubResource("CircleShape2D_i5pt2")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_d52n4")
+animation = &"new_animation"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
