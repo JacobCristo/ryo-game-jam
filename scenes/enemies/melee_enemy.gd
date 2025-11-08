@@ -40,7 +40,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func punch() -> void:
-	print("get punched!")
 	for body in punch_area.get_overlapping_bodies():
 		if body is Player:
 			player = body as Player

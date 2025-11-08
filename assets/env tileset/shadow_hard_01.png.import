@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgqxbt0yfjn2i"
-path="res://.godot/imported/enemy_hazmat-passive_placeholder.png-b5c49a4c5bbac6cbabcdea5f27ac86f5.ctex"
+uid="uid://ccn65yjof3sv1"
+path="res://.godot/imported/shadow_hard_01.png-decc3ae4381ac160d0306709294e8fc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemies/hazmat-passive/enemy_hazmat-passive_placeholder.png"
-dest_files=["res://.godot/imported/enemy_hazmat-passive_placeholder.png-b5c49a4c5bbac6cbabcdea5f27ac86f5.ctex"]
+source_file="res://assets/env tileset/shadow_hard_01.png"
+dest_files=["res://.godot/imported/shadow_hard_01.png-decc3ae4381ac160d0306709294e8fc2.ctex"]
 
 [params]
 

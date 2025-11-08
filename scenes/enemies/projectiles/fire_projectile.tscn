@@ -6,6 +6,7 @@
 radius = 30.0
 
 [node name="FireProjectile" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_o13ub")
 projectile_size = 1.5
 
