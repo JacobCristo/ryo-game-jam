@@ -1,12 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b0ac1pwcivrad"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ac1pwcivrad"]
 
 [ext_resource type="Script" uid="uid://d2el4qwy7fa4h" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_fe2o3"]
-font_size = 250
-
-[sub_resource type="LabelSettings" id="LabelSettings_sl1te"]
-font_size = 100
+[ext_resource type="FontFile" uid="uid://cxulmdo53ol8p" path="res://assets/fonts/StalinistOne-Regular.ttf" id="2_fe2o3"]
+[ext_resource type="Texture2D" uid="uid://cj3ee6owfhx7" path="res://assets/ui/smokestack.jpg" id="2_m1kxf"]
+[ext_resource type="Material" uid="uid://bdb763xecdfta" path="res://assets/shaders/fire_distortion_material.tres" id="3_x2yvf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,6 +14,34 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sl1te")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.49803922, 0.49803922, 0.49803922, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -65.77783
+offset_top = -37.0
+offset_right = 65.77783
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m1kxf")
+
+[node name="Shader" type="ColorRect" parent="."]
+modulate = Color(0.49803922, 0.49803922, 0.49803922, 1)
+z_index = 1
+material = ExtResource("3_x2yvf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -97.0
+offset_top = -476.0
+offset_right = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -25,18 +50,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Title" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0.4748301, 0.99999994, 0.44301325, 0.42352942)
+theme_override_constants/shadow_offset_y = 35
+theme_override_fonts/normal_font = ExtResource("2_fe2o3")
+theme_override_font_sizes/normal_font_size = 250
+bbcode_enabled = true
 text = "KLAXON"
-label_settings = SubResource("LabelSettings_fe2o3")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="RichTextLabel" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
 layout_mode = 2
-size_flags_vertical = 6
-text = "Press any key to begin"
-label_settings = SubResource("LabelSettings_sl1te")
+size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_fe2o3")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[wave amp=50]Press any key to begin"
 horizontal_alignment = 1
 vertical_alignment = 1
