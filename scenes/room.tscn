@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://df1adx274o08r"]
+[gd_scene load_steps=4 format=3 uid="uid://df1adx274o08r"]
 
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="2_85yof"]
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="2_ffxv4"]
+[ext_resource type="AudioStream" uid="uid://cay6j1osjipag" path="res://assets/audio/yup.mp3" id="3_85yof"]
 
 [node name="Room" type="Node2D"]
 
@@ -10,3 +11,9 @@ position = Vector2(473, 355)
 
 [node name="SniperEnemy" parent="." instance=ExtResource("2_85yof")]
 position = Vector2(1764, 672)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_85yof")
+volume_db = -15.0
+autoplay = true
+bus = &"Music"
