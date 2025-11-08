@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://od7gid2e0x74"]
+
+[ext_resource type="Script" uid="uid://bdptyuvbprey" path="res://scenes/enemies/enemy.gd" id="1_7p1mj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+radius = 50.0
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_7p1mj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8tegq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sightline" type="RayCast2D" parent="."]
+target_position = Vector2(250, 0)
