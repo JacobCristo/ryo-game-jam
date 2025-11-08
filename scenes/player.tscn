@@ -6,3 +6,5 @@
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u8vuu")
+
+[node name="Tentacle" type="Node2D" parent="."]
