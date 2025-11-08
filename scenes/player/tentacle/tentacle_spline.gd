@@ -1,15 +1,20 @@
 extends Node
 
 @onready var line_2D = %Line2D
+@onready var tentacle: Node2D = $".."
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var points = []
 	for segment in self.get_children().filter(func (c): return c is RigidBody2D):
-		for joint in segment.get_children().filter(func (c): return c is PinJoint2D):
-			points.append(joint.global_position)
+		for joint : PinJoint2D in segment.get_children().filter(func (c): return c is PinJoint2D):
+			points.append(joint.global_position - tentacle.global_position)
+			#print(joint.global_position)
 			
 	var smooth_points = catmull_rom_spline(points)
+	#for p : Vector2 in smooth_points:
+	#	print(p)
+	
 	line_2D.points = smooth_points
 
 			

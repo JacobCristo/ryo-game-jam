@@ -37,6 +37,7 @@ turbulence_initial_displacement_min = -2.9999986
 turbulence_initial_displacement_max = -2.9999986
 
 [node name="Segment" type="RigidBody2D"]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kxgin")
