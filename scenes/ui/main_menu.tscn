@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0ac1pwcivrad"]
+
+[ext_resource type="Script" uid="uid://d2el4qwy7fa4h" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fe2o3"]
+font_size = 250
+
+[sub_resource type="LabelSettings" id="LabelSettings_sl1te"]
+font_size = 100
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sl1te")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "KLAXON"
+label_settings = SubResource("LabelSettings_fe2o3")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Press any key to begin"
+label_settings = SubResource("LabelSettings_sl1te")
+horizontal_alignment = 1
+vertical_alignment = 1

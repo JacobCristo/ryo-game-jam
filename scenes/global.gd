@@ -5,7 +5,6 @@ extends Node
 var rooms: Dictionary = {};
 
 func shake_camera(amplitude: float, duration: float) -> void:
-	print("camera shook")
 	var camera = get_tree().get_first_node_in_group("camera") as Camera2D
 	var timer = get_tree().create_timer(duration)
 	

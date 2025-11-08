@@ -44,7 +44,7 @@ func take_damage(damage: float) -> void:
 	
 	health -= damage
 	apply_damage_effect()
-	Global.shake_camera(5, 0.25)
+	Global.shake_camera(damage, 0.25)
 	
 	if health <= 0:
 		die()
