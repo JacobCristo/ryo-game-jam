@@ -6,6 +6,7 @@
 radius = 30.0
 
 [node name="WaveProjectile" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_6qmfn")
 amplitude = 5.0
 speed = 250.0

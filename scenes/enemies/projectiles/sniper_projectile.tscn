@@ -6,6 +6,7 @@
 radius = 30.0
 
 [node name="SniperProjectile" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_blgnl")
 speed = 5000.0
 projectile_size = 2.0

@@ -62,7 +62,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_u3e6m"]
 tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 4
+physics_layer_0/collision_layer = 7
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
@@ -75,7 +75,7 @@ autoplay = true
 bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("2_ffxv4")]
-position = Vector2(478, 361)
+position = Vector2(990, 609)
 
 [node name="WaveEnemy" parent="." instance=ExtResource("2_85yof")]
 position = Vector2(632, 586)
