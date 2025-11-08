@@ -153,6 +153,10 @@ func _calc_dmg_amt_segment(body: Node2D) -> float:
 	var dmg_amt: float = 0.0
 	body = body as Segment
 	
+	var r_body = body.get_parent()
+	if(r_body is RigidBody2D) :
+		dmg_amt = r_body.linear_velocity
+	
 	return dmg_amt
 	
 func _calc_dmg_amt_end(body: Node2D) -> float:
