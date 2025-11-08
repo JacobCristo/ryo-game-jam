@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce5dch1wxqctr"]
+
+[ext_resource type="Script" uid="uid://cljrjqwmmxj0e" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
+radius = 50.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l188l"]
+size = Vector2(200, 100)
+
+[node name="MeleeEnemy" type="CharacterBody2D"]
+script = ExtResource("1_l188l")
+sightline_range = 200.0
+fire_rate = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8tegq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Sightline" type="RayCast2D" parent="."]
+target_position = Vector2(250, 0)
+
+[node name="PunchArea" type="Area2D" parent="."]
+rotation = 0.0049224244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PunchArea"]
+position = Vector2(99.99879, -0.49224043)
+shape = SubResource("RectangleShape2D_l188l")
+
+[node name="AreaHighlight" type="ColorRect" parent="PunchArea"]
+offset_left = -0.24631071
+offset_top = -50.038166
+offset_right = 15.753689
+offset_bottom = 49.961834
+color = Color(1, 0, 0, 0.5176471)
