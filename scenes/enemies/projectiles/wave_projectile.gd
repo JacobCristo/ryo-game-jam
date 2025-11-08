@@ -25,8 +25,3 @@ func move(delta: float) -> void:
 	global_position += forward_velocity + wave_offset
 	
 	time += delta
-
-func hit(body: Node2D) -> void:
-	if body is Player:
-		var player = body as Player
-		player.take_damage(damage)

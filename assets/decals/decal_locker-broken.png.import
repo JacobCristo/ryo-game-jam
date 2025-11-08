@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ncqjouakqiv1"
-path="res://.godot/imported/muzzleflashes.png-7649c335d296bb5ea8a10930d23e5156.ctex"
+uid="uid://cs13ovohpv8fj"
+path="res://.godot/imported/decal_locker-broken.png-fd45dd23597e89e5ef59b831700af82f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/effects/muzzleflashes.png"
-dest_files=["res://.godot/imported/muzzleflashes.png-7649c335d296bb5ea8a10930d23e5156.ctex"]
+source_file="res://assets/decals/decal_locker-broken.png"
+dest_files=["res://.godot/imported/decal_locker-broken.png-fd45dd23597e89e5ef59b831700af82f.ctex"]
 
 [params]
 
