@@ -1,16 +1,9 @@
 class_name Room extends Node2D
 
-# Indices of each neighboring room in the neighbors Array
-enum NeighborIndices {
-	TOP,
-	LEFT, 
-	RIGHT,
-	BOTTOM
-}
-
-@export var neighbors: Array[Room] = []
-
+# array of coordinates of neighboring rooms
+@export var neighbors = []
 @export var enemies = []
+@export var room_coordinate = null;
 
 func _ready() -> void:
 	pass

@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 func start_dash(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
 		return
+		
 	is_dashing = true
 	velocity = dir.normalized() * dash_scalar
 	await get_tree().create_timer(dash_length).timeout
@@ -43,6 +44,7 @@ func take_damage(damage: float) -> void:
 	
 	health -= damage
 	apply_damage_effect()
+	Global.shake_camera(5, 0.25)
 	
 	if health <= 0:
 		die()

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsfjuyh3kahwc"]
+
+[ext_resource type="Texture2D" uid="uid://wvjel60njt6j" path="res://assets/effects/muzzleflash-strong.png" id="1_u6mxp"]
+[ext_resource type="Script" uid="uid://bwy7pkes1ni4d" path="res://scenes/effects/muzzle_flash.gd" id="2_tmmjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmmjm"]
+atlas = ExtResource("1_u6mxp")
+region = Rect2(0, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1ei3"]
+atlas = ExtResource("1_u6mxp")
+region = Rect2(42, 0, 42, 42)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7lon"]
+atlas = ExtResource("1_u6mxp")
+region = Rect2(84, 0, 42, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lw16k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmmjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1ei3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7lon")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="MuzzleFlash" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_lw16k")
+autoplay = "default"
+frame = 2
+frame_progress = 1.0
+script = ExtResource("2_tmmjm")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

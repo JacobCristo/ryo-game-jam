@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=4 uid="uid://nwhqrixlnb1d"]
+[gd_scene load_steps=6 format=4 uid="uid://nwhqrixlnb1d"]
 
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="2_ffxv4"]
-[ext_resource type="AudioStream" uid="uid://cay6j1osjipag" path="res://assets/audio/yup.mp3" id="4_l1h6x"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="5_07256"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="7_asjfa"]
 
@@ -77,12 +76,6 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
 [node name="Room" type="Node2D"]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_l1h6x")
-volume_db = -15.0
-autoplay = true
-bus = &"Music"
 
 [node name="Player" parent="." instance=ExtResource("2_ffxv4")]
 position = Vector2(990, 609)

@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxvheu50y385i"]
+[gd_scene load_steps=6 format=3 uid="uid://dxvheu50y385i"]
 
 [ext_resource type="Script" uid="uid://dj4j6ppfgvxof" path="res://scenes/enemies/projectiles/sniper_projectile.gd" id="1_blgnl"]
+[ext_resource type="Texture2D" uid="uid://bxercl3ynoen6" path="res://assets/effects/projectile-hot.png" id="2_gjmvj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
-radius = 30.0
+radius = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8uj"]
+atlas = ExtResource("2_gjmvj")
+region = Rect2(0, 0, 25, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_by5b1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8uj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SniperProjectile" type="Area2D"]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_blgnl")
 speed = 5000.0
 projectile_size = 2.0
@@ -14,9 +31,8 @@ projectile_size = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_6aapk")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-scale = Vector2(3, 3)
-color = Color(1, 0.88235295, 0, 1)
-polygon = PackedVector2Array(0, -10, -7, -7, -10, 0, -7, 7, 0, 10, 7, 7, 10, 0, 7, -7)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.1501863, 2.1501863)
+sprite_frames = SubResource("SpriteFrames_by5b1")
 
 [connection signal="body_entered" from="." to="." method="hit"]
