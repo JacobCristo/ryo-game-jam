@@ -10,6 +10,7 @@
 shape = SubResource("CircleShape2D_kxgin")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(8.940697e-08, -1.1920929e-07)
 scale = Vector2(0.347, 0.347)
 texture = ExtResource("1_sq1i2")

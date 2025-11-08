@@ -5,9 +5,10 @@ extends Node
 
 var _input_dir
 var _force
+
 const DEADZONE = 0.1
-const FORCE_AMT = 5500.0
-const IMPULSE_AMT = 4000.0
+const FORCE_AMT = 10000.0
+const IMPULSE_AMT = 5000.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
