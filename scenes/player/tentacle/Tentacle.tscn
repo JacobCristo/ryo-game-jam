@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc12acdrvox18"]
+[gd_scene load_steps=7 format=3 uid="uid://dc12acdrvox18"]
 
 [ext_resource type="Texture2D" uid="uid://dmkkfii4vlmyg" path="res://assets/player/placeholder_player-tentbase.png" id="1_um86v"]
 [ext_resource type="PackedScene" uid="uid://dq1as3lwocm1p" path="res://scenes/player/tentacle/tentaclesegment.tscn" id="2_um86v"]
 [ext_resource type="Texture2D" uid="uid://ct4dbfbcbootx" path="res://assets/player/placeholder_player-tentend.png" id="3_13sd1"]
+[ext_resource type="Script" uid="uid://pp05hxyswiwu" path="res://scenes/player/tentacle/tentacle_move.gd" id="3_xmn8f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm2in"]
 radius = 5.0
@@ -10,6 +11,7 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
 
 [node name="Tentacle" type="Node2D"]
+position = Vector2(741, 301)
 
 [node name="TentacleBase" type="StaticBody2D" parent="."]
 
@@ -21,74 +23,96 @@ texture = ExtResource("1_um86v")
 shape = SubResource("CircleShape2D_mm2in")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase"]
+position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../Segment")
 
 [node name="Segment" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 20)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment"]
+position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../Segment2")
 
 [node name="Segment2" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 40)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment2"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment2")
 node_b = NodePath("../../Segment3")
 
 [node name="Segment3" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 60)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment3"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment3")
 node_b = NodePath("../../Segment4")
 
 [node name="Segment4" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 80)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment4"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment4")
 node_b = NodePath("../../Segment5")
 
 [node name="Segment5" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 100)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment5"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment5")
 node_b = NodePath("../../Segment6")
 
 [node name="Segment6" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 120)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment6"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment6")
 node_b = NodePath("../../Segment7")
 
 [node name="Segment7" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 140)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment7"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment7")
 node_b = NodePath("../../Segment8")
 
 [node name="Segment8" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 160)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment8"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment8")
 node_b = NodePath("../../Segment9")
 
 [node name="Segment9" parent="TentacleBase" instance=ExtResource("2_um86v")]
 position = Vector2(0, 180)
+gravity_scale = 0.0
 
 [node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment9"]
+position = Vector2(0, 10)
 node_a = NodePath("../../Segment9")
 node_b = NodePath("../../End")
 
 [node name="End" type="RigidBody2D" parent="TentacleBase"]
+unique_name_in_owner = true
 position = Vector2(0, 200)
+gravity_scale = 0.0
+script = ExtResource("3_xmn8f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/End"]
 shape = SubResource("CircleShape2D_kxgin")
