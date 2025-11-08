@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func shoot(target_pos: Vector2) -> void:
-	var projectile = BASIC_PROJECTILE.instantiate() as BasicProjectile
+	var projectile = BASIC_PROJECTILE.instantiate() as Projectile
 	
 	projectile.global_position = global_position
 	projectile.direction = Vector2(target_pos - global_position)
@@ -61,7 +61,6 @@ func shoot(target_pos: Vector2) -> void:
 	
 	# reset fire cooldown
 	fire_cooldown = fire_rate
-
 
 func take_damage(amount: float) -> void:
 	health -= amount
