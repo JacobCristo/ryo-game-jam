@@ -136,6 +136,7 @@ func _ready():
 	var path = generate_direct_path(goal);
 	while path.is_empty(): path = generate_direct_path(goal);
 	branch_path(path, Vector2i(START_I, START_J), goal);
+	
 	# DEBUG
 	var hb: HBoxContainer = $"../HBoxContainer";
 	if not hb: return
