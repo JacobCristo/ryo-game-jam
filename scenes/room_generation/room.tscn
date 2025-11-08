@@ -91,6 +91,7 @@ position = Vector2(155, 804)
 
 [node name="TileMap" type="Node2D" parent="."]
 z_index = -1
+texture_filter = 1
 scale = Vector2(3, 3)
 
 [node name="GroundLayer" type="TileMapLayer" parent="TileMap"]
