@@ -1,9 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://nwhqrixlnb1d"]
+[gd_scene load_steps=6 format=4 uid="uid://nwhqrixlnb1d"]
 
-[ext_resource type="Script" uid="uid://q8vghw3ll8xl" path="res://scenes/room_generation/room.gd" id="1_l1h6x"]
-[ext_resource type="PackedScene" uid="uid://bl0t16tftof0m" path="res://scenes/enemies/wave_enemy.tscn" id="2_85yof"]
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="2_ffxv4"]
-[ext_resource type="AudioStream" uid="uid://cay6j1osjipag" path="res://assets/audio/yup.mp3" id="4_l1h6x"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="5_07256"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="7_asjfa"]
 
