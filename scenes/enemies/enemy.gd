@@ -3,8 +3,10 @@ class_name Enemy extends CharacterBody2D
 signal died(enemy: Enemy)
 
 const BASIC_PROJECTILE = preload("uid://cqtchbtdssh5n")
+const STUNNED_COOLDOWN_MAX: float = 1.0
 
 @export var speed: float = 5000.0
+@export var stunned_speed: float = 5000.0
 @export var max_health: float = 25.0
 
 @export_group("Firing Stats")
@@ -16,18 +18,55 @@ const BASIC_PROJECTILE = preload("uid://cqtchbtdssh5n")
 @onready var sightline: RayCast2D = $Sightline
 
 var health: float
-var dead: bool = false
+var stunned_cool_down: float
+var state: EnemyState
+
+var stunned_dir: Vector2
+
+enum EnemyState {
+	ACTIVE,
+	STUNNED,
+	DEAD
+}
 
 func _ready() -> void:
 	health = max_health
 	# set raycast length to sightline range
 	sightline.target_position.x = sightline_range
 	
+	# set starting state
+	# TODO: create alert state
+	state = EnemyState.ACTIVE
+	
 	# find player within the scene
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
-
+	
+func _process(delta: float) -> void:
+	_determine_correct_animation()
+	if not player:
+		return
+	
+	if(state == EnemyState.STUNNED) :
+		stunned_cool_down -= delta
+		if(stunned_cool_down <= 0) :
+			state = EnemyState.ACTIVE
+			stunned_cool_down = STUNNED_COOLDOWN_MAX
+			
+			
+		
 func _physics_process(delta: float) -> void:
+	if(state == EnemyState.ACTIVE):
+		_active_physics_process(delta)
+	if(state == EnemyState.STUNNED):
+		_stunned_physics_process(delta)
+		
+func _stunned_physics_process(delta: float) -> void:
+	velocity = stunned_dir * stunned_speed * delta
+	move_and_slide()
+	
+	
+func _active_physics_process(delta: float) -> void:
 	if not player:
 		return
 	
@@ -52,6 +91,7 @@ func _physics_process(delta: float) -> void:
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed * delta
 	move_and_slide()
+	
 
 func shoot(target_pos: Vector2) -> void:
 	var projectile = BASIC_PROJECTILE.instantiate() as Projectile
@@ -63,15 +103,37 @@ func shoot(target_pos: Vector2) -> void:
 
 func take_damage(amount: float) -> void:
 	health -= amount
-	if health <= 0 and not dead:
+	if health <= 0 and not state == EnemyState.DEAD:
+		state = EnemyState.DEAD
 		die()
 
 func die() -> void:
+	velocity = Vector2.ZERO
+	
+	# TODO: Play animation and on finish run delete methods
+	
 	died.emit(self)
-	dead = true
 	queue_free()
+	
+func _determine_correct_animation() :
+	if(state == EnemyState.ACTIVE) :
+		# TODO: change animation controller
+		# to switch to repeated active animation
+		pass
+	if(state == EnemyState.STUNNED) :
+		# TODO: change animation controller
+		# to switch to repeated stunned animation
+		pass
+	
 
-func _on_hitbox_body_entered(_body: Node2D) -> void:
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# if stunned return
 	# if body is Tentacle or whatever:
 		# take_damage(x amount of damage)
+		# if health is 0 activate die
+	# Set stun to max
+	# Take damage
+	# Apply force
+	# Change state
+	# Change sprite
 	pass

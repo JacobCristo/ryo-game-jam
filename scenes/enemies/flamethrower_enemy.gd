@@ -13,6 +13,10 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("player")
 
 func _physics_process(delta: float) -> void:
+	if(state == EnemyState.ACTIVE):
+		_active_physics_process(delta)
+
+func _active_physics_process(delta: float) -> void:
 	if not player:
 		return
 	
@@ -37,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed * delta
 	move_and_slide()
-
+	
 func shoot(target_pos: Vector2) -> void:
 	var total_projectiles := 25
 	
@@ -56,11 +60,7 @@ func shoot(target_pos: Vector2) -> void:
 		await get_tree().create_timer(0.05).timeout # wait before shooting next projectile
 
 func take_damage(amount: float) -> void:
-	health -= amount
-	if health <= 0 and not dead:
-		die()
+	super.take_damage(amount)
 
 func die() -> void:
-	died.emit(self)
-	dead = true
-	queue_free()
+	super.die()

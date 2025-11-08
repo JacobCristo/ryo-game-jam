@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if(Input.is_action_pressed("boost_chain")) :
 		# TODO: Check for boost meter when implemented
+		# TODO: Drain boost meter
 		_apply_impulse_to_chain(delta)
 	else :
 		_apply_force_to_chain(delta)
