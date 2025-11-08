@@ -25,3 +25,4 @@ shader_parameter/flame1_texture = SubResource("NoiseTexture2D_wjo3c")
 shader_parameter/flame2_texture = SubResource("NoiseTexture2D_pkfvw")
 shader_parameter/flame3_texture = SubResource("NoiseTexture2D_pkfvw")
 shader_parameter/color_gradient = SubResource("GradientTexture2D_ieogm")
+shader_parameter/amplitude = 0.25

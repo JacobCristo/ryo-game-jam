@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dq1as3lwocm1p"]
 
 [ext_resource type="Texture2D" uid="uid://cmhc86hcqf1pt" path="res://assets/player/placeholder_player-tentsegment.png" id="1_sq1i2"]
-[ext_resource type="Script" uid="uid://b5ctuf8t57svk" path="res://scenes/player/tentacle/tentacle_particles.gd" id="2_2v5w6"]
+[ext_resource type="Script" path="res://scenes/player/tentacle/tentacle_particles.gd" id="2_2v5w6"]
 [ext_resource type="Texture2D" uid="uid://chywlw6m7epao" path="res://assets/particles/temp_tentacle_particle.png" id="2_65cns"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
@@ -37,6 +37,8 @@ turbulence_initial_displacement_min = -2.9999986
 turbulence_initial_displacement_max = -2.9999986
 
 [node name="Segment" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_kxgin")
@@ -49,7 +51,7 @@ texture = ExtResource("1_sq1i2")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 texture = ExtResource("2_65cns")
-lifetime = 0.47000000000000003
+lifetime = 0.47
 preprocess = 1.1
 explosiveness = 0.13
 randomness = 0.25

@@ -9,6 +9,8 @@ func shake_camera(amplitude: float, duration: float) -> void:
 	var timer = get_tree().create_timer(duration)
 	
 	while timer.time_left > 0.0:
+		if not camera:
+			return
 		camera.position = Vector2(randf_range(-amplitude, amplitude), randf_range(-amplitude, amplitude))
 		await get_tree().create_timer(0.01).timeout
 		
