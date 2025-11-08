@@ -1,22 +1,4 @@
-class_name Enemy extends CharacterBody2D 
-
-signal died(enemy: Enemy)
-
-const BASIC_PROJECTILE = preload("uid://cqtchbtdssh5n")
-
-@export var speed: float = 5000.0
-@export var max_health: float = 25.0
-
-@export_group("Firing Stats")
-@export var sightline_range: float = 250.0
-@export var fire_rate: float = 0.25
-@export var fire_cooldown: float = 0.0
-
-@onready var player: CharacterBody2D = null
-@onready var sightline: RayCast2D = $Sightline
-
-var health: float
-var dead: bool = false
+class_name EnemyTemplate extends Enemy
 
 func _ready() -> void:
 	health = max_health

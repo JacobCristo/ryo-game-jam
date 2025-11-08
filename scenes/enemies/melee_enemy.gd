@@ -1,22 +1,8 @@
-class_name Enemy extends CharacterBody2D 
+class_name MeleeEnemy extends Enemy
 
-signal died(enemy: Enemy)
+@onready var punch_area: Area2D = $PunchArea
 
-const BASIC_PROJECTILE = preload("uid://cqtchbtdssh5n")
-
-@export var speed: float = 5000.0
-@export var max_health: float = 25.0
-
-@export_group("Firing Stats")
-@export var sightline_range: float = 250.0
-@export var fire_rate: float = 0.25
-@export var fire_cooldown: float = 0.0
-
-@onready var player: CharacterBody2D = null
-@onready var sightline: RayCast2D = $Sightline
-
-var health: float
-var dead: bool = false
+@export var damage: float = 5.0
 
 func _ready() -> void:
 	health = max_health
@@ -41,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	var ray_collisions = sightline.get_collider()
 	if ray_collisions and ray_collisions is Player:
 		if fire_cooldown == 0.0:
-			shoot(player.global_position)
+			charge_punch(player.global_position)
 		
 		# return so you don't move when in range of the player
 		return
@@ -51,17 +37,26 @@ func _physics_process(delta: float) -> void:
 	velocity = direction * speed * delta
 	move_and_slide()
 
-func shoot(target_pos: Vector2) -> void:
-	var projectile = BASIC_PROJECTILE.instantiate() as Projectile
-	
-	projectile.global_position = global_position
-	projectile.direction = Vector2(target_pos - global_position)
-	
-	get_tree().current_scene.call_deferred("add_child", projectile)
+func punch() -> void:
+	for body in punch_area.get_overlapping_bodies():
+		if body is Player:
+			player = body as Player
+			player.take_damage(damage)
 	
 	# reset fire cooldown
 	fire_cooldown = fire_rate
 
+func charge_punch(target_pos: Vector2) -> void:
+	punch_area.rotation = (target_pos - global_position).angle()
+	
+	var tween = create_tween()
+	tween.tween_property($PunchArea/AreaHighlight, "size:x", 200.0, 0.5)
+	
+	await tween.finished
+	punch()
+	
+	$PunchArea/AreaHighlight.size.x = 16.0
+	
 func take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0 and not dead:

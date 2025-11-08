@@ -1,6 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0vem0iuc7n32"]
-
-[ext_resource type="PackedScene" uid="uid://mnexrcyr56ao" path="res://scenes/room_generation/room_manager.tscn" id="1_v2pdm"]
+[gd_scene format=3 uid="uid://clqds6tsnpcoh"]
 
 [node name="GridTest" type="Control"]
 layout_mode = 3
