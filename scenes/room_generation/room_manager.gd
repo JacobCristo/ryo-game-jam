@@ -7,7 +7,7 @@ const PATH_GENERATION_RANDOM_FACTOR: float = 0.3;
 # The random factor of branching after path generation
 const BRANCH_GENERATION_RANDOM_FACTOR: float = 0.2;
 # The max branch length
-const MAX_BRANCH_LENGTH: int = 2;
+const BRANCH_LENGTH: int = 2;
 # coordinates of START room.
 const START_I = 0;
 const START_J = 0;
@@ -109,13 +109,33 @@ func generate_direct_path(goal) -> Array:
 		prev = path_mappings.get(prev);
 		
 	return path;
-	
+
+# add branches to a preexisting path
+func branch_path(path: Array, start: Vector2i, goal: Vector2i) -> void:
+	const MAX_ATTEMPT_BRANCH = 25;
+	for node in path:
+		if randf() < BRANCH_GENERATION_RANDOM_FACTOR:
+			var successful_branches = 0;
+			var attempts = 0;
+			var last_branch_coord : Vector2i = node;
+			while (attempts < MAX_ATTEMPT_BRANCH) and (successful_branches < BRANCH_LENGTH):
+				var neighbors = _get_neighbors(last_branch_coord.x, last_branch_coord.y);
+				# randomly choose a node not in the path
+				var chosen = neighbors[randi() % len(neighbors)];
+				if path.has(chosen):
+					attempts += 1;
+					continue;
+				else:
+					successful_branches += 1;
+					path.append(chosen);
+			
+		
 func _ready():
 	var goal = generate_grid();
 	grid_to_graph();
 	var path = generate_direct_path(goal);
 	while path.is_empty(): path = generate_direct_path(goal);
-	
+	branch_path(path, Vector2i(START_I, START_J), goal);
 	# DEBUG
 	var hb: HBoxContainer = $"../HBoxContainer";
 	if not hb: return
@@ -123,7 +143,6 @@ func _ready():
 	var columns = hb.get_children();
 	for j in GRID_SIZE:
 		var elements = columns[j].get_children();
-		print(path);
 		for i in GRID_SIZE: 
 			if path.has(Vector2i(i, j)):
 				elements[i].color = Color(0, 0, 0, 1);
