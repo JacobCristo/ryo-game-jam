@@ -24,9 +24,9 @@ const ROOM = preload("uid://nwhqrixlnb1d");
 
 # Makes a GRID_SIZE x GRID_SIZE grid for graph initialization.
 func generate_grid() -> Vector2i:
-	for i in range(GRID_SIZE):
+	for i in GRID_SIZE:
 		grid.append([])
-		for j in range(GRID_SIZE):
+		for j in GRID_SIZE:
 			grid[i].append(ROOM_TYPE.NEITHER)
 	
 	# Start is always top-left
@@ -74,8 +74,8 @@ func _random_subarray_at_least_one(arr: Array, skip_chance: float) -> Array:
 # Create the graph (array of Rooms, storing neighbors inside).
 func grid_to_graph() -> void:
 	node_graph.clear()
-	for i in range(GRID_SIZE):
-		for j in range(GRID_SIZE):
+	for i in GRID_SIZE:
+		for j in GRID_SIZE:
 			node_graph[Vector2i(i, j)] = _get_neighbors(i, j)
 
 # BFS direct path generation with randomization
@@ -149,8 +149,3 @@ func _ready():
 				elements[i].color = Color(0, 0, 0, 1);
 			if Vector2i(i, j) == goal: elements[i].color = Color(0, 1, 0, 1);
 			if Vector2i(i, j) == Vector2i(START_I, START_J): elements[i].color = Color(1, 0, 0, 1);
-	
-	
-
-	
-	

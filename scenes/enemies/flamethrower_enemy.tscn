@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://es1aq7ov6nkc"]
+[gd_scene load_steps=4 format=3 uid="uid://es1aq7ov6nkc"]
 
 [ext_resource type="Script" uid="uid://ds1lxbxf1kti7" path="res://scenes/enemies/flamethrower_enemy.gd" id="1_alsvu"]
+[ext_resource type="Texture2D" uid="uid://b8gx8foy6ccmv" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_kf07m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
-radius = 50.0
+radius = 63.007935
 
 [node name="FlamethrowerEnemy" type="CharacterBody2D"]
 script = ExtResource("1_alsvu")
@@ -13,6 +14,9 @@ fire_rate = 2.5
 shape = SubResource("CircleShape2D_8tegq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.24526232, 0, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_kf07m")
 
 [node name="Sightline" type="RayCast2D" parent="."]
 target_position = Vector2(250, 0)

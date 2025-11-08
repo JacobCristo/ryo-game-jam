@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btaskgmpqa61u"
-path="res://.godot/imported/overhang_beam.png-4cbf79427efa3641f9e45f72b4913f4e.ctex"
+uid="uid://ctionogewmtf5"
+path="res://.godot/imported/Klaxon_Tileset.png-b05be35d44393e957998e014d4283c84.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/env tileset/overhang_beam.png"
-dest_files=["res://.godot/imported/overhang_beam.png-4cbf79427efa3641f9e45f72b4913f4e.ctex"]
+source_file="res://assets/env tileset/Klaxon_Tileset.png"
+dest_files=["res://.godot/imported/Klaxon_Tileset.png-b05be35d44393e957998e014d4283c84.ctex"]
 
 [params]
 

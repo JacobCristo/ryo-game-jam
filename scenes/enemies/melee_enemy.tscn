@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce5dch1wxqctr"]
+[gd_scene load_steps=5 format=3 uid="uid://ce5dch1wxqctr"]
 
 [ext_resource type="Script" uid="uid://cljrjqwmmxj0e" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
+[ext_resource type="Texture2D" uid="uid://b8gx8foy6ccmv" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_ru65g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
-radius = 50.0
+radius = 66.189125
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l188l"]
-size = Vector2(200, 100)
+size = Vector2(200, 129.98859)
 
 [node name="MeleeEnemy" type="CharacterBody2D"]
 script = ExtResource("1_l188l")
@@ -17,6 +18,9 @@ fire_rate = 0.5
 shape = SubResource("CircleShape2D_8tegq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0.81754863, 1)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_ru65g")
 
 [node name="Sightline" type="RayCast2D" parent="."]
 target_position = Vector2(250, 0)
@@ -30,7 +34,7 @@ shape = SubResource("RectangleShape2D_l188l")
 
 [node name="AreaHighlight" type="ColorRect" parent="PunchArea"]
 offset_left = -0.24631071
-offset_top = -50.038166
+offset_top = -65.29044
 offset_right = 15.753689
-offset_bottom = 49.961834
+offset_bottom = 65.2141
 color = Color(1, 0, 0, 0.5176471)
