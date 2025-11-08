@@ -14,12 +14,18 @@ enum ROOM_TYPE {START, GOAL, NEITHER};
 
 # The root node of the graph generated.
 var root: Room;
+# The adjacency list of the graph.
+var node_graph = [];
 # The "end room" (goal state)
 var goal_state: Room;
 # The grid used for generation.
 var grid = [];
 
-func generate_grid():
+# ROOM resource.
+const ROOM = preload("uid://nwhqrixlnb1d");
+
+# Makes a GRID_SIZE x GRID_SIZE grid for graph initialization.
+func _generate_grid():
 	# init empty arr
 	for i in range(GRID_SIZE):
 		grid.append([]);
@@ -40,11 +46,32 @@ func generate_grid():
 		2:
 			# bottom right
 			grid[GRID_SIZE - 1][GRID_SIZE - 1] = ROOM_TYPE.GOAL;
+
+# Helper for grid conversion to graph.
+func _grid_point_to_node(i, j):
+	# 4-direction neighbors
+	var top;
+	var bottom;
+	var left;
+	var right;
 	
+	if (i != 0): top = grid[i - 1][j];
+	if (i != GRID_SIZE - 1): bottom = grid[i + 1][j];
+	if (j != 0): left = grid[i][j - 1];
+	if (j != GRID_SIZE - 1): right = grid[i][j + 1];
+	
+	# create da node now
+	var res: Room = ROOM.instantiate();
+	res.neighbors = [top, left, bottom, right];
+	return res;
 
-
-
+# Create the graph (array of Rooms, storing neighbors inside).
+func _grid_to_graph():
+	for i in range(GRID_SIZE):
+		for j in range(GRID_SIZE):
+			node_graph[i*GRID_SIZE + j] = _grid_point_to_node(i, j);
+	
 func _ready():
-	generate_grid();
-	return
+	_generate_grid();
+	_grid_to_graph();
 	
