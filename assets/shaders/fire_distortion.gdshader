@@ -11,6 +11,7 @@ uniform sampler2D flame3_texture: repeat_enable;
 uniform sampler2D color_gradient;
 // for capturing the screen
 uniform sampler2D screen_texture: hint_screen_texture, filter_linear_mipmap;
+uniform float amplitude;
 
 vec4 blend_screen(vec4 base, vec4 blend){
 	return 1.0 - (1.0 - base) * (1.0 - blend);
@@ -25,8 +26,8 @@ void fragment() {
 
 	// calculate a flame distortion effect using 2 of the textures
 	// sped up a bit from the samping
-	float warp1 =  texture(flame1_texture, f1_uv * 2.1).r;
-	float warp2 =  texture(flame2_texture, f2_uv * 2.1).r;
+	float warp1 =  texture(flame1_texture, f1_uv * amplitude).r;
+	float warp2 =  texture(flame2_texture, f2_uv * amplitude).r;
 	// we only warp on the X axis as warping effectively in
 	// other directions would require more data
 	vec2 warp = vec2( warp1 - warp2, 0.0) * 0.05;
