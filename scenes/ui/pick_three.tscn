@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2gvoap78moq6"]
+
+[ext_resource type="Script" uid="uid://do6bj3olkoo5c" path="res://scenes/ui/pick_three.gd" id="1_8kujo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8kujo"]
+font_size = 50
+
+[node name="PickThree" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_8kujo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Choose an Upgrade:"
+label_settings = SubResource("LabelSettings_8kujo")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 25
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 255
+theme_override_constants/margin_bottom = 255
+
+[node name="FirstButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 255
+theme_override_constants/margin_bottom = 255
+
+[node name="SecondButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 255
+theme_override_constants/margin_bottom = 255
+
+[node name="ThirdButton" type="Button" parent="VBoxContainer/HBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
