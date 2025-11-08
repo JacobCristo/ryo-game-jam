@@ -1,46 +1,169 @@
-[gd_scene load_steps=2 format=3 uid="uid://dc12acdrvox18"]
+[gd_scene load_steps=4 format=3 uid="uid://dc12acdrvox18"]
+
+[ext_resource type="Texture2D" uid="uid://capvcjs6a0ad4" path="res://icon.svg" id="1_mm2in"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mm2in"]
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
 
 [node name="Tentacle" type="Node2D"]
 
-[node name="Segment" type="RigidBody2D" parent="."]
+[node name="TentacleBase" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment"]
-shape = SubResource("CircleShape2D_kxgin")
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase"]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_mm2in")
 
-[node name="Segment" type="RigidBody2D" parent="Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase"]
+shape = SubResource("CircleShape2D_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase"]
 position = Vector2(0, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment"]
 shape = SubResource("CircleShape2D_kxgin")
 
-[node name="Segment" type="RigidBody2D" parent="Segment/Segment"]
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment"]
 position = Vector2(0, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment"]
 shape = SubResource("CircleShape2D_kxgin")
 
-[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment"]
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment"]
 position = Vector2(0, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment"]
 shape = SubResource("CircleShape2D_kxgin")
 
-[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment/Segment"]
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment"]
 position = Vector2(0, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment/Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment"]
 shape = SubResource("CircleShape2D_kxgin")
 
-[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment/Segment/Segment"]
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment/Segment"]
 position = Vector2(0, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment/Segment/Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment"]
 shape = SubResource("CircleShape2D_kxgin")
 
-[node name="Segment" type="RigidBody2D" parent="Segment/Segment/Segment/Segment/Segment/Segment"]
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment"]
 position = Vector2(0, 20)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment"]
 shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+node_a = NodePath("..")
+node_b = NodePath("../Segment")
+
+[node name="Segment" type="RigidBody2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(0, 20)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+shape = SubResource("CircleShape2D_kxgin")
+
+[node name="Sprite2D" type="Sprite2D" parent="TentacleBase/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment/Segment"]
+position = Vector2(8.940697e-08, -1.1920929e-07)
+scale = Vector2(0.15625, 0.15624999)
+texture = ExtResource("1_mm2in")
