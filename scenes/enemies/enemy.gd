@@ -70,3 +70,8 @@ func die() -> void:
 	died.emit(self)
 	dead = true
 	queue_free()
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	# if body is Tentacle or whatever:
+		# take_damage(x amount of damage)
+	pass

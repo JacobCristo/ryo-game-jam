@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b06byf7gpsk0o"]
 
 [ext_resource type="Script" uid="uid://fegeqrymcee4" path="res://scenes/enemies/sniper_enemy.gd" id="1_u5517"]
-[ext_resource type="Texture2D" uid="uid://b8gx8foy6ccmv" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_yxf8y"]
+[ext_resource type="Texture2D" uid="uid://dxo2kbchxir1p" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_yxf8y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 44.04543
@@ -28,3 +28,10 @@ offset_right = 3567.0
 offset_bottom = 1.5
 color = Color(1, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8tegq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_hitbox_body_entered"]

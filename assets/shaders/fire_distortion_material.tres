@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://bdb763xecdfta"]
+
+[ext_resource type="Shader" uid="uid://bx6yi1ydpll2g" path="res://assets/shaders/fire_distortion.gdshader" id="1_781sl"]
+
+[sub_resource type="Gradient" id="Gradient_wjo3c"]
+colors = PackedColorArray(0, 0, 0, 0.8, 0, 0, 0, 0.4)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ieogm"]
+gradient = SubResource("Gradient_wjo3c")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_781sl"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wjo3c"]
+noise = SubResource("FastNoiseLite_781sl")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ieogm"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pkfvw"]
+noise = SubResource("FastNoiseLite_ieogm")
+
+[resource]
+shader = ExtResource("1_781sl")
+shader_parameter/flame1_texture = SubResource("NoiseTexture2D_wjo3c")
+shader_parameter/flame2_texture = SubResource("NoiseTexture2D_pkfvw")
+shader_parameter/flame3_texture = SubResource("NoiseTexture2D_pkfvw")
+shader_parameter/color_gradient = SubResource("GradientTexture2D_ieogm")

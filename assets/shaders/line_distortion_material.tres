@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dtve3vkp0wxbd"]
+
+[ext_resource type="Shader" uid="uid://h30qsp60yw5j" path="res://assets/shaders/line_distortion.gdshader" id="1_3sxpe"]
+
+[resource]
+shader = ExtResource("1_3sxpe")
+shader_parameter/shake = 0.015
+shader_parameter/noiseQuality = 250.0
+shader_parameter/noiseIntensity = 0.001
+shader_parameter/offsetIntensity = 0.05
+shader_parameter/colorOffsetIntensity = 0.5

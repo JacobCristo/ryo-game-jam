@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bl0t16tftof0m"]
 
 [ext_resource type="Script" uid="uid://wpyg75fsh0gt" path="res://scenes/enemies/wave_enemy.gd" id="1_p8v77"]
-[ext_resource type="Texture2D" uid="uid://b8gx8foy6ccmv" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_vevli"]
+[ext_resource type="Texture2D" uid="uid://dxo2kbchxir1p" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_vevli"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 45.01111
@@ -21,3 +21,10 @@ texture = ExtResource("2_vevli")
 
 [node name="Sightline" type="RayCast2D" parent="."]
 target_position = Vector2(200, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8tegq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_hitbox_body_entered"]

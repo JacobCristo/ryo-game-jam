@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ce5dch1wxqctr"]
 
 [ext_resource type="Script" uid="uid://cljrjqwmmxj0e" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
-[ext_resource type="Texture2D" uid="uid://b8gx8foy6ccmv" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_ru65g"]
+[ext_resource type="Texture2D" uid="uid://dxo2kbchxir1p" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_ru65g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 66.189125
@@ -38,3 +38,10 @@ offset_top = -65.29044
 offset_right = 15.753689
 offset_bottom = 65.2141
 color = Color(1, 0, 0, 0.5176471)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8tegq")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -15,3 +15,10 @@ shape = SubResource("CircleShape2D_8tegq")
 
 [node name="Sightline" type="RayCast2D" parent="."]
 target_position = Vector2(250, 0)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8tegq")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

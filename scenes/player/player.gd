@@ -60,7 +60,7 @@ func apply_damage_effect():
 	create_tween().tween_callback(_restore_music)
 
 func _restore_music():
-	create_tween().tween_property(low_pass_filter, "cutoff_hz", 2000, 1).set_ease(Tween.EASE_IN)
+	create_tween().tween_property(low_pass_filter, "cutoff_hz", 20500, 1).set_ease(Tween.EASE_IN)
 
 func dash(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
