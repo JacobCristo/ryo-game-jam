@@ -62,7 +62,6 @@ func shoot(target_pos: Vector2) -> void:
 	# reset fire cooldown
 	fire_cooldown = fire_rate
 
-
 func take_damage(amount: float) -> void:
 	health -= amount
 	if health <= 0 and not dead:
