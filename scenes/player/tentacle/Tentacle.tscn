@@ -17,6 +17,7 @@ texture_repeat = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
 
 [node name="Tentacle" type="Node2D"]
+position = Vector2(509, 152)
 
 [node name="TentacleBase" type="StaticBody2D" parent="."]
 
