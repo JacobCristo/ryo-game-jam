@@ -128,6 +128,9 @@ func _determine_correct_animation() :
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# if stunned return
+	if(state == EnemyState.STUNNED) :
+		return 
+		
 	# if body is Tentacle or whatever:
 		# take_damage(x amount of damage)
 		# if health is 0 activate die
