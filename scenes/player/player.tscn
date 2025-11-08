@@ -20,6 +20,9 @@ position = Vector2(-25, 1)
 [node name="Sprite2D" parent="Tentacle/TentacleBase" index="0"]
 visible = true
 
+[node name="Line2D" parent="Tentacle" index="1"]
+width = 20.0
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dovo2")
