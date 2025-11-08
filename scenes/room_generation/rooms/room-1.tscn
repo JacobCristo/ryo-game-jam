@@ -97,7 +97,7 @@ offset_top = -101.59292
 offset_right = 97.597885
 offset_bottom = 101.06194
 
-[node name="Player" parent="." instance=ExtResource("2_ffxv4")]
+[node name="Player" parent="." instance=ExtResource("1_n5ae5")]
 position = Vector2(990, 609)
 
 [node name="SniperEnemy" parent="." instance=ExtResource("2_60kw0")]
