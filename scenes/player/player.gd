@@ -38,6 +38,9 @@ func start_dash(dir: Vector2) -> void:
 	is_dashing = false
 
 func take_damage(damage: float) -> void:
+	if is_dashing:
+		return
+	
 	health -= damage
 	apply_damage_effect()
 	

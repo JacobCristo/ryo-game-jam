@@ -132,4 +132,4 @@ animations = [{
 [node name="Explosion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_idg7g")
 autoplay = "default"
-frame_progress = 0.95729804
+frame_progress = 0.37062913
