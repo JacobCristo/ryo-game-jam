@@ -4,14 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://bnuks720h48xf" path="res://assets/items/goop.png" id="2_24pss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0e2v"]
-size = Vector2(14, 14)
+size = Vector2(44, 46)
 
 [node name="Pickup" type="Node2D"]
 script = ExtResource("1_24pss")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.0000001, 1.0000001)
-scale = Vector2(0.3046875, 0.3046875)
 texture = ExtResource("2_24pss")
 
 [node name="Area2D" type="Area2D" parent="."]

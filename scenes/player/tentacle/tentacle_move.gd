@@ -26,8 +26,10 @@ func _process(_delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	if(Input.is_action_pressed("boost_chain")) :
-		_apply_impulse_to_chain(delta)
-		get_tree().get_first_node_in_group("player").goop -= 0.5
+		var player = get_tree().get_first_node_in_group("player")
+		player.goop -= 0.5
+		if player.goop > 0.0:
+			_apply_impulse_to_chain(delta)
 		
 	else :
 		get_tree().get_first_node_in_group("player").goop += 0.03
