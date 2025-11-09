@@ -46,6 +46,7 @@ func take_damage(damage: float) -> void:
 	health -= damage
 	apply_damage_effect()
 	Global.shake_camera(damage, 0.25)
+	Global.playerHit.emit(damage, health)
 	
 	if health <= 0:
 		die()
@@ -79,15 +80,10 @@ func dash(dir: Vector2) -> void:
 func increase_stat(stat_name: String, increase: float) -> void:
 	match stat_name.to_lower():
 		"health":
-			print("HEALTH UP")
-			print(max_health)
 			var temp_health = max_health
 			max_health *= increase
-			print(max_health)
 			health += max_health - temp_health
 		"speed":
-			print("SPEED UP")
 			speed *= increase
 		"strength":
-			print("STRENGTH UP")
 			strength *= increase
