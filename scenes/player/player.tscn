@@ -77,9 +77,9 @@ texture = ExtResource("2_dovo2")
 [node name="PlayerUI" parent="." instance=ExtResource("5_p47bc")]
 custom_minimum_size = Vector2(1920, 1080)
 offset_left = -957.0
-offset_top = -366.0
+offset_top = -540.0
 offset_right = 963.0
-offset_bottom = 714.0
+offset_bottom = 540.0
 
 [node name="FlashAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true

@@ -1,7 +1,7 @@
 class_name Room
 extends Node2D
 
-const DOOR = preload("uid://wm1u28rq3c8x")
+const DOOR = preload("uid://duudrdgw1k7ol")
 
 # array of coordinates of neighboring rooms (Vector2i)
 @export var neighbors = []
