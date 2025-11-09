@@ -7,7 +7,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1hava"]
 shader = ExtResource("1_o68o6")
-shader_parameter/fisheye_intensity = 0.01000004797499998
+shader_parameter/fisheye_intensity = 0.10000005224999997
 shader_parameter/zoom = 1.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cuabf"]
