@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://gaxs1af3ppm2"]
+[gd_scene load_steps=8 format=4 uid="uid://gaxs1af3ppm2"]
 
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="1_4whxw"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="2_2cqi0"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="3_m7ta5"]
 [ext_resource type="PackedScene" uid="uid://bl0t16tftof0m" path="res://scenes/enemies/wave_enemy.tscn" id="4_bjeae"]
+[ext_resource type="PackedScene" uid="uid://d2gvoap78moq6" path="res://scenes/ui/pick_three.tscn" id="5_bjeae"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
 texture = ExtResource("2_2cqi0")
@@ -122,3 +123,6 @@ position = Vector2(537, 231)
 
 [node name="WaveEnemy2" parent="." instance=ExtResource("4_bjeae")]
 position = Vector2(1620, 1000)
+
+[node name="PickThree" parent="." instance=ExtResource("5_bjeae")]
+visible = false
