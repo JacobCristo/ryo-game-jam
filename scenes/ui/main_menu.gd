@@ -3,7 +3,7 @@ class_name MainMenu extends Control
 const EXPLOD = preload("uid://db54u7e8s3dc4")
 
 @onready var texture_rect: TextureRect = $TextureRect
-
+@onready var explosion : AudioStreamPlayer = $Explosion
 @onready var label: RichTextLabel = $VBoxContainer/Label
 
 var loading: bool = false
@@ -18,7 +18,9 @@ func _input(event: InputEvent) -> void:
 
 func change_to_game() -> void:
 	loading = true
+	explosion.play()
 	texture_rect.texture = EXPLOD
+	
 	
 	var tween = create_tween()
 	tween.tween_property(texture_rect, "modulate", Color.WHITE, 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
