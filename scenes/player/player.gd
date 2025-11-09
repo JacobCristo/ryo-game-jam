@@ -12,8 +12,19 @@ class_name Player extends CharacterBody2D
 @export var speed: float = 600.0
 @export var strength: float = 20.0
 @export var max_health: float = 100.0
+@export var max_goop: float = 100.0
 
-var health: float = max_health
+var health: float = max_health:
+	set(value):
+		var playerui = get_tree().get_first_node_in_group("playerui") as PlayerUI
+		playerui.change_health(max_health, value)
+		health = max(value, 0)
+		
+var goop: float = max_goop:
+	set(value):
+		var playerui = get_tree().get_first_node_in_group("playerui") as PlayerUI
+		playerui.change_goop(max_goop, value)
+		goop = max(value, 0)
 
 var dash_timer: float = 0.0
 var is_dashing: float = false #bro so ugly
@@ -47,6 +58,8 @@ func take_damage(damage: float) -> void:
 	apply_damage_effect()
 	Global.shake_camera(damage, 0.25)
 	Global.playerHit.emit(damage, health)
+	
+	get_tree().get_first_node_in_group("playerui").change_health(max_health, health)
 	
 	if health <= 0:
 		die()
