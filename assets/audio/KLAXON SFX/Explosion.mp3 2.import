@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cale8123igyja"
+path="res://.godot/imported/Explosion.mp3-4603e8696679325d62fb395f06d758c5.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/KLAXON SFX/Explosion.mp3"
+dest_files=["res://.godot/imported/Explosion.mp3-4603e8696679325d62fb395f06d758c5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
