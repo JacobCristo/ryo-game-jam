@@ -21,3 +21,7 @@ func shake_camera(amplitude: float, duration: float) -> void:
 	
 	if camera:
 		camera.position = Vector2.ZERO
+
+func load_to(filepath: String) -> void:
+	rooms = {}
+	get_tree().change_scene_to_file(filepath)

@@ -1,5 +1,7 @@
 class_name Door extends Area2D
 
+signal entered()
+
 @export var next_door_coords: Vector2i = Vector2i.ZERO
 @export var target_room_coord: Vector2i
 @export var target_back_index: int
@@ -9,7 +11,7 @@ class_name Door extends Area2D
 var open: bool = false
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and open:
 		teleport_player(body)
 
 func teleport_player(player: CharacterBody2D) -> void:
@@ -30,6 +32,7 @@ func teleport_player(player: CharacterBody2D) -> void:
 	player.global_position = spawn_position
 	player.velocity = Vector2.ZERO
 	
+	entered.emit()
 	Global.room_entered.emit()
 
 func open_door() -> void:

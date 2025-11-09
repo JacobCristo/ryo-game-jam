@@ -1,7 +1,6 @@
 class_name Room
 extends Node2D
 
-const MAIN_MENU = preload("uid://b0ac1pwcivrad")
 const DOOR = preload("uid://wm1u28rq3c8x")
 
 # array of coordinates of neighboring rooms (Vector2i)
@@ -11,6 +10,7 @@ const DOOR = preload("uid://wm1u28rq3c8x")
 
 # top, left, down, right 
 @export var door_coords: Array[Vector2i] = []
+@export var end_room: bool = false
 
 var doors = []
 
@@ -35,9 +35,13 @@ func _ready() -> void:
 
 		door.target_room_coord = neighbor
 		door.target_back_index = back_index
-
-		doors.append(door)
+		if end_room: 
+			door.entered.connect(
+				func():
+					Global.load_to("res://scenes/ui/main_menu.tscn")
+			)
 		
+		doors.append(door)
 	
 	# check enemies & connect signals safely
 	check_for_enemies()

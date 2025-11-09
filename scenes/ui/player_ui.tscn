@@ -1,14 +1,18 @@
-[gd_scene load_steps=11 format=3 uid="uid://bnyuek30mdyyu"]
+[gd_scene load_steps=12 format=3 uid="uid://bnyuek30mdyyu"]
 
 [ext_resource type="Script" uid="uid://bhu2g4hubxbep" path="res://scenes/ui/player_ui.gd" id="1_fatqr"]
 [ext_resource type="Script" uid="uid://dqht54tpyarpa" path="res://scenes/ui/health_bar.gd" id="1_s4ogp"]
 [ext_resource type="Script" uid="uid://d0causvi6v25" path="res://scenes/ui/stamina_bar.gd" id="2_2sf84"]
 [ext_resource type="FontFile" uid="uid://cxulmdo53ol8p" path="res://assets/fonts/StalinistOne-Regular.ttf" id="2_jg20v"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_g7v3g"]
+font = ExtResource("2_jg20v")
+font_size = 75
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vu4vs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu4vs"]
-bg_color = Color(1, 0.3355136, 0.26959568, 1)
+bg_color = Color(0.6117647, 0.85882354, 0.2627451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4ogp"]
 bg_color = Color(1, 1, 1, 1)
@@ -50,8 +54,16 @@ theme_override_constants/margin_bottom = 25
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="TimeLeft" type="Label" parent="MarginContainer/VBoxContainer"]
+z_index = 4096
+layout_mode = 2
+text = "00m:00s:00ms"
+label_settings = SubResource("LabelSettings_g7v3g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Spacing" type="Control" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(955, 955)
+custom_minimum_size = Vector2(0, 800)
 layout_mode = 2
 size_flags_vertical = 3
 
