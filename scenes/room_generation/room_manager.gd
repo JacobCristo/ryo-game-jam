@@ -19,7 +19,8 @@ const END_J =  GRID_SIZE - 1;
 # rules for map generation / regeneration
 const MAX_ROOM_COUNT = 20;
 const MIN_ROOM_COUNT = 12;
-enum ROOM_TYPES {ROOM_1, ROOM_2, ROOM_3, ROOM_4, ROOM_5, START, END};
+# TODO: add rooms that are broken once fixed
+enum ROOM_TYPES {ROOM_1, ROOM_2, ROOM_3, ROOM_4, START, END};
 
 # Stores whether the room is a START, GOAL STATE, or lowkey chill with it
 enum ROOM_TYPE {START, GOAL, NEITHER};
@@ -31,13 +32,21 @@ var grid = [];
 # ROOM resource.
 const ROOM = preload("uid://nwhqrixlnb1d");
 
+# TODO: rooms are unable to load because of corrupted wave enemy
+# fix!
+
 const ROOM_1 = preload("uid://nwhqrixlnb1d")
 const ROOM_2 = preload("uid://d1cx7ifyrhwar")
 const ROOM_3 = preload("uid://bvc35ges7kb0b")
 const ROOM_4 = preload("uid://d3gp2fttvramf")
-const ROOM_5 = preload("uid://gaxs1af3ppm2")
+# const ROOM_5 = preload("uid://gaxs1af3ppm2")
 const ROOM_END = preload("uid://ba68b13oul354")
 const ROOM_START = preload("uid://c1xkovv87d6ko")
+# const ROOM_6 = preload("uid://relv5dyuccfl")
+const ROOM_7 = preload("uid://bagmbhqtc0fdb")
+const ROOM_8 = preload("uid://c1mwkkd6geokc")
+# const ROOM_9 = preload("uid://d1n07f4geopbc")
+# const ROOM_10 = preload("uid://dn7a06cxauhla")
 
 # ------- ROOM GENERATION HELPER FUNCTIONS ---------
 
@@ -155,6 +164,8 @@ func path_to_rooms(path: Array) -> void:
 		elif node == Vector2i(END_I, END_J): id = ROOM_TYPES.END;
 		else: id = ROOM_TYPES.values()[randi() % (ROOM_TYPES.size() - 2)];
 		
+		# TODO: uncomment rooms when wave enemy is fixed
+		
 		var room;
 		match id:
 			ROOM_TYPES.START: room = ROOM_START.instantiate()
@@ -165,7 +176,12 @@ func path_to_rooms(path: Array) -> void:
 			ROOM_TYPES.ROOM_2: room = ROOM_2.instantiate()
 			ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
 			ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
-			ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
+			#ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
+			#ROOM_TYPES.ROOM_6: room = ROOM_6.instantiate()
+			#ROOM_TYPES.ROOM_7: room = ROOM_7.instantiate()
+			#ROOM_TYPES.ROOM_8: room = ROOM_8.instantiate()
+			#ROOM_TYPES.ROOM_9: room = ROOM_9.instantiate()
+			#ROOM_TYPES.ROOM_10: room = ROOM_10.instantiate()
 		
 		# each node knows the coordinates of its neighbors...
 		room.neighbors = adj_list[node];
