@@ -79,9 +79,19 @@ custom_data_layer_0/name = "Destructible"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
-[node name="Room" type="Node2D"]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("enemies")]
 script = ExtResource("1_0oree")
+enemies = [NodePath("FlamethrowerEnemy"), NodePath("SniperEnemy"), NodePath("MeleeEnemy")]
 door_coords = Array[Vector2i]([Vector2i(676, 107), Vector2i(55, 542), Vector2i(721, 1085), Vector2i(1880, 576)])
+
+[node name="FlamethrowerEnemy" parent="." instance=ExtResource("3_lnksg")]
+position = Vector2(1209, 984)
+
+[node name="SniperEnemy" parent="." instance=ExtResource("4_hctci")]
+position = Vector2(906, 875)
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("5_q1u0q")]
+position = Vector2(182, 292)
 
 [node name="TileMap" type="Node2D" parent="."]
 z_index = -1
@@ -115,15 +125,6 @@ offset_right = 5235.0
 offset_bottom = 4447.0
 color = Color(0, 0.008380051, 0.15998203, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="FlamethrowerEnemy" parent="." instance=ExtResource("3_lnksg")]
-position = Vector2(1209, 984)
-
-[node name="SniperEnemy" parent="." instance=ExtResource("4_hctci")]
-position = Vector2(906, 875)
-
-[node name="MeleeEnemy" parent="." instance=ExtResource("5_q1u0q")]
-position = Vector2(182, 292)
 
 [node name="PickThree" parent="." instance=ExtResource("6_hctci")]
 visible = false

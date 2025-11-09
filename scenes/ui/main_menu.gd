@@ -1,6 +1,6 @@
 class_name MainMenu extends Control
 
-const ROOM = preload("uid://nwhqrixlnb1d")
+const MAP = preload("uid://owy0dc0507tc")
 const EXPLOD = preload("uid://db54u7e8s3dc4")
 
 @onready var texture_rect: TextureRect = $TextureRect
@@ -28,7 +28,7 @@ func change_to_game() -> void:
 	shake_screen(25, 3)
 	
 	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_packed(ROOM)
+	get_tree().change_scene_to_packed(MAP)
 
 func shake_screen(amp: float, duration: float) -> void:
 	var starting_pos: Vector2 = texture_rect.position

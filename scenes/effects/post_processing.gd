@@ -49,7 +49,7 @@ func tween_sobel(intensity: float) -> void:
 	
 	var start_intensity = mat.get_shader_parameter("intensity")
 	
-	tween.parallel().tween_method(
+	tween.tween_method(
 		func(value): mat.set_shader_parameter("intensity", value),
 		mat.get_shader_parameter("intensity"),
 		intensity,
@@ -59,7 +59,7 @@ func tween_sobel(intensity: float) -> void:
 	await tween.finished
 	tween = create_tween()
 	
-	tween.parallel().tween_method(
+	tween.tween_method(
 		func(value): mat.set_shader_parameter("intensity", value),
 		mat.get_shader_parameter("intensity"),
 		start_intensity,
