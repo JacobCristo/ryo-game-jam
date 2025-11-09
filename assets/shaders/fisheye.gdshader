@@ -91,5 +91,5 @@ void fragment() {
 	// Apply dither + vignette on the fisheye result
 	vec4 dither_pass = dither_effect(px, color, uv_dist);
 
-	COLOR = dither_pass;
+	COLOR = dither_pass * 1.6;
 }

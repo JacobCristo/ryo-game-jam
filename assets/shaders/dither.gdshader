@@ -48,5 +48,5 @@ void fragment() {
 	vec4 color = texture(SCREEN_TEXTURE, UV);
 	vec4 dither_pass = dither_effect(px, color, UV);
 	COLOR = dither_pass;
-	
+
 }

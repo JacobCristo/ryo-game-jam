@@ -383,4 +383,13 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = 2030
+offset_left = -1140.0
+offset_top = -693.0
+offset_right = 1869.0
+offset_bottom = 1119.0
+color = Color(1, 1, 1, 0.101960786)
+
 [editable path="Tentacle"]
