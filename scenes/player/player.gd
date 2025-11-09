@@ -58,6 +58,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("dash") and dash_timer == 0.0:
 		start_dash(direction)
 		dash_timer = dash_cooldown
+		
+		flash_animation.play("dash")
+	
 
 func start_dash(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
