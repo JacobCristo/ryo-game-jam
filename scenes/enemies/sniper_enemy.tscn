@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b06byf7gpsk0o"]
+[gd_scene load_steps=6 format=3 uid="uid://b06byf7gpsk0o"]
 
 [ext_resource type="Script" uid="uid://fegeqrymcee4" path="res://scenes/enemies/sniper_enemy.gd" id="1_u5517"]
 [ext_resource type="Texture2D" uid="uid://dxo2kbchxir1p" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_yxf8y"]
 [ext_resource type="AudioStream" uid="uid://da4f50idh0qy3" path="res://assets/audio/KLAXON SFX/TentHit - Option 1.mp3" id="3_23egm"]
+[ext_resource type="AudioStream" uid="uid://j7mwiy6x02hg" path="res://assets/audio/KLAXON SFX/Lasergun - Option 2.mp3" id="3_oebkf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 44.04543
@@ -11,13 +12,8 @@ radius = 44.04543
 collision_layer = 12
 collision_mask = 4
 script = ExtResource("1_u5517")
-speed = null
-stunned_speed = null
-stunned_speed_falloff = null
-max_health = null
 sightline_range = 1250.0
 fire_rate = 3.0
-fire_cooldown = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8tegq")
@@ -44,6 +40,10 @@ collision_mask = 12
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8tegq")
+
+[node name="SniperShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oebkf")
+volume_db = -2.862
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_23egm")

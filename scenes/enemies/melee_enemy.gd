@@ -1,6 +1,7 @@
 class_name MeleeEnemy extends Enemy
 
 @onready var punch_area: Area2D = $PunchArea
+@onready var punchSound : AudioStreamPlayer = %Punch
 
 @export var damage: float = 5.0
 
@@ -41,6 +42,7 @@ func _active_physics_process(delta: float) -> void:
 	move_and_slide()
 
 func punch() -> void:
+	punchSound.play()
 	for body in punch_area.get_overlapping_bodies():
 		if body is Player:
 			player = body as Player

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ce5dch1wxqctr"]
+[gd_scene load_steps=7 format=3 uid="uid://ce5dch1wxqctr"]
 
 [ext_resource type="Script" uid="uid://cljrjqwmmxj0e" path="res://scenes/enemies/melee_enemy.gd" id="1_l188l"]
 [ext_resource type="Texture2D" uid="uid://dxo2kbchxir1p" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_ru65g"]
+[ext_resource type="AudioStream" uid="uid://ddy12u5fvnw6m" path="res://assets/audio/KLAXON SFX/Punch.mp3" id="3_c1gin"]
 [ext_resource type="AudioStream" uid="uid://da4f50idh0qy3" path="res://assets/audio/KLAXON SFX/TentHit - Option 1.mp3" id="3_ghbxi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
@@ -48,6 +49,10 @@ collision_mask = 12
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_8tegq")
+
+[node name="Punch" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_c1gin")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ghbxi")

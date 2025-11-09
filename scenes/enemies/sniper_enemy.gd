@@ -3,7 +3,7 @@ class_name SniperEnemy extends Enemy
 const SNIPER_PROJECTILE = preload("uid://dxvheu50y385i")
 
 @onready var laser: ColorRect = $Laser
-
+@onready var shootAudio : AudioStreamPlayer = $SniperShot
 var is_knocked_back: bool = false
 var knockback_velocity: Vector2 = Vector2.ZERO
 var knockback_duration: float = 0.25
@@ -62,7 +62,7 @@ func shoot(target_pos: Vector2) -> void:
 	projectile.global_position = global_position
 	projectile.direction = (target_pos - global_position).normalized()
 	get_tree().current_scene.call_deferred("add_child", projectile)
-	
+	shootAudio.play()
 	# fade out laser
 	create_tween().tween_property(laser, "color:a", 0.0, 0.1)
 	
