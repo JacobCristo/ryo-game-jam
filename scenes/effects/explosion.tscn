@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://ckaq3lr1gba6l"]
+[gd_scene load_steps=15 format=3 uid="uid://ckaq3lr1gba6l"]
 
 [ext_resource type="Texture2D" uid="uid://cm1j1vepogggx" path="res://assets/effects/boom-sheet.png" id="1_8dm26"]
 [ext_resource type="Script" uid="uid://8sbw2b0d7tca" path="res://scenes/effects/explosion.gd" id="2_fqp2o"]
+[ext_resource type="AudioStream" uid="uid://cale8123igyja" path="res://assets/audio/KLAXON SFX/Explosion.mp3" id="3_d6bb2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqp2o"]
 atlas = ExtResource("1_8dm26")
@@ -87,4 +88,11 @@ autoplay = "default"
 frame_progress = 0.7177868
 script = ExtResource("2_fqp2o")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_d6bb2")
+volume_db = 2.219
+
+[connection signal="animation_changed" from="." to="." method="_on_animation_changed"]
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

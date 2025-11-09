@@ -20,6 +20,7 @@ const VELOCITY_DMG_SCALER: float = 100.0
 
 @onready var player: CharacterBody2D = null
 @onready var sightline: RayCast2D = $Sightline
+@onready var audio: AudioStreamPlayer = $AudioStreamPlayer
 
 var health: float
 var stunned_cool_down: float
@@ -119,6 +120,7 @@ func shoot(target_pos: Vector2) -> void:
 
 func take_damage(amount: float) -> void:
 	health -= amount
+	audio.play()
 	if health <= 0 and not state == EnemyState.DEAD:
 		state = EnemyState.DEAD
 		die()

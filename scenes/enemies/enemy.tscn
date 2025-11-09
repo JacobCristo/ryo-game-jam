@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://od7gid2e0x74"]
+[gd_scene load_steps=4 format=3 uid="uid://od7gid2e0x74"]
 
 [ext_resource type="Script" uid="uid://bdptyuvbprey" path="res://scenes/enemies/enemy.gd" id="1_7p1mj"]
+[ext_resource type="AudioStream" uid="uid://da4f50idh0qy3" path="res://assets/audio/KLAXON SFX/TentHit - Option 1.mp3" id="2_8e3ao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 50.0
@@ -24,5 +25,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_8tegq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8e3ao")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

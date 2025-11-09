@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://girdxqawyxqv"
+path="res://.godot/imported/Klaxon - Option 1.mp3-1a7fd5768c546b5ec38e37d2c131a522.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/KLAXON SFX/Klaxon - Option 1.mp3"
+dest_files=["res://.godot/imported/Klaxon - Option 1.mp3-1a7fd5768c546b5ec38e37d2c131a522.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -4,11 +4,14 @@ const EXPLOSION = preload("uid://ckaq3lr1gba6l")
 const HEALTHPICKUP = preload("uid://c5iikbni6ptdk")
 const GOOPPICKUP = preload("uid://b2itprytx40ly")
 
+@onready var audio = $AudioStreamPlayer
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
 	sprite.animation = &"default"
 	sprite.frame = randi_range(0, sprite.sprite_frames.get_frame_count("default") - 1)
+	
+
 
 func _on_body_entered(body: Node) -> void:
 	if body is Segment or body is Enemy:
@@ -16,6 +19,7 @@ func _on_body_entered(body: Node) -> void:
 		
 func explode() -> void:
 	var explosion = EXPLOSION.instantiate()
+	explosion.audio.play()
 	explosion.global_position = global_position
 	explosion.scale = Vector2(2, 2)
 	var rand = randi()%3

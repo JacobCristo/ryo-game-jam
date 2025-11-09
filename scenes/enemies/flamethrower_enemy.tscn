@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://es1aq7ov6nkc"]
+[gd_scene load_steps=6 format=3 uid="uid://es1aq7ov6nkc"]
 
 [ext_resource type="Script" uid="uid://ds1lxbxf1kti7" path="res://scenes/enemies/flamethrower_enemy.gd" id="1_alsvu"]
 [ext_resource type="Texture2D" uid="uid://dxo2kbchxir1p" path="res://assets/enemies/hazmat-armed/enemy_hazmat-armed_placeholder.png" id="2_kf07m"]
+[ext_resource type="AudioStream" uid="uid://da4f50idh0qy3" path="res://assets/audio/KLAXON SFX/TentHit - Option 1.mp3" id="3_jksgf"]
+[ext_resource type="AudioStream" uid="uid://d26d0t4q1ahhu" path="res://assets/audio/KLAXON SFX/Flamethrower.mp3" id="3_sjcr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 63.007935
@@ -29,5 +31,11 @@ collision_mask = 12
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_8tegq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jksgf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sjcr0")
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

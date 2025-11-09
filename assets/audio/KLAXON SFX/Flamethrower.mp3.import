@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d26d0t4q1ahhu"
+path="res://.godot/imported/Flamethrower.mp3-caa8ec978f50f4a17dd36f2db8446642.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/KLAXON SFX/Flamethrower.mp3"
+dest_files=["res://.godot/imported/Flamethrower.mp3-caa8ec978f50f4a17dd36f2db8446642.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
