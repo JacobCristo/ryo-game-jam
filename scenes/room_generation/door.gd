@@ -29,6 +29,8 @@ func teleport_player(player: CharacterBody2D) -> void:
 
 	player.global_position = spawn_position
 	player.velocity = Vector2.ZERO
+	
+	Global.room_entered.emit()
 
 func open_door() -> void:
 	open = true

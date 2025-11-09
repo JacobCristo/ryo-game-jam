@@ -148,24 +148,22 @@ func path_to_rooms(path: Array) -> void:
 		
 	# make each node in the adj_list
 	for node in adj_list.keys():
-		var id;
+		var id
 		# figure out the room type
 		if node == Vector2i(START_I, START_J): id = ROOM_TYPES.START;
 		# end check
 		elif node == Vector2i(END_I, END_J): id = ROOM_TYPES.END;
-		else: id = ROOM_TYPES.keys()[randi() % (ROOM_TYPES.size() - 2)];
+		else: id = ROOM_TYPES.values()[randi() % (ROOM_TYPES.size() - 2)];
 		
 		var room;
-		print(id if int(id) == ROOM_TYPES.ROOM_1 else "")
 		match id:
-			#ROOM_TYPES.START: room = ROOM_START.instantiate()
-			#ROOM_TYPES.END: room = ROOM_END.instantiate()
+			ROOM_TYPES.START: room = ROOM_START.instantiate()
+			ROOM_TYPES.END: room = ROOM_END.instantiate()
 			ROOM_TYPES.ROOM_1:room = ROOM_1.instantiate()
-			# TODO: make work 4 all rooms
-			_: room = ROOM_2.instantiate()
-			#ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
-			#ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
-			#ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
+			ROOM_TYPES.ROOM_2: room = ROOM_2.instantiate()
+			ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
+			ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
+			ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
 		
 		# each node knows the coordinates of its neighbors...
 		room.neighbors = adj_list[node];

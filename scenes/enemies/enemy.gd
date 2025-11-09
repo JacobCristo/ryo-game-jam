@@ -108,7 +108,6 @@ func _active_physics_process(delta: float) -> void:
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed * delta
 	move_and_slide()
-	
 
 func shoot(target_pos: Vector2) -> void:
 	var projectile = BASIC_PROJECTILE.instantiate() as Projectile
@@ -187,7 +186,3 @@ func _calc_dmg_amt_end(body: Node2D) -> float:
 		dmg_amt = (r_body.linear_velocity.length() / VELOCITY_DMG_SCALER) * END_DMG_MULT
 	
 	return dmg_amt
-	
-
-	
-	

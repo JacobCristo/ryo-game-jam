@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bf6bv0x5itukj" path="res://scenes/room_generation/map.gd" id="1_y2dp5"]
 [ext_resource type="PackedScene" uid="uid://mnexrcyr56ao" path="res://scenes/room_generation/room_manager.tscn" id="2_0ylu0"]
-[ext_resource type="AudioStream" uid="uid://f0kprehcj7e6" path="res://assets/audio/gameplay.mp3" id="3_y2dp5"]
+[ext_resource type="AudioStream" uid="uid://b1w4wvp5b1f3r" path="res://assets/audio/Klaxon - Aspects.mp3" id="3_c1a6d"]
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="4_c1a6d"]
 
 [node name="Map" type="Node2D"]
@@ -11,7 +11,7 @@ script = ExtResource("1_y2dp5")
 [node name="room_manager" parent="." instance=ExtResource("2_0ylu0")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_y2dp5")
+stream = ExtResource("3_c1a6d")
 volume_db = -20.0
 autoplay = true
 bus = &"Music"

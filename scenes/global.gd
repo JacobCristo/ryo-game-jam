@@ -1,9 +1,10 @@
 extends Node
 
 # Global Signals
-@warning_ignore("unused_signal")
+@warning_ignore_start("unused_signal")
 signal room_cleared
-
+signal room_entered
+@warning_ignore_restore("unused_signal")
 # coordinates mapping to room objects (1 to 1)
 # Vector2i -> Room
 var rooms: Dictionary = {};
