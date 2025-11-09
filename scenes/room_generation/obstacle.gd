@@ -12,14 +12,12 @@ func _ready() -> void:
 	sprite.frame = randi_range(0, sprite.sprite_frames.get_frame_count("default") - 1)
 	
 
-
 func _on_body_entered(body: Node) -> void:
 	if body is Segment or body is Enemy:
 		explode()
 		
 func explode() -> void:
 	var explosion = EXPLOSION.instantiate()
-	explosion.audio.play()
 	explosion.global_position = global_position
 	explosion.scale = Vector2(2, 2)
 	var rand = randi()%3

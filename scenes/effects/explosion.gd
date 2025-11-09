@@ -1,11 +1,11 @@
 class_name Explosion extends AnimatedSprite2D
 
-@onready var audio = $AudioStreamPlayer2D
+@onready var audio = %AudioStreamPlayer2D
 
-func _on_animation_finished() -> void:
+func _ready() -> void:
+	# audio.pitch_scale = audio.pitch_scale + randf_range(-0.1, 0.1)
+	audio.play()
 	queue_free()
-
-
 	pass # Replace with function body.
 
 
