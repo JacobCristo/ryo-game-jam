@@ -157,13 +157,14 @@ func path_to_rooms(path: Array) -> void:
 		
 		var room;
 		match id:
-			ROOM_TYPES.START: room = ROOM_START.instantiate()
-			ROOM_TYPES.END: room = ROOM_END.instantiate()
+			#ROOM_TYPES.START: room = ROOM_START.instantiate()
+			#ROOM_TYPES.END: room = ROOM_END.instantiate()
 			ROOM_TYPES.ROOM_1: room = ROOM_1.instantiate()
-			ROOM_TYPES.ROOM_2: room = ROOM_2.instantiate()
-			ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
-			ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
-			ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
+			# TODO: make work 4 all rooms
+			_: room = ROOM_2.instantiate()
+			#ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
+			#ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
+			#ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
 		
 		# each node knows the coordinates of its neighbors...
 		room.neighbors = adj_list[node];
