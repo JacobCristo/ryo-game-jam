@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdlg8g6vlp6o1"]
+[gd_scene load_steps=7 format=3 uid="uid://cdlg8g6vlp6o1"]
 
 [ext_resource type="Shader" uid="uid://qnb3nmmjrecj" path="res://assets/shaders/fisheye.gdshader" id="1_o68o6"]
+[ext_resource type="Shader" uid="uid://cweyhtfrr3j4e" path="res://assets/shaders/noise_overlay.gdshader" id="2_cuabf"]
 [ext_resource type="Shader" uid="uid://72s3hktat6a1" path="res://assets/shaders/sobel.gdshader" id="2_os2ix"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1hava"]
 shader = ExtResource("1_o68o6")
-shader_parameter/fisheye_intensity = 0.01800004835500002
+shader_parameter/fisheye_intensity = 0.010000047974999982
 shader_parameter/zoom = 1.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cov25"]
+shader = ExtResource("2_cuabf")
+shader_parameter/grain_amount = 0.1410000066975
+shader_parameter/grain_size = 0.5500000228651201
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
 shader = ExtResource("2_os2ix")
@@ -37,7 +43,7 @@ copy_mode = 2
 
 [node name="NoiseShader" type="ColorRect" parent="NoiseBuffer"]
 z_index = 10
-material = SubResource("ShaderMaterial_1hava")
+material = SubResource("ShaderMaterial_cov25")
 offset_left = -102.402084
 offset_top = -101.59292
 offset_right = 97.597885
