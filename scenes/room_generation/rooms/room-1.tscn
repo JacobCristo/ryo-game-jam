@@ -6,11 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="3_1hava"]
 [ext_resource type="PackedScene" uid="uid://d2gvoap78moq6" path="res://scenes/ui/pick_three.tscn" id="5_1hava"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
-shader = ExtResource("1_l1h6x")
-shader_parameter/fisheye_intensity = 0.0800000513000001
-shader_parameter/zoom = 1.200000057
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
 texture = ExtResource("3_1hava")
 texture_region_size = Vector2i(32, 32)
@@ -83,20 +78,6 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
 [node name="Room" type="Node2D"]
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-z_index = 12
-position = Vector2(379.5, 580.49994)
-scale = Vector2(16.605, 9.714998)
-copy_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="BackBufferCopy"]
-z_index = 10
-material = SubResource("ShaderMaterial_07256")
-offset_left = -102.402084
-offset_top = -101.59292
-offset_right = 97.597885
-offset_bottom = 101.06194
 
 [node name="Player" parent="." instance=ExtResource("1_n5ae5")]
 position = Vector2(990, 609)

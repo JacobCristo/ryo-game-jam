@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjtgyy1dsejxh"]
+[gd_scene load_steps=6 format=3 uid="uid://cjtgyy1dsejxh"]
 
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/player/tentacle/Tentacle.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
 radius = 36.0
@@ -27,5 +28,8 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+
+[node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
+position = Vector2(-280, -583)
 
 [editable path="Tentacle"]
