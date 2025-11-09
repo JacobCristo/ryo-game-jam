@@ -155,7 +155,6 @@ func path_to_rooms(path: Array) -> void:
 		elif node == Vector2i(END_I, END_J): id = ROOM_TYPES.END;
 		else: id = ROOM_TYPES.keys()[randi() % (ROOM_TYPES.size() - 2)];
 		
-		# generate the room
 		var room;
 		match id:
 			ROOM_TYPES.START: room = ROOM_START.instantiate()
@@ -194,16 +193,3 @@ func _ready():
 	# generate path given conditions
 	var path = []
 	while (len(path) > MAX_ROOM_COUNT) or (len(path) < MIN_ROOM_COUNT): path = generate_path()
-	var goal = Vector2i(END_I, END_J);
-	# DEBUG
-	var hb: HBoxContainer = $"../HBoxContainer";
-	if not hb: return
-	# display generated path
-	var columns = hb.get_children();
-	for j in range(GRID_SIZE):
-		var elements = columns[j].get_children();
-		for i in range(GRID_SIZE): 
-			if path.has(Vector2i(i, j)):
-				elements[i].color = Color(0, 0, 0, 1);
-			if Vector2i(i, j) == goal: elements[i].color = Color(0, 1, 0, 1);
-			if Vector2i(i, j) == Vector2i(START_I, START_J): elements[i].color = Color(1, 0, 0, 1);
