@@ -1,15 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://cjtgyy1dsejxh"]
+[gd_scene load_steps=12 format=3 uid="uid://cjtgyy1dsejxh"]
 
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/player/tentacle/Tentacle.tscn" id="2_gmlin"]
+[ext_resource type="Shader" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
 [ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
+[ext_resource type="PackedScene" uid="uid://bnyuek30mdyyu" path="res://scenes/ui/player_ui.tscn" id="5_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
 radius = 36.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0owmy"]
+shader = ExtResource("4_75vfm")
+shader_parameter/flash_color = Color(0, 0, 0, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_0owmy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_75vfm"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.60000000894072, 0.0, 0.60000000894072, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qek5x"]
+_data = {
+&"RESET": SubResource("Animation_0owmy"),
+&"flash": SubResource("Animation_75vfm")
+}
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_pfot2")
+
+[node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
+z_index = 99
+offset_left = -987.0
+offset_top = -557.0
+offset_right = 602.0
+offset_bottom = 552.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u8vuu")
@@ -17,19 +67,24 @@ shape = SubResource("CircleShape2D_u8vuu")
 [node name="Tentacle" parent="." instance=ExtResource("2_gmlin")]
 position = Vector2(-25, 1)
 
-[node name="Sprite2D" parent="Tentacle/TentacleBase" index="0"]
-visible = true
-
-[node name="Line2D" parent="Tentacle" index="1"]
-width = 20.0
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0owmy")
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 
-[node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
-position = Vector2(-280, -583)
+[node name="PlayerUI" parent="." instance=ExtResource("5_p47bc")]
+custom_minimum_size = Vector2(1920, 1080)
+offset_left = -957.0
+offset_top = -542.0
+offset_right = 963.0
+offset_bottom = 538.0
+
+[node name="FlashAnimation" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_qek5x")
+}
 
 [editable path="Tentacle"]
