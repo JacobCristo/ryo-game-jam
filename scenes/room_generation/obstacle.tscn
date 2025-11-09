@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b3wmuilxtd6dx"]
 
-[ext_resource type="Script" uid="uid://cynsq33v6nad1" path="res://scenes/room_generation/obstacle.gd" id="1_i5pt2"]
+[ext_resource type="Script" path="res://scenes/room_generation/obstacle.gd" id="1_i5pt2"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="1_iwoqk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5pt2"]

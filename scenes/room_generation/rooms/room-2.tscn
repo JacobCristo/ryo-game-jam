@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://d1cx7ifyrhwar"]
+[gd_scene load_steps=11 format=4 uid="uid://d1cx7ifyrhwar"]
 
+[ext_resource type="Script" uid="uid://q8vghw3ll8xl" path="res://scenes/room_generation/room.gd" id="1_51d0y"]
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="1_o3bfs"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="3_5t42e"]
 [ext_resource type="PackedScene" uid="uid://ce5dch1wxqctr" path="res://scenes/enemies/melee_enemy.tscn" id="3_ugubs"]
@@ -80,6 +81,8 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
 [node name="Room" type="Node2D"]
+script = ExtResource("1_51d0y")
+door_coords = Array[Vector2i]([Vector2i(867, 143), Vector2i(91, 571), Vector2i(1829, 571), Vector2i(961, 1056)])
 
 [node name="Player" parent="." instance=ExtResource("1_o3bfs")]
 position = Vector2(990, 609)
