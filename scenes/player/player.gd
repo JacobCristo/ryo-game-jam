@@ -11,7 +11,9 @@ class_name Player extends CharacterBody2D
 @export_group("Player Stats")
 @export var speed: float = 600.0
 @export var strength: float = 20.0
-@export var health: float = 100.0
+@export var max_health: float = 100.0
+
+var health: float = max_health
 
 var dash_timer: float = 0.0
 var is_dashing: float = false #bro so ugly
@@ -32,7 +34,6 @@ func _physics_process(delta: float) -> void:
 func start_dash(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
 		return
-		
 	is_dashing = true
 	velocity = dir.normalized() * dash_scalar
 	await get_tree().create_timer(dash_length).timeout
@@ -45,6 +46,7 @@ func take_damage(damage: float) -> void:
 	health -= damage
 	apply_damage_effect()
 	Global.shake_camera(damage, 0.25)
+	Global.playerHit.emit(damage, health)
 	
 	if health <= 0:
 		die()
@@ -56,6 +58,9 @@ func die() -> void:
 func apply_damage_effect():
 	# muffle the music over 0.5s
 	create_tween().tween_property(low_pass_filter, "cutoff_hz", 250, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	var processing = get_tree().get_first_node_in_group("shaders") as PostProcessing
+	processing.tween_fisheye(0.25, 1.4)
+	processing.tween_sobel(1.0)
 	
 	# wait 1s then tweek back to normal 
 	await get_tree().create_timer(1.0).timeout
@@ -75,11 +80,13 @@ func dash(dir: Vector2) -> void:
 	await get_tree().create_timer(dash_length).timeout
 	velocity = Vector2.ZERO
 
-func increase_stat(stat_name: String, increase: int) -> void:
+func increase_stat(stat_name: String, increase: float) -> void:
 	match stat_name.to_lower():
 		"health":
-			health += increase
-		"speed": 
-			speed += increase
+			var temp_health = max_health
+			max_health *= increase
+			health += max_health - temp_health
+		"speed":
+			speed *= increase
 		"strength":
-			strength += increase
+			strength *= increase

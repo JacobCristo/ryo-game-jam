@@ -10,6 +10,8 @@ const DEADZONE = 0.1
 const FORCE_AMT = 10000.0
 const IMPULSE_AMT = 5000.0
 
+var mouse_control = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_input_dir = Vector2.ZERO
@@ -37,12 +39,19 @@ func _physics_process(delta: float) -> void:
 	
 func _read_input() -> void:
 	# Read input and register to unit vector variable
-	_input_dir = Input.get_vector(
-		"move_chain_left", 
-		"move_chain_right", 
-		"move_chain_up", 
-		"move_chain_down",
-		DEADZONE).normalized()
+	
+	if mouse_control:
+		var mouse_pos = get_viewport().get_mouse_position()
+		var screen_center = get_viewport_rect().size / 2;
+		_input_dir = (mouse_pos - screen_center).normalized()
+	else:
+		_input_dir = Input.get_vector(
+			"move_chain_left", 
+			"move_chain_right", 
+			"move_chain_up", 
+			"move_chain_down",
+			DEADZONE).normalized()
+	
 	
 func _apply_force_to_chain(delta) -> void:
 	# Multiply direction by FORCE_AMT

@@ -4,7 +4,7 @@ extends Node
 @onready var tentacle: Node2D = $".."
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var points = []
 	for segment in self.get_children().filter(func (c): return c is RigidBody2D):
 		for joint : PinJoint2D in segment.get_children().filter(func (c): return c is PinJoint2D):
