@@ -1,7 +1,7 @@
 class_name PostProcessing extends Control
 
 @onready var fisheye_shader: ColorRect = $FisheyeShader
-@onready var noise_shader: ColorRect = $NoiseShader
+# @onready var noise_shader: ColorRect = $NoiseShader
 @onready var sobel_shader: ColorRect = $SobelShader
 @onready var dither_shader: ColorRect = $DitherShader
 
