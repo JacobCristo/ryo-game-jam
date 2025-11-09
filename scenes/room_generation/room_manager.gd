@@ -168,7 +168,9 @@ func path_to_rooms(path: Array) -> void:
 		
 		var room;
 		match id:
-			ROOM_TYPES.START: room = ROOM_START.instantiate()
+			ROOM_TYPES.START:
+				room = ROOM_START.instantiate()
+				room.start_room = true
 			ROOM_TYPES.END: 
 				room = ROOM_END.instantiate()
 				room.end_room = true

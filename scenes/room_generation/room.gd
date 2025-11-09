@@ -11,6 +11,7 @@ const DOOR = preload("uid://wm1u28rq3c8x")
 # top, left, down, right 
 @export var door_coords: Array[Vector2i] = []
 @export var end_room: bool = false
+@export var start_room: bool = false
 
 var doors = []
 
@@ -79,4 +80,6 @@ func open_doors() -> void:
 func check_for_enemies() -> void:
 	if enemies.size() == 0:
 		open_doors()
-		Global.room_cleared.emit()
+		
+		if (!start_room && !end_room):
+			Global.room_cleared.emit()

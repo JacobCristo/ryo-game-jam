@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://bvc35ges7kb0b"]
+[gd_scene load_steps=8 format=4 uid="uid://bvc35ges7kb0b"]
 
 [ext_resource type="Script" uid="uid://q8vghw3ll8xl" path="res://scenes/room_generation/room.gd" id="1_qhqm4"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="2_tjc1d"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="3_jou36"]
 [ext_resource type="PackedScene" uid="uid://es1aq7ov6nkc" path="res://scenes/enemies/flamethrower_enemy.tscn" id="4_tjc1d"]
-[ext_resource type="PackedScene" uid="uid://d2gvoap78moq6" path="res://scenes/ui/pick_three.tscn" id="5_jou36"]
 [ext_resource type="PackedScene" uid="uid://b3wmuilxtd6dx" path="res://scenes/room_generation/obstacle.tscn" id="6_1k13b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
@@ -124,9 +123,6 @@ offset_right = 5235.0
 offset_bottom = 4447.0
 color = Color(0, 0.008380051, 0.15998203, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="PickThree" parent="." instance=ExtResource("5_jou36")]
-visible = false
 
 [node name="Obstacle" parent="." instance=ExtResource("6_1k13b")]
 position = Vector2(143, 331)

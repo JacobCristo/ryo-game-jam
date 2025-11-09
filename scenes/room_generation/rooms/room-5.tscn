@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=4 uid="uid://gaxs1af3ppm2"]
+[gd_scene load_steps=7 format=4 uid="uid://gaxs1af3ppm2"]
 
 [ext_resource type="Script" uid="uid://q8vghw3ll8xl" path="res://scenes/room_generation/room.gd" id="1_edxt4"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="2_2cqi0"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="3_m7ta5"]
-[ext_resource type="PackedScene" uid="uid://bl0t16tftof0m" path="res://scenes/enemies/wave_enemy.tscn" id="4_bjeae"]
-[ext_resource type="PackedScene" uid="uid://d2gvoap78moq6" path="res://scenes/ui/pick_three.tscn" id="5_bjeae"]
 [ext_resource type="PackedScene" uid="uid://b3wmuilxtd6dx" path="res://scenes/room_generation/obstacle.tscn" id="6_edxt4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
@@ -80,17 +78,11 @@ sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
 [node name="Room" type="Node2D" node_paths=PackedStringArray("enemies")]
 script = ExtResource("1_edxt4")
-enemies = [NodePath("SniperEnemy"), NodePath("WaveEnemy"), NodePath("WaveEnemy2")]
+enemies = [NodePath("SniperEnemy")]
 door_coords = Array[Vector2i]([Vector2i(968, 117), Vector2i(55, 571), Vector2i(960, 1062), Vector2i(1873, 568)])
 
 [node name="SniperEnemy" parent="." instance=ExtResource("3_m7ta5")]
 position = Vector2(142, 1007)
-
-[node name="WaveEnemy" parent="." instance=ExtResource("4_bjeae")]
-position = Vector2(537, 231)
-
-[node name="WaveEnemy2" parent="." instance=ExtResource("4_bjeae")]
-position = Vector2(1620, 1000)
 
 [node name="TileMap" type="Node2D" parent="."]
 z_index = -1
@@ -124,9 +116,6 @@ offset_right = 5235.0
 offset_bottom = 4447.0
 color = Color(0, 0.008380051, 0.15998203, 1)
 metadata/_edit_use_anchors_ = true
-
-[node name="PickThree" parent="." instance=ExtResource("5_bjeae")]
-visible = false
 
 [node name="Obstacle" parent="." instance=ExtResource("6_edxt4")]
 position = Vector2(625, 517)

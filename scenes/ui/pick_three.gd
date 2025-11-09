@@ -18,6 +18,7 @@ func _ready() -> void:
 
 func display() -> void:
 	self.visible = true
+	print("pick3")
 
 
 func upgrade_chosen(upgrade: String):
