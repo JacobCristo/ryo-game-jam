@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqtchbtdssh5n"]
+[gd_scene load_steps=7 format=3 uid="uid://cqtchbtdssh5n"]
 
 [ext_resource type="Script" uid="uid://3g34hhfcmv30" path="res://scenes/enemies/projectiles/basic_projectile.gd" id="1_f3kss"]
 [ext_resource type="Texture2D" uid="uid://bxercl3ynoen6" path="res://assets/effects/projectile-hot.png" id="2_xw8o5"]
+[ext_resource type="AudioStream" uid="uid://glhl810m112" path="res://assets/audio/KLAXON SFX/Gunshot.mp3" id="3_ruhuv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6aapk"]
 radius = 20.0
@@ -32,5 +33,8 @@ shape = SubResource("CircleShape2D_6aapk")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.1501863, 2.1501863)
 sprite_frames = SubResource("SpriteFrames_ruhuv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ruhuv")
 
 [connection signal="body_entered" from="." to="." method="hit"]

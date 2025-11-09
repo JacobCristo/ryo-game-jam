@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5iikbni6ptdk"]
+[gd_scene load_steps=5 format=3 uid="uid://c5iikbni6ptdk"]
 
 [ext_resource type="Script" uid="uid://dqecnal20g8i8" path="res://scenes/room_generation/healthpickup.gd" id="1_6glju"]
 [ext_resource type="Texture2D" uid="uid://brvp83iriohne" path="res://assets/items/health.png" id="1_g0e2v"]
+[ext_resource type="AudioStream" uid="uid://hrohf4rcvdfx" path="res://assets/audio/KLAXON SFX/Goo Drop Pickup.mp3" id="3_jmjkp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0e2v"]
 size = Vector2(14, 14)
@@ -16,5 +17,8 @@ texture = ExtResource("1_g0e2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_g0e2v")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jmjkp")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

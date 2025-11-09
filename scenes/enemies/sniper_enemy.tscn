@@ -7,6 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://ypy5u127wo76" path="res://assets/enemies/final-assets/Scientists_2/Special.png" id="4_mgfcv"]
 [ext_resource type="Texture2D" uid="uid://b2crgkhrkri4y" path="res://assets/enemies/final-assets/Scientists_2/Hurt.png" id="5_q4tad"]
 
+
+[ext_resource type="AudioStream" uid="uid://da4f50idh0qy3" path="res://assets/audio/KLAXON SFX/TentHit - Option 1.mp3" id="3_23egm"]
+[ext_resource type="AudioStream" uid="uid://j7mwiy6x02hg" path="res://assets/audio/KLAXON SFX/Lasergun - Option 2.mp3" id="3_oebkf"]
+
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_8tegq"]
 radius = 44.04543
 
@@ -316,5 +321,11 @@ scale = Vector2(1.3, 1.3)
 sprite_frames = SubResource("SpriteFrames_i2il8")
 animation = &"idle"
 frame_progress = 0.55023
+[node name="SniperShot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oebkf")
+volume_db = -2.862
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_23egm")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_hitbox_body_entered"]

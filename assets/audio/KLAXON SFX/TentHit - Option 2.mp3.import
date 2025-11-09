@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1rm5frp7pflo"
+path="res://.godot/imported/TentHit - Option 2.mp3-0ac4182b6db9e884b329d59b17b29952.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/KLAXON SFX/TentHit - Option 2.mp3"
+dest_files=["res://.godot/imported/TentHit - Option 2.mp3-0ac4182b6db9e884b329d59b17b29952.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
