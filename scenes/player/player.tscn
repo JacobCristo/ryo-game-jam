@@ -86,6 +86,10 @@ script = ExtResource("1_pfot2")
 
 [node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
 z_index = 99
+offset_left = -959.0
+offset_top = -535.0
+offset_right = -959.0
+offset_bottom = -535.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u8vuu")
