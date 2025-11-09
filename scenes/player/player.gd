@@ -113,6 +113,7 @@ func take_damage(damage: float) -> void:
 
 func die() -> void:
 	queue_free()
+	Global.load_to("res://scenes/ui/main_menu.tscn")
 	print("You died, loser.")
 
 func apply_damage_effect():
