@@ -19,6 +19,7 @@ const END_J =  GRID_SIZE - 1;
 # rules for map generation / regeneration
 const MAX_ROOM_COUNT = 20;
 const MIN_ROOM_COUNT = 12;
+enum ROOM_TYPES {ROOM_1, ROOM_2, ROOM_3, ROOM_4, ROOM_5, START, END};
 
 # Stores whether the room is a START, GOAL STATE, or lowkey chill with it
 enum ROOM_TYPE {START, GOAL, NEITHER};
@@ -29,6 +30,14 @@ var grid = [];
 
 # ROOM resource.
 const ROOM = preload("uid://nwhqrixlnb1d");
+
+const ROOM_1 = preload("uid://nwhqrixlnb1d")
+const ROOM_2 = preload("uid://d1cx7ifyrhwar")
+const ROOM_3 = preload("uid://bvc35ges7kb0b")
+const ROOM_4 = preload("uid://d3gp2fttvramf")
+const ROOM_5 = preload("uid://gaxs1af3ppm2")
+const ROOM_END = preload("uid://ba68b13oul354")
+const ROOM_START = preload("uid://c1xkovv87d6ko")
 
 # ------- ROOM GENERATION HELPER FUNCTIONS ---------
 
@@ -139,11 +148,28 @@ func path_to_rooms(path: Array) -> void:
 		
 	# make each node in the adj_list
 	for node in adj_list.keys():
-		# generate room objects
-		var room = ROOM.instantiate();
+		var id;
+		# figure out the room type
+		if node == Vector2i(START_I, START_J): id = ROOM_TYPES.START;
+		# end check
+		elif node == Vector2i(END_I, END_J): id = ROOM_TYPES.END;
+		else: id = ROOM_TYPES.keys()[randi() % (ROOM_TYPES.size() - 2)];
+		
+		# generate the room
+		var room;
+		match id:
+			ROOM_TYPES.START: room = ROOM_START.instantiate()
+			ROOM_TYPES.END: room = ROOM_END.instantiate()
+			ROOM_TYPES.ROOM_1: room = ROOM_1.instantiate()
+			ROOM_TYPES.ROOM_2: room = ROOM_2.instantiate()
+			ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
+			ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
+			ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
+		
 		# each node knows the coordinates of its neighbors...
 		room.neighbors = adj_list[node];
 		room.room_coordinate = node;
+			
 		# the autoload maps the coordinate (node) to the room globally
 		Global.rooms[node] = room;
 		
@@ -162,6 +188,7 @@ func generate_path():
 	branch_path(path);
 	path_to_rooms(path);
 	return path
+	
 
 func _ready():
 	# generate path given conditions
