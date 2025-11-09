@@ -45,9 +45,10 @@ func _ready() -> void:
 	
 	# check enemies & connect signals safely
 	check_for_enemies()
-	for enemy in enemies:
+	for enemy : Enemy in enemies:
 		# bind the specific enemy to avoid closure capturing issues
-		enemy.died.connect(_on_enemy_died)
+		if (enemy != null) :
+			enemy.died.connect(_on_enemy_died)
 		
 	for door in doors:
 		var line = Line2D.new()
