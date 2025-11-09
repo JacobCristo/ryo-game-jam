@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @onready var music_bus_index = AudioServer.get_bus_index("Music")
 @onready var low_pass_filter = AudioServer.get_bus_effect(music_bus_index, 0)
+@onready var flash_animation : AnimationPlayer = %FlashAnimation
 
 @export_group("Dash Stats")
 @export var dash_cooldown: float = 1.0#s

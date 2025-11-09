@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/player/tentacle/Tentacle.tscn" id="2_gmlin"]
-[ext_resource type="Shader" uid="uid://b76stmloao4ph" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
+[ext_resource type="Shader" uid="uid://cebc1rkiflpuu" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
 [ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://bnyuek30mdyyu" path="res://scenes/ui/player_ui.tscn" id="5_p47bc"]
 
@@ -44,21 +44,6 @@ tracks/1/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_75vfm"]
-resource_name = "flash"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.73333335, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [0.0, 0.60000000894072, 0.0, 0.60000000894072, 0.0]
-}
-
 [sub_resource type="Animation" id="Animation_qek5x"]
 resource_name = "dash"
 tracks/0/type = "value"
@@ -74,6 +59,21 @@ tracks/0/keys = {
 "values": [0.0, 0.0, 0.10000000149012, 0.20000000298024, 0.30000000447036, 0.40000000596048, 0.5000000074506, 0.45000000670554, 0.40000000596048, 0.35000000521542, 0.30000000447036, 0.2500000037253, 0.20000000298024, 0.15000000223518, 0.10000000149012, 0.05000000074506, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_75vfm"]
+resource_name = "flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.73333335, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.60000000894072, 0.0, 0.60000000894072, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qek5x"]
 _data = {
 &"RESET": SubResource("Animation_0owmy"),
@@ -86,10 +86,6 @@ script = ExtResource("1_pfot2")
 
 [node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
 z_index = 99
-offset_left = -987.0
-offset_top = -557.0
-offset_right = 602.0
-offset_bottom = 552.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u8vuu")
