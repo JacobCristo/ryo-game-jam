@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bnyuek30mdyyu"]
+[gd_scene load_steps=13 format=3 uid="uid://bnyuek30mdyyu"]
 
 [ext_resource type="Script" uid="uid://bhu2g4hubxbep" path="res://scenes/ui/player_ui.gd" id="1_fatqr"]
 [ext_resource type="Script" uid="uid://dqht54tpyarpa" path="res://scenes/ui/health_bar.gd" id="1_s4ogp"]
 [ext_resource type="Script" uid="uid://d0causvi6v25" path="res://scenes/ui/stamina_bar.gd" id="2_2sf84"]
 [ext_resource type="FontFile" uid="uid://cxulmdo53ol8p" path="res://assets/fonts/StalinistOne-Regular.ttf" id="2_jg20v"]
+[ext_resource type="PackedScene" uid="uid://d2gvoap78moq6" path="res://scenes/ui/pick_three.tscn" id="5_1afs1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g7v3g"]
 font = ExtResource("2_jg20v")
@@ -152,6 +153,10 @@ text = "Goop"
 label_settings = SubResource("LabelSettings_1afs1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PickThree" parent="MarginContainer" instance=ExtResource("5_1afs1")]
+visible = false
+layout_mode = 2
 
 [connection signal="timeout" from="MarginContainer/VBoxContainer/HBoxContainer/HealthBar/ChunkTimer" to="MarginContainer/VBoxContainer/HBoxContainer/HealthBar" method="_on_chunk_timer_timeout"]
 [connection signal="timeout" from="MarginContainer/VBoxContainer/HBoxContainer/StaminaBar/ChunkTimer" to="MarginContainer/VBoxContainer/HBoxContainer/StaminaBar" method="_on_chunk_timer_timeout"]

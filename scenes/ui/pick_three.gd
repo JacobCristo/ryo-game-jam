@@ -7,6 +7,7 @@ var choiceMade: bool = false
 @onready var speedButt : Button = %ThirdButton
 
 func _ready() -> void:
+	self.visible = false
 	player = get_tree().get_first_node_in_group("player")
 	strengthButt.pressed.connect(upgrade_chosen.bind("Strength"))
 	healthButt.pressed.connect(upgrade_chosen.bind("Health"))

@@ -22,6 +22,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Choose an Upgrade:"
 label_settings = SubResource("LabelSettings_8kujo")
 horizontal_alignment = 1

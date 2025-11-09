@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://d1n07f4geopbc"]
+[gd_scene load_steps=7 format=4 uid="uid://d1n07f4geopbc"]
 
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="1_k4ppg"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="2_ef6xl"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="3_nybx1"]
-[ext_resource type="PackedScene" uid="uid://bl0t16tftof0m" path="res://scenes/enemies/wave_enemy.tscn" id="4_hv52d"]
 [ext_resource type="PackedScene" uid="uid://ce5dch1wxqctr" path="res://scenes/enemies/melee_enemy.tscn" id="5_g7ytl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
@@ -119,9 +118,6 @@ position = Vector2(1652, 285)
 
 [node name="SniperEnemy2" parent="." instance=ExtResource("3_nybx1")]
 position = Vector2(142, 985)
-
-[node name="WaveEnemy" parent="." instance=ExtResource("4_hv52d")]
-position = Vector2(1118, 583)
 
 [node name="MeleeEnemy" parent="." instance=ExtResource("5_g7ytl")]
 position = Vector2(840, 687)
