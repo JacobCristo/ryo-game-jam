@@ -114,3 +114,6 @@ func increase_stat(stat_name: String, increase: float) -> void:
 			speed *= increase
 		"strength":
 			strength *= increase
+
+func heal() -> void:
+	health += 10
