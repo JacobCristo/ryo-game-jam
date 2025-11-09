@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsya3jhydcr55"]
+
+[ext_resource type="Script" uid="uid://d1uir8lipmbae" path="res://scenes/room_generation/room_manager.gd" id="1_r0co0"]
+[ext_resource type="PackedScene" uid="uid://mnexrcyr56ao" path="res://scenes/room_generation/room_manager.tscn" id="2_0ylu0"]
+
+[node name="Map" type="Node2D"]
+script = ExtResource("1_r0co0")
+
+[node name="room_manager" parent="." instance=ExtResource("2_0ylu0")]
