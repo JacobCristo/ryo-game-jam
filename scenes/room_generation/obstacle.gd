@@ -4,16 +4,21 @@ const EXPLOSION = preload("uid://ckaq3lr1gba6l")
 const HEALTHPICKUP = preload("uid://c5iikbni6ptdk")
 const GOOPPICKUP = preload("uid://b2itprytx40ly")
 
+@onready var audio = $AudioStreamPlayer
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
 	sprite.animation = &"default"
 	sprite.frame = randi_range(0, sprite.sprite_frames.get_frame_count("default") - 1)
+	
+func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("ui_accept"):
+		explode()
 
 func _on_body_entered(body: Node) -> void:
 	if body is Segment or body is Enemy:
 		explode()
-		
+
 func explode() -> void:
 	var explosion = EXPLOSION.instantiate()
 	explosion.global_position = global_position

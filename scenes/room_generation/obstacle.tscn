@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3wmuilxtd6dx"]
+[gd_scene load_steps=10 format=3 uid="uid://b3wmuilxtd6dx"]
 
 [ext_resource type="Script" uid="uid://cynsq33v6nad1" path="res://scenes/room_generation/obstacle.gd" id="1_i5pt2"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="1_iwoqk"]
+[ext_resource type="AudioStream" uid="uid://cale8123igyja" path="res://assets/audio/KLAXON SFX/Explosion.mp3" id="3_8fclt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i5pt2"]
 
@@ -63,5 +64,9 @@ shape = SubResource("CircleShape2D_i5pt2")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_d52n4")
 animation = &"new_animation"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8fclt")
+volume_db = 5.683
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -43,6 +43,7 @@ func _active_physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func shoot(target_pos: Vector2) -> void:
+	$AudioStreamPlayer2D.play()
 	var total_projectiles := 25
 	
 	var base_spread := TAU / 12 # total cone angle: 30 deg

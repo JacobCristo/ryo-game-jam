@@ -142,4 +142,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_qek5x")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [editable path="Tentacle"]
