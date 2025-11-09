@@ -1,8 +1,8 @@
-class_name PostProcessing extends Node2D
+class_name PostProcessing extends Control
 
-@onready var fisheye_shader: ColorRect = $FisheyeBuffer/FisheyeShader
-@onready var noise_shader: ColorRect = $NoiseBuffer/NoiseShader
-@onready var sobel_shader: ColorRect = $SobelBuffer/SobelShader
+@onready var fisheye_shader: ColorRect = $FisheyeShader
+@onready var noise_shader: ColorRect = $NoiseShader
+@onready var sobel_shader: ColorRect = $SobelShader
 
 func tween_fisheye(intensity: float, zoom: float) -> void:
 	var tween = create_tween()
