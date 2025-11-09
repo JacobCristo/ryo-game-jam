@@ -1,3 +1,23 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+assets/audio/KLAXON SFX/Death - Option 10.mp3.import
+assets/audio/KLAXON SFX/Death - Option 11.mp3.import
+assets/audio/KLAXON SFX/Explosion 2.mp3.import
+assets/audio/KLAXON SFX/Goo Drop Pickup 2.mp3.import
+assets/audio/KLAXON SFX/Gunshot 2.mp3.import
+assets/audio/KLAXON SFX/Klaxon - Option 1 2.mp3.import
+assets/audio/KLAXON SFX/Object Break 2.mp3.import
+assets/audio/KLAXON SFX/Punch 2.mp3.import
+assets/audio/KLAXON SFX/Reactor Ambiance 2.mp3.import
+assets/audio/KLAXON SFX/TentBoost 2.mp3.import
+assets/audio/KLAXON SFX/TentHit - Option 1 2.mp3.import
+assets/env tileset/Klaxon_Tileset-2.png.import
+assets/particles/tentacle_particle-clot.png.import
+assets/particles/tentacle_particle-large.png.import
+assets/particles/tentacle_particle-small.png.import
+assets/player/tentacle/tent-1.png.import
+assets/player/tentacle/tent-2.png.import
+assets/player/tentacle/tent-3.png.import
+assets/player/tentacle/tent-4.png.import
+assets/player/tentacle/tent-5.png.import
