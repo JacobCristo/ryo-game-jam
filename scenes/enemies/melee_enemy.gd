@@ -61,13 +61,14 @@ func charge_punch(target_pos: Vector2) -> void:
 	sprite_2d.play("punch")
 	punch_area.rotation = (target_pos - global_position).angle()
 	
-	var tween = create_tween()
-	tween.tween_property($PunchArea/AreaHighlight, "size:x", 200.0, 0.5)
-	
-	await tween.finished
+	#var tween = create_tween()
+	#tween.tween_property($PunchArea/AreaHighlight, "size:x", 200.0, 0.5)
+	#await tween.finished
+		
+	await get_tree().create_timer(0.5).timeout
 	punch()
 	
-	$PunchArea/AreaHighlight.size.x = 16.0
+	#$PunchArea/AreaHighlight.size.x = 16.0
 	
 func take_damage(amount: float) -> void:
 	sprite_2d.play("hit")

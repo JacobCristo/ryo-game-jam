@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjtgyy1dsejxh"]
+[gd_scene load_steps=13 format=3 uid="uid://cjtgyy1dsejxh"]
 
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/player/tentacle/Tentacle.tscn" id="2_gmlin"]
-[ext_resource type="Shader" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
+[ext_resource type="Shader" uid="uid://b76stmloao4ph" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
 [ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://bnyuek30mdyyu" path="res://scenes/ui/player_ui.tscn" id="5_p47bc"]
 
@@ -14,6 +14,8 @@ radius = 36.0
 shader = ExtResource("4_75vfm")
 shader_parameter/flash_color = Color(0, 0, 0, 1)
 shader_parameter/flash_value = 0.0
+shader_parameter/dash_color = Color(0, 1, 1, 1)
+shader_parameter/dash_value = 0.0
 
 [sub_resource type="Animation" id="Animation_0owmy"]
 length = 0.001
@@ -28,6 +30,46 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/dash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qek5x"]
+resource_name = "dash"
+length = 0.95
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/dash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.01, 0.02, 0.03, 0.04, 0.05, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 0.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 0.10000000149012, 0.20000000298024, 0.30000000447036, 0.40000000596048, 0.5000000074506, 0.45000000670554, 0.40000000596048, 0.35000000521542, 0.30000000447036, 0.2500000037253, 0.20000000298024, 0.15000000223518, 0.10000000149012, 0.05000000074506, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.01331976634740532]
 }
 
 [sub_resource type="Animation" id="Animation_75vfm"]
@@ -44,10 +86,23 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 0.60000000894072, 0.0, 0.60000000894072, 0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/dash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qek5x"]
 _data = {
 &"RESET": SubResource("Animation_0owmy"),
+&"dash": SubResource("Animation_qek5x"),
 &"flash": SubResource("Animation_75vfm")
 }
 
@@ -56,10 +111,10 @@ script = ExtResource("1_pfot2")
 
 [node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
 z_index = 99
-offset_left = -987.0
-offset_top = -557.0
-offset_right = 602.0
-offset_bottom = 552.0
+offset_left = -959.0
+offset_top = -535.0
+offset_right = -959.0
+offset_bottom = -535.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_u8vuu")
@@ -77,9 +132,9 @@ texture = ExtResource("2_dovo2")
 [node name="PlayerUI" parent="." instance=ExtResource("5_p47bc")]
 custom_minimum_size = Vector2(1920, 1080)
 offset_left = -957.0
-offset_top = -366.0
+offset_top = -540.0
 offset_right = 963.0
-offset_bottom = 714.0
+offset_bottom = 540.0
 
 [node name="FlashAnimation" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
