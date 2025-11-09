@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdlg8g6vlp6o1"]
+[gd_scene load_steps=6 format=3 uid="uid://cdlg8g6vlp6o1"]
 
 [ext_resource type="Shader" uid="uid://qnb3nmmjrecj" path="res://assets/shaders/fisheye.gdshader" id="1_o68o6"]
-[ext_resource type="Shader" uid="uid://72s3hktat6a1" path="res://assets/shaders/sobel.gdshader" id="2_os2ix"]
+[ext_resource type="Script" uid="uid://cymhr8kg87lkc" path="res://scenes/effects/post_processing.gd" id="1_os2ix"]
+[ext_resource type="Shader" path="res://assets/shaders/sobel.gdshader" id="2_os2ix"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1hava"]
 shader = ExtResource("1_o68o6")
@@ -12,7 +13,8 @@ shader_parameter/zoom = 1.1
 shader = ExtResource("2_os2ix")
 shader_parameter/intensity = 0.210000009975
 
-[node name="PostProcessing" type="Node2D"]
+[node name="PostProcessing" type="Node2D" groups=["shaders"]]
+script = ExtResource("1_os2ix")
 
 [node name="FisheyeBuffer" type="BackBufferCopy" parent="."]
 z_index = 99

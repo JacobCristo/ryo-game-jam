@@ -58,6 +58,9 @@ func die() -> void:
 func apply_damage_effect():
 	# muffle the music over 0.5s
 	create_tween().tween_property(low_pass_filter, "cutoff_hz", 250, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	var processing = get_tree().get_first_node_in_group("shaders") as PostProcessing
+	processing.tween_fisheye(0.25, 1.4)
+	processing.tween_sobel(1.0)
 	
 	# wait 1s then tweek back to normal 
 	await get_tree().create_timer(1.0).timeout
