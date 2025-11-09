@@ -77,9 +77,10 @@ custom_data_layer_0/name = "Destructible"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
-[node name="Room" type="Node2D"]
+[node name="Room" type="Node2D" node_paths=PackedStringArray("enemies")]
 script = ExtResource("1_h86co")
-door_coords = Array[Vector2i]([Vector2i(523, 145), Vector2i(100, 524), Vector2i(1824, 535), Vector2i(923, 1103)])
+enemies = [NodePath("SniperEnemy")]
+door_coords = Array[Vector2i]([Vector2i(523, 145), Vector2i(100, 524), Vector2i(923, 1103), Vector2i(1824, 535)])
 
 [node name="SniperEnemy" parent="." instance=ExtResource("2_60kw0")]
 position = Vector2(416, 439)

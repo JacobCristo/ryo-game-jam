@@ -61,7 +61,6 @@ func take_damage(damage: float) -> void:
 	health -= damage
 	apply_damage_effect()
 	Global.shake_camera(damage, 0.25)
-	Global.playerHit.emit(damage, health)
 
 	if health <= 0:
 		die()

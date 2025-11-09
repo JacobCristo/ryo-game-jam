@@ -1,10 +1,8 @@
 extends Node
 
-
 # Global Signals
 @warning_ignore("unused_signal")
 signal room_cleared
-signal playerHit(damage_taken: float, player_health: float)
 
 # coordinates mapping to room objects (1 to 1)
 # Vector2i -> Room
@@ -19,5 +17,6 @@ func shake_camera(amplitude: float, duration: float) -> void:
 			return
 		camera.position = Vector2(randf_range(-amplitude, amplitude), randf_range(-amplitude, amplitude))
 		await get_tree().create_timer(0.01).timeout
-		
-	camera.position = Vector2.ZERO
+	
+	if camera:
+		camera.position = Vector2.ZERO

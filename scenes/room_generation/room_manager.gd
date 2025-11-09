@@ -156,10 +156,11 @@ func path_to_rooms(path: Array) -> void:
 		else: id = ROOM_TYPES.keys()[randi() % (ROOM_TYPES.size() - 2)];
 		
 		var room;
+		print(id if int(id) == ROOM_TYPES.ROOM_1 else "")
 		match id:
 			#ROOM_TYPES.START: room = ROOM_START.instantiate()
 			#ROOM_TYPES.END: room = ROOM_END.instantiate()
-			ROOM_TYPES.ROOM_1: room = ROOM_1.instantiate()
+			ROOM_TYPES.ROOM_1:room = ROOM_1.instantiate()
 			# TODO: make work 4 all rooms
 			_: room = ROOM_2.instantiate()
 			#ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
