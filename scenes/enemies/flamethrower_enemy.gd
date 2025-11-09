@@ -1,6 +1,7 @@
 class_name FlamethrowerEnemy extends Enemy
 
 const FIRE_PROJECTILE = preload("uid://v83wjkjo57e5")
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 func _ready() -> void:
 	
@@ -28,6 +29,7 @@ func _active_physics_process(delta: float) -> void:
 		if fire_cooldown == 0.0:
 			# reset fire cooldown
 			fire_cooldown = fire_rate
+			sprite_2d.play("shoot") 
 			shoot(player.global_position)
 		
 		# return so you don't move when in range of the player
@@ -36,6 +38,8 @@ func _active_physics_process(delta: float) -> void:
 	# if player not in range, move towards player
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed * delta
+	if(not sprite_2d.is_playing()) :
+		sprite_2d.play("moving")
 	move_and_slide()
 	
 func shoot(target_pos: Vector2) -> void:
@@ -56,7 +60,19 @@ func shoot(target_pos: Vector2) -> void:
 		await get_tree().create_timer(0.05).timeout # wait before shooting next projectile
 
 func take_damage(amount: float) -> void:
+	sprite_2d.play("stunned")
 	super.take_damage(amount)
 
 func die() -> void:
-	super.die()
+	velocity = Vector2.ZERO
+	
+	# TODO: Play animation and on finish run delete methods
+	sprite_2d.play("dead")
+	died.emit(self)
+	if(sprite_2d.animation == "dead"):
+		await sprite_2d.animation_looped
+		queue_free()
+
+	
+	
+	

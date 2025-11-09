@@ -1,6 +1,7 @@
 class_name SniperEnemy extends Enemy
 
 const SNIPER_PROJECTILE = preload("uid://dxvheu50y385i")
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D2
 
 @onready var laser: ColorRect = $Laser
 
@@ -45,10 +46,13 @@ func _active_physics_process(delta: float) -> void:
 	
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed * delta
+	if(not sprite_2d.is_playing() or not sprite_2d.animation == "moving") :
+		sprite_2d.play("moving")
 	move_and_slide()
 
 
 func charge_shot(target_pos: Vector2) -> void:
+	sprite_2d.play("idle")
 	var charge_time: float = 1.0
 
 	laser.rotation = (target_pos - global_position).angle()
@@ -58,6 +62,8 @@ func charge_shot(target_pos: Vector2) -> void:
 	shoot(target_pos)
 
 func shoot(target_pos: Vector2) -> void:
+	if(not sprite_2d.animation == "shoot") :
+		sprite_2d.play("shoot") 
 	var projectile = SNIPER_PROJECTILE.instantiate() as Projectile
 	projectile.global_position = global_position
 	projectile.direction = (target_pos - global_position).normalized()
@@ -86,7 +92,15 @@ func apply_blowback(target_pos: Vector2) -> void:
 	).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func take_damage(amount: float) -> void:
+	sprite_2d.play("stunned")
 	super.take_damage(amount)
 
 func die() -> void:
-	super.die()
+	velocity = Vector2.ZERO
+	
+	# TODO: Play animation and on finish run delete methods
+	sprite_2d.play("dead")
+	died.emit(self)
+	if(sprite_2d.animation == "dead"):
+		await sprite_2d.animation_looped
+		queue_free()

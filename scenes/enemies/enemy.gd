@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 		return
 	
 	if(state == EnemyState.STUNNED) :
-		modulate = Color.BLACK
+		modulate = Color.DIM_GRAY
 		stunned_cool_down -= delta
 		if(stunned_cool_down <= 0) :
 			state = EnemyState.ACTIVE
@@ -144,7 +144,7 @@ func _determine_correct_animation() :
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# if stunned return
-	if(state == EnemyState.STUNNED) :
+	if(state == EnemyState.STUNNED or state == EnemyState.DEAD) :
 		return
 	
 	if(body is Segment or body is TentacleEnd) :
