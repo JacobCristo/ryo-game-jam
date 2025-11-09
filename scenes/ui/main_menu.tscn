@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ac1pwcivrad"]
+[gd_scene load_steps=6 format=3 uid="uid://b0ac1pwcivrad"]
 
 [ext_resource type="Script" uid="uid://d2el4qwy7fa4h" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
 [ext_resource type="FontFile" uid="uid://cxulmdo53ol8p" path="res://assets/fonts/StalinistOne-Regular.ttf" id="2_fe2o3"]
 [ext_resource type="Texture2D" uid="uid://cj3ee6owfhx7" path="res://assets/ui/smokestack.jpg" id="2_m1kxf"]
 [ext_resource type="Material" uid="uid://bdb763xecdfta" path="res://assets/shaders/fire_distortion_material.tres" id="3_x2yvf"]
+[ext_resource type="AudioStream" uid="uid://dyn5lypllv4ah" path="res://assets/audio/game jam track.mp3" id="5_x2yvf"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -73,3 +74,9 @@ bbcode_enabled = true
 text = "[wave amp=50]Press any key to begin"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x2yvf")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

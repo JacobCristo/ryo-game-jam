@@ -1,7 +1,10 @@
 extends Node
 
-signal playerHit(damage_taken: float, player_health: float)
-
+# Global Signals
+@warning_ignore_start("unused_signal")
+signal room_cleared
+signal room_entered
+@warning_ignore_restore("unused_signal")
 # coordinates mapping to room objects (1 to 1)
 # Vector2i -> Room
 var rooms: Dictionary = {};
@@ -15,5 +18,10 @@ func shake_camera(amplitude: float, duration: float) -> void:
 			return
 		camera.position = Vector2(randf_range(-amplitude, amplitude), randf_range(-amplitude, amplitude))
 		await get_tree().create_timer(0.01).timeout
-		
-	camera.position = Vector2.ZERO
+	
+	if camera:
+		camera.position = Vector2.ZERO
+
+func load_to(filepath: String) -> void:
+	rooms = {}
+	get_tree().change_scene_to_file(filepath)
