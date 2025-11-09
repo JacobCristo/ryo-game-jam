@@ -1,4 +1,4 @@
-extends Node
+class_name TentacleEnd extends Node2D
 
 # TODO: Test script
 @onready var _r_body: RigidBody2D = %End

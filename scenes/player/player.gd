@@ -11,7 +11,9 @@ class_name Player extends CharacterBody2D
 @export_group("Player Stats")
 @export var speed: float = 600.0
 @export var strength: float = 20.0
-@export var health: float = 100.0
+@export var max_health: float = 100.0
+
+var health: float = max_health
 
 var dash_timer: float = 0.0
 var is_dashing: float = false #bro so ugly
@@ -32,7 +34,6 @@ func _physics_process(delta: float) -> void:
 func start_dash(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
 		return
-		
 	is_dashing = true
 	velocity = dir.normalized() * dash_scalar
 	await get_tree().create_timer(dash_length).timeout
@@ -75,11 +76,18 @@ func dash(dir: Vector2) -> void:
 	await get_tree().create_timer(dash_length).timeout
 	velocity = Vector2.ZERO
 
-func increase_stat(stat_name: String, increase: int) -> void:
+func increase_stat(stat_name: String, increase: float) -> void:
 	match stat_name.to_lower():
 		"health":
-			health += increase
-		"speed": 
-			speed += increase
+			print("HEALTH UP")
+			print(max_health)
+			var temp_health = max_health
+			max_health *= increase
+			print(max_health)
+			health += max_health - temp_health
+		"speed":
+			print("SPEED UP")
+			speed *= increase
 		"strength":
-			strength += increase
+			print("STRENGTH UP")
+			strength *= increase

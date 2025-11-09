@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ct4dbfbcbootx" path="res://assets/player/placeholder_player-tentend.png" id="3_13sd1"]
 [ext_resource type="Script" uid="uid://bqbm8l0nmrwsa" path="res://scenes/player/tentacle/tentacle_spline.gd" id="5_2veqc"]
 [ext_resource type="Script" uid="uid://10ah5vdt40y6" path="res://scenes/player/tentacle/segment.gd" id="5_ii5g1"]
-[ext_resource type="Script" uid="uid://bvq01nm8drwef" path="res://scenes/player/tentacle/tentacle_end.gd" id="6_r7cm7"]
+[ext_resource type="Script" uid="uid://pp05hxyswiwu" path="res://scenes/player/tentacle/tentacle_move.gd" id="6_r7cm7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm2in"]
 radius = 5.0
