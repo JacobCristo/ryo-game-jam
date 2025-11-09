@@ -51,7 +51,7 @@ func _physics_process(delta: float) -> void:
 			_apply_force_to_chain(delta)
 			
 	else :
-		get_tree().get_first_node_in_group("player").goop += 0.03
+		get_tree().get_first_node_in_group("player").goop += 0.07
 		_apply_force_to_chain(delta)
 		
 		if (get_tree().get_first_node_in_group("player").goop >= goop_minlevel) :

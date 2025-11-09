@@ -27,6 +27,7 @@ var goop: float = max_goop:
 		if (value < goop_minlevel and goop_timeout):
 			self["theme_override_styles/fill"].bg_color = cooldown_color
 		else :
+			goop_timeout = false
 			self["theme_override_styles/fill"].bg_color = default_color
 
 
