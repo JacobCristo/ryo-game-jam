@@ -11,6 +11,9 @@ var all_collision_shapes: Array[Node]
 var _input_dir
 var _force : Vector2
 
+var goop_cooldown = false
+var goop_minlevel = 5.0
+
 const DEADZONE = 0.1
 const FORCE_AMT = 20000.0
 const IMPULSE_AMT = 50000.0
@@ -38,14 +41,24 @@ func _process(_delta: float) -> void:
 	_read_input()
 	
 func _physics_process(delta: float) -> void:
-	if(Input.is_action_pressed("boost_chain") and get_tree().get_first_node_in_group("player").goop > 0.3) :
-		_apply_impulse_to_chain(delta)
-		print(get_tree().get_first_node_in_group("player").goop)
-		get_tree().get_first_node_in_group("player").goop -= 0.5
+	if(Input.is_action_pressed("boost_chain") and !goop_cooldown) :
+		if (get_tree().get_first_node_in_group("player").goop > 0.3) :
+			_apply_impulse_to_chain(delta)
+			print(get_tree().get_first_node_in_group("player").goop)
+			get_tree().get_first_node_in_group("player").goop -= 0.5
+		else :
+			goop_cooldown = true
+			_apply_force_to_chain(delta)
+		
 		
 	else :
 		get_tree().get_first_node_in_group("player").goop += 0.03
 		_apply_force_to_chain(delta)
+		
+		if (get_tree().get_first_node_in_group("player").goop >= goop_minlevel) :
+			goop_cooldown = false
+		
+		
 		
 	# TODO: 
 	#if(Input.is_action_just_released("boost_chain")) :
