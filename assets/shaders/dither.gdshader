@@ -6,7 +6,7 @@ uniform float edge: hint_range(0.0, 5.0) = 5.0;
 uniform vec2 center = vec2(0.5);
 
 float sd_circle(vec2 uv) {
-	return length(uv - center) * 1.414;
+	return length(uv - center) * 1.114;
 }
 
 vec4 bayer(int x, int y) {
@@ -21,9 +21,7 @@ vec4 bayer(int x, int y) {
 	return vec4(bayer[index]);
 }
 
-void fragment() {
-    ivec2 px = ivec2(FRAGCOORD.xy);
-    vec4 color = texture(SCREEN_TEXTURE, UV);
+vec4 dither_effect(ivec2 px, vec4 color, vec2 uvP) {
     float lum = dot(color.rgb, vec3(0.299, 0.587, 0.114));
 
     // Bayer dithering
@@ -31,9 +29,9 @@ void fragment() {
     int by = px.y % 4;
     float thresh = bayer(bx, by).r;
     vec3 dithered = vec3(lum < thresh ? 0.0 : 1.0);
-	dithered *= sd_circle(UV);
+	dithered *= sd_circle(uvP);
     // Distance from center
-    float dist = length(UV - center);
+    float dist = length(uvP - center);
 
     // Smooth vignette alpha: 1 inside radius-edge, 0 outside radius+edge
     float vig_alpha = smoothstep(viginette_radius - edge, viginette_radius + edge, dist);
@@ -42,5 +40,13 @@ void fragment() {
     vec3 fx = vec3(vig_alpha * dithered);
     vec3 no_fx = color.rgb;
 
-    COLOR = vec4(dithered + no_fx, 1.0);
+    return vec4(dithered + no_fx, 1.0);
+}
+
+void fragment() {
+	ivec2 px = ivec2(FRAGCOORD.xy);
+	vec4 color = texture(SCREEN_TEXTURE, UV);
+	vec4 dither_pass = dither_effect(px, color, UV);
+	COLOR = dither_pass;
+	
 }

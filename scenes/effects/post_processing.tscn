@@ -16,6 +16,11 @@ shader_parameter/center = Vector2(0.5, 0.5)
 shader = ExtResource("1_o68o6")
 shader_parameter/fisheye_intensity = 0.11500005296249992
 shader_parameter/zoom = 1.1
+shader_parameter/vignette_radius = 0.1
+shader_parameter/edge = 5.0
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/grain_amount = 0.05
+shader_parameter/grain_size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
 shader = ExtResource("2_os2ix")
@@ -76,12 +81,14 @@ offset_right = 2233.0
 offset_bottom = 1136.0
 
 [node name="Buffer3" type="BackBufferCopy" parent="."]
+visible = false
 z_index = 99
 position = Vector2(466, 580.49994)
 scale = Vector2(17.470001, 9.714998)
 copy_mode = 2
 
-[node name="NoiseShader" type="ColorRect" parent="."]
+[node name="ProcessShader" type="ColorRect" parent="."]
+visible = false
 z_index = 99
 material = SubResource("ShaderMaterial_cuabf")
 custom_minimum_size = Vector2(1920, 1080)
