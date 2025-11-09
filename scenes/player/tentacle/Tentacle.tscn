@@ -19,6 +19,7 @@ height = 58.69992
 
 [node name="TentacleBase" type="StaticBody2D" parent="."]
 position = Vector2(0, 10)
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 14
 

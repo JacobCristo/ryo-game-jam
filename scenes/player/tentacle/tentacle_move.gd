@@ -3,6 +3,10 @@ class_name TentacleEnd extends Node2D
 # TODO: Test script
 @onready var _r_body: RigidBody2D = %End
 @onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var tentacle_base: StaticBody2D = %TentacleBase
+@onready var tentacle: Node2D = $"../.."
+
+var all_collision_shapes: Array[Node]
 
 var _input_dir
 var _force : Vector2
@@ -14,9 +18,18 @@ const IMPULSE_AMT = 50000.0
 # TODO: Set up thing to change this when actually using MKB
 var mouse_control = false
 
+# to fix tentacle stretch glitch
+var base_to_end = 0.0
+var stretch_give = 100.0
+var is_overstretched = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_input_dir = Vector2.ZERO
+	
+	base_to_end = tentacle_base.global_position.distance_to(_r_body.global_position)
+	
+	all_collision_shapes = tentacle.find_children("*", "CollisionShape2D", true, false)
 	pass # Replace with function body.
 
 
@@ -38,6 +51,22 @@ func _physics_process(delta: float) -> void:
 	#	var opposite = Vector2(-1 * _input_dir)
 	#	_r_body.apply_central_impulse(opposite * (IMPULSE_AMT / 2))
 		
+	# test for tentacle overstretching
+	var stretch_distance_squared = tentacle_base.global_position.distance_squared_to(_r_body.global_position)
+	
+	if (stretch_distance_squared > pow(base_to_end + stretch_give, 2)) :
+		#print("overstretch")
+		is_overstretched = true
+		
+		for cs : CollisionShape2D in all_collision_shapes :
+			cs.disabled = true
+		
+	elif (is_overstretched) :
+		#print("stretch fixed")
+		is_overstretched = false
+		
+		for cs : CollisionShape2D in all_collision_shapes :
+			cs.disabled = false
 		
 	
 func _read_input() -> void:
