@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cjtgyy1dsejxh"]
+[gd_scene load_steps=6 format=3 uid="uid://cjtgyy1dsejxh"]
 
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/Tentacle.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
-[ext_resource type="PackedScene" uid="uid://bnyuek30mdyyu" path="res://scenes/ui/player_ui.tscn" id="5_p47bc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
 radius = 36.0
@@ -31,15 +30,4 @@ texture = ExtResource("2_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 
-<<<<<<< Updated upstream
-=======
-[node name="PostProcessing" parent="." instance=ExtResource("4_lvxji")]
-position = Vector2(-280, -583)
-
-[node name="PlayerUI" parent="." instance=ExtResource("5_p47bc")]
-custom_minimum_size = Vector2(1920, 1080)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
->>>>>>> Stashed changes
 [editable path="Tentacle"]

@@ -27,8 +27,6 @@ func _physics_process(delta: float) -> void:
 		# TODO: Check for boost meter when implemented
 		# TODO: Drain boost meter
 		_apply_impulse_to_chain(delta)
-		get_tree().get_first_node_in_group("player").goop -= 0.05
-		
 	else :
 		_apply_force_to_chain(delta)
 		
