@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cfrn6aect60om"
+path="res://.godot/imported/Death - Option 11.mp3-ad4cd734b5bea0f131fffb386bf57dd7.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/KLAXON SFX/Death - Option 11.mp3"
+dest_files=["res://.godot/imported/Death - Option 11.mp3-ad4cd734b5bea0f131fffb386bf57dd7.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -435,13 +435,6 @@ rotation = 0.0049224244
 position = Vector2(60, -0.492)
 shape = SubResource("RectangleShape2D_l188l")
 
-[node name="ColorRect" type="ColorRect" parent="PunchArea/CollisionShape2D"]
-offset_left = -60.000004
-offset_top = 0.492
-offset_right = -20.000004
-offset_bottom = 40.492
-color = Color(1, 0.39215687, 1, 0.45882353)
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 12
