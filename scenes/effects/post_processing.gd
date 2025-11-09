@@ -3,6 +3,7 @@ class_name PostProcessing extends Control
 @onready var fisheye_shader: ColorRect = $FisheyeShader
 @onready var noise_shader: ColorRect = $NoiseShader
 @onready var sobel_shader: ColorRect = $SobelShader
+@onready var dither_shader: ColorRect = $DitherShader
 
 func tween_fisheye(intensity: float, zoom: float) -> void:
 	var tween = create_tween()
