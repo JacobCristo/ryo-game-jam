@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://nwhqrixlnb1d"]
+[gd_scene load_steps=7 format=4 uid="uid://nwhqrixlnb1d"]
 
-[ext_resource type="Shader" uid="uid://qnb3nmmjrecj" path="res://assets/shaders/fisheye.gdshader" id="1_l1h6x"]
+[ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="1_60kw0"]
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="1_n5ae5"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="2_60kw0"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="3_1hava"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
-shader = ExtResource("1_l1h6x")
-shader_parameter/fisheye_intensity = 0.0800000513000001
-shader_parameter/zoom = 1.200000057
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
 texture = ExtResource("3_1hava")
@@ -83,19 +78,7 @@ sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
 [node name="Room" type="Node2D"]
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="."]
-z_index = 12
-position = Vector2(379.5, 580.49994)
-scale = Vector2(16.605, 9.714998)
-copy_mode = 2
-
-[node name="ColorRect" type="ColorRect" parent="BackBufferCopy"]
-z_index = 10
-material = SubResource("ShaderMaterial_07256")
-offset_left = -102.402084
-offset_top = -101.59292
-offset_right = 97.597885
-offset_bottom = 101.06194
+[node name="PostProcessing" parent="." instance=ExtResource("1_60kw0")]
 
 [node name="Player" parent="." instance=ExtResource("1_n5ae5")]
 position = Vector2(990, 609)

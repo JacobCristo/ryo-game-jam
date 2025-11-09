@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdlg8g6vlp6o1"]
+
+[ext_resource type="Shader" uid="uid://qnb3nmmjrecj" path="res://assets/shaders/fisheye.gdshader" id="1_o68o6"]
+[ext_resource type="Shader" uid="uid://72s3hktat6a1" path="res://assets/shaders/sobel.gdshader" id="2_os2ix"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1hava"]
+shader = ExtResource("1_o68o6")
+shader_parameter/fisheye_intensity = 0.01800004835500002
+shader_parameter/zoom = 1.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
+shader = ExtResource("2_os2ix")
+shader_parameter/intensity = 0.210000009975
+
+[node name="PostProcessing" type="Node2D"]
+
+[node name="FisheyeBuffer" type="BackBufferCopy" parent="."]
+z_index = 99
+position = Vector2(379.5, 580.49994)
+scale = Vector2(16.605, 9.714998)
+copy_mode = 2
+
+[node name="FisheyeShader" type="ColorRect" parent="FisheyeBuffer"]
+z_index = 10
+material = SubResource("ShaderMaterial_1hava")
+offset_left = -102.402084
+offset_top = -101.59292
+offset_right = 97.597885
+offset_bottom = 101.06194
+metadata/_edit_use_anchors_ = true
+
+[node name="NoiseBuffer" type="BackBufferCopy" parent="."]
+z_index = 99
+position = Vector2(379.5, 580.49994)
+scale = Vector2(16.605, 9.714998)
+copy_mode = 2
+
+[node name="NoiseShader" type="ColorRect" parent="NoiseBuffer"]
+z_index = 10
+material = SubResource("ShaderMaterial_1hava")
+offset_left = -102.402084
+offset_top = -101.59292
+offset_right = 97.597885
+offset_bottom = 101.06194
+metadata/_edit_use_anchors_ = true
+
+[node name="SobelBuffer" type="BackBufferCopy" parent="."]
+z_index = 12
+position = Vector2(379.5, 580.49994)
+scale = Vector2(16.605, 9.714998)
+copy_mode = 2
+
+[node name="SobelShader" type="ColorRect" parent="SobelBuffer"]
+z_index = 10
+material = SubResource("ShaderMaterial_07256")
+offset_left = -102.402084
+offset_top = -101.59292
+offset_right = 97.597885
+offset_bottom = 101.06194
