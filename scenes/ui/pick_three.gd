@@ -12,13 +12,13 @@ func _ready() -> void:
 	strengthButt.pressed.connect(upgrade_chosen.bind("Strength"))
 	healthButt.pressed.connect(upgrade_chosen.bind("Health"))
 	speedButt.pressed.connect(upgrade_chosen.bind("Speed"))
-	strengthButt.grab_focus()
+	
 	Global.connect("room_cleared", display)
 
 
 func display() -> void:
 	self.visible = true
-	print("pick3")
+	strengthButt.grab_focus()
 
 
 func upgrade_chosen(upgrade: String):
