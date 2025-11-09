@@ -8,10 +8,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0qhy5"]
 shader = ExtResource("3_cov25")
+shader_parameter/viginette_radius = 0.400000019
+shader_parameter/edge = 0.0
+shader_parameter/center = Vector2(0.5, 0.5)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1hava"]
 shader = ExtResource("1_o68o6")
-shader_parameter/fisheye_intensity = 0.11500005296249993
+shader_parameter/fisheye_intensity = 0.11500005296249992
 shader_parameter/zoom = 1.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
@@ -29,16 +32,18 @@ anchors_preset = 0
 script = ExtResource("1_os2ix")
 
 [node name="DitherShader" type="ColorRect" parent="."]
+visible = false
 z_index = 99
 material = SubResource("ShaderMaterial_0qhy5")
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_left = -1.0
 offset_top = -5.0
-offset_right = 1919.0
-offset_bottom = 1075.0
+offset_right = 2201.0
+offset_bottom = 1141.0
 
 [node name="Buffer" type="BackBufferCopy" parent="."]
+visible = false
 z_index = 99
 position = Vector2(379.5, 580.49994)
 scale = Vector2(16.605, 9.714998)
@@ -51,8 +56,8 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_left = -1.0
 offset_top = -5.0
-offset_right = 1919.0
-offset_bottom = 1075.0
+offset_right = 2201.0
+offset_bottom = 1141.0
 
 [node name="Buffer2" type="BackBufferCopy" parent="."]
 z_index = 99
@@ -67,13 +72,13 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_left = -0.9995117
 offset_top = -4.999939
-offset_right = 1919.0005
-offset_bottom = 1075.0
+offset_right = 2233.0
+offset_bottom = 1136.0
 
 [node name="Buffer3" type="BackBufferCopy" parent="."]
 z_index = 99
-position = Vector2(379.5, 580.49994)
-scale = Vector2(16.605, 9.714998)
+position = Vector2(466, 580.49994)
+scale = Vector2(17.470001, 9.714998)
 copy_mode = 2
 
 [node name="NoiseShader" type="ColorRect" parent="."]
@@ -83,5 +88,5 @@ custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 0
 offset_left = -0.9998779
 offset_top = -5.0
-offset_right = 1919.0001
-offset_bottom = 1075.0
+offset_right = 2173.0
+offset_bottom = 1136.0

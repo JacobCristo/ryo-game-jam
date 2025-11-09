@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
-[ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/Tentacle.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/player/tentacle/Tentacle.tscn" id="2_gmlin"]
 [ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u8vuu"]
@@ -15,7 +15,7 @@ script = ExtResource("1_pfot2")
 z_index = 99
 offset_left = -987.0
 offset_top = -557.0
-offset_right = 961.0
+offset_right = 602.0
 offset_bottom = 552.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
