@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dov4w1o5oxm7p" path="res://scenes/player/player.gd" id="1_pfot2"]
 [ext_resource type="Texture2D" uid="uid://bsw33ixtmu4j6" path="res://assets/player/placeholder_player-body.png" id="2_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dc12acdrvox18" path="res://scenes/player/tentacle/Tentacle.tscn" id="2_gmlin"]
-[ext_resource type="Shader" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
+[ext_resource type="Shader" uid="uid://b76stmloao4ph" path="res://scenes/player/damage_flash.gdshader" id="4_75vfm"]
 [ext_resource type="PackedScene" uid="uid://cdlg8g6vlp6o1" path="res://scenes/effects/post_processing.tscn" id="4_lvxji"]
 [ext_resource type="PackedScene" uid="uid://bnyuek30mdyyu" path="res://scenes/ui/player_ui.tscn" id="5_p47bc"]
 
@@ -14,6 +14,8 @@ radius = 36.0
 shader = ExtResource("4_75vfm")
 shader_parameter/flash_color = Color(0, 0, 0, 1)
 shader_parameter/flash_value = 0.0
+shader_parameter/dash_color = Color(1, 0, 0, 1)
+shader_parameter/dash_value = 0.5000000074506
 
 [sub_resource type="Animation" id="Animation_0owmy"]
 length = 0.001

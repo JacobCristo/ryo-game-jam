@@ -5,6 +5,7 @@ const INVINCIBLE_COOLDOWN_MAX: float = 1.0
 @onready var flash_animation: AnimationPlayer = %FlashAnimation
 @onready var music_bus_index = AudioServer.get_bus_index("Music")
 @onready var low_pass_filter = AudioServer.get_bus_effect(music_bus_index, 0)
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 @export_group("Dash Stats")
 @export var dash_cooldown: float = 1.0 # seconds
@@ -58,6 +59,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("dash") and dash_timer == 0.0:
 		start_dash(direction)
 		dash_timer = dash_cooldown
+		
+	sprite_2d.modulate = Color(0, 0, 1)
 
 func start_dash(dir: Vector2) -> void:
 	if dir == Vector2.ZERO:
