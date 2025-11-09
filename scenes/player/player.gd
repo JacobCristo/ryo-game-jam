@@ -46,6 +46,7 @@ func take_damage(damage: float) -> void:
 	health -= damage
 	apply_damage_effect()
 	Global.shake_camera(damage, 0.25)
+	Global.playerHit.emit(damage, health)
 	
 	if health <= 0:
 		die()
@@ -57,6 +58,9 @@ func die() -> void:
 func apply_damage_effect():
 	# muffle the music over 0.5s
 	create_tween().tween_property(low_pass_filter, "cutoff_hz", 250, 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	var processing = get_tree().get_first_node_in_group("shaders") as PostProcessing
+	processing.tween_fisheye(0.25, 1.4)
+	processing.tween_sobel(1.0)
 	
 	# wait 1s then tweek back to normal 
 	await get_tree().create_timer(1.0).timeout
@@ -79,15 +83,10 @@ func dash(dir: Vector2) -> void:
 func increase_stat(stat_name: String, increase: float) -> void:
 	match stat_name.to_lower():
 		"health":
-			print("HEALTH UP")
-			print(max_health)
 			var temp_health = max_health
 			max_health *= increase
-			print(max_health)
 			health += max_health - temp_health
 		"speed":
-			print("SPEED UP")
 			speed *= increase
 		"strength":
-			print("STRENGTH UP")
 			strength *= increase

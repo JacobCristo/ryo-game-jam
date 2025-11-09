@@ -1,5 +1,7 @@
 extends Node
 
+signal playerHit(damage_taken: float, player_health: float)
+
 # coordinates mapping to room objects (1 to 1)
 # Vector2i -> Room
 var rooms: Dictionary = {};

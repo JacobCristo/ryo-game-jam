@@ -18,7 +18,8 @@ shader_parameter/grain_size = 0.5500000228651201
 shader = ExtResource("2_os2ix")
 shader_parameter/intensity = 0.210000009975
 
-[node name="PostProcessing" type="Node2D"]
+[node name="PostProcessing" type="Node2D" groups=["shaders"]]
+script = ExtResource("1_os2ix")
 
 [node name="FisheyeBuffer" type="BackBufferCopy" parent="."]
 z_index = 99
