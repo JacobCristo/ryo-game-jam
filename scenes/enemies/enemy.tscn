@@ -6,8 +6,6 @@
 radius = 50.0
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 4
-collision_mask = 12
 script = ExtResource("1_7p1mj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,8 +17,6 @@ shape = SubResource("CircleShape2D_8tegq")
 target_position = Vector2(250, 0)
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_8tegq")

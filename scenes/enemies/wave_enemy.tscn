@@ -7,8 +7,6 @@
 radius = 45.01111
 
 [node name="WaveEnemy" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 5
 script = ExtResource("1_p8v77")
 sightline_range = 200.0
 fire_rate = 2.0
@@ -25,8 +23,6 @@ texture = ExtResource("2_vevli")
 target_position = Vector2(200, 0)
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 12
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_8tegq")

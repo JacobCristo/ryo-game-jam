@@ -3,9 +3,6 @@ extends Node
 @onready var line_2D = %Line2D
 @onready var tentacle: Node2D = $".."
 
-func _ready() -> void:
-	Global.room_entered.connect(disable_collisions)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	var points = []
@@ -20,16 +17,7 @@ func _process(_delta: float) -> void:
 	
 	line_2D.points = smooth_points
 
-func disable_collisions() -> void:
-	for child in get_children():
-		if child is RigidBody2D:
-			child.disable()
-	
-	await get_tree().create_timer(1.0).timeout
-	
-	for child in get_children():
-		if child is RigidBody2D:
-			child.enable()
+			
 
 func catmull_rom_spline(_points: Array, resolution: int = 10, extrapolate_end_points = true) -> PackedVector2Array:
 	var points = _points.duplicate()

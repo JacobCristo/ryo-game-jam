@@ -1,9 +1,8 @@
-class_name PostProcessing extends Control
+class_name PostProcessing extends Node2D
 
-@onready var fisheye_shader: ColorRect = $FisheyeShader
-@onready var noise_shader: ColorRect = $NoiseShader
-@onready var sobel_shader: ColorRect = $SobelShader
-@onready var dither_shader: ColorRect = $DitherShader
+@onready var fisheye_shader: ColorRect = $FisheyeBuffer/FisheyeShader
+@onready var noise_shader: ColorRect = $NoiseBuffer/NoiseShader
+@onready var sobel_shader: ColorRect = $SobelBuffer/SobelShader
 
 func tween_fisheye(intensity: float, zoom: float) -> void:
 	var tween = create_tween()
@@ -49,7 +48,7 @@ func tween_sobel(intensity: float) -> void:
 	
 	var start_intensity = mat.get_shader_parameter("intensity")
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("intensity", value),
 		mat.get_shader_parameter("intensity"),
 		intensity,
@@ -59,7 +58,7 @@ func tween_sobel(intensity: float) -> void:
 	await tween.finished
 	tween = create_tween()
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("intensity", value),
 		mat.get_shader_parameter("intensity"),
 		start_intensity,

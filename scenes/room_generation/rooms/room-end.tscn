@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://ba68b13oul354"]
 
-[ext_resource type="Script" uid="uid://q8vghw3ll8xl" path="res://scenes/room_generation/room.gd" id="1_y8wg3"]
+[ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="1_svpdg"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="2_y8wg3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
@@ -75,8 +75,9 @@ custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_d6tss")
 
 [node name="Room" type="Node2D"]
-script = ExtResource("1_y8wg3")
-door_coords = Array[Vector2i]([Vector2i(579, 140), Vector2i(68, 590), Vector2i(576, 1070), Vector2i(1077, 598)])
+
+[node name="Player" parent="." instance=ExtResource("1_svpdg")]
+position = Vector2(572, 575)
 
 [node name="TileMap" type="Node2D" parent="."]
 z_index = -1
