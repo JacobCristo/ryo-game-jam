@@ -9,7 +9,7 @@ func _ready() -> void:
 	sprite.frame = randi_range(0, sprite.sprite_frames.get_frame_count("default") - 1)
 
 func _on_body_entered(body: Node) -> void:
-	if body is Segment:
+	if body is Segment or body is Enemy:
 		explode()
 		
 func explode() -> void:

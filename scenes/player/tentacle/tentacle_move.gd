@@ -4,13 +4,14 @@ class_name TentacleEnd extends Node2D
 @onready var _r_body: RigidBody2D = %End
 
 var _input_dir
-var _force
+var _force : Vector2
 
 const DEADZONE = 0.1
 const FORCE_AMT = 10000.0
 const IMPULSE_AMT = 5000.0
 
-var mouse_control = true
+# TODO: Set up thing to change this when actually using MKB
+var mouse_control = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -58,14 +59,12 @@ func _read_input() -> void:
 func _apply_force_to_chain(delta) -> void:
 	# Multiply direction by FORCE_AMT
 	_force = _input_dir * FORCE_AMT * delta
-	#print(_force)
 	_r_body.apply_central_force(_force)
 	
 func _apply_impulse_to_chain(delta) -> void:
 	# Multiply direction by IMPULSE_AMT
 	# Used when boosting
 	_force = _input_dir * IMPULSE_AMT * delta
-	#print(_force)
 	_r_body.apply_central_impulse(_force)
 	
 	

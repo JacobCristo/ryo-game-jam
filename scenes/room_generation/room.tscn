@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=4 uid="uid://dlatllqfy0bmc"]
+[gd_scene load_steps=8 format=4 uid="uid://dlatllqfy0bmc"]
 
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="2_ffxv4"]
 [ext_resource type="PackedScene" uid="uid://b3wmuilxtd6dx" path="res://scenes/room_generation/obstacle.tscn" id="4_l1h6x"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="5_07256"]
+[ext_resource type="PackedScene" uid="uid://ce5dch1wxqctr" path="res://scenes/enemies/melee_enemy.tscn" id="5_u3e6m"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="7_asjfa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
@@ -125,3 +126,6 @@ position = Vector2(1295, 412)
 
 [node name="Obstacle3" parent="." instance=ExtResource("4_l1h6x")]
 position = Vector2(1297, 699)
+
+[node name="MeleeEnemy" parent="." instance=ExtResource("5_u3e6m")]
+position = Vector2(1184, 258)
