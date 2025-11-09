@@ -55,20 +55,18 @@ func _physics_process(delta: float) -> void:
 	var stretch_distance_squared = tentacle_base.global_position.distance_squared_to(_r_body.global_position)
 	
 	if (stretch_distance_squared > pow(base_to_end + stretch_give, 2)) :
-		print("overstretch")
+		#print("overstretch")
 		is_overstretched = true
 		
 		for cs : CollisionShape2D in all_collision_shapes :
 			cs.disabled = true
-			print("test")
 		
 	elif (is_overstretched) :
-		print("stretch fixed")
+		#print("stretch fixed")
 		is_overstretched = false
 		
 		for cs : CollisionShape2D in all_collision_shapes :
 			cs.disabled = false
-			print("test")
 		
 	
 func _read_input() -> void:
