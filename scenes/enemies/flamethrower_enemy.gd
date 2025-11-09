@@ -37,8 +37,12 @@ func _active_physics_process(delta: float) -> void:
 	
 	# if player not in range, move towards player
 	var direction = (player.global_position - global_position).normalized()
+	if(direction.x < 0) :
+		sprite_2d.flip_h = true
+	else :
+		sprite_2d.flip_h = false
 	velocity = direction * speed * delta
-	if(not sprite_2d.is_playing()) :
+	if(not sprite_2d.is_playing() or not sprite_2d.animation == "moving") :
 		sprite_2d.play("moving")
 	move_and_slide()
 	

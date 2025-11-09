@@ -7,6 +7,7 @@ const INVINCIBLE_COOLDOWN_MAX: float = 1.0
 @onready var low_pass_filter = AudioServer.get_bus_effect(music_bus_index, 0)
 @onready var audio : AudioStreamPlayer = $AudioStreamPlayer
 
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 
 @export_group("Dash Stats")
 @export var dash_cooldown: float = 1.0 # seconds
@@ -47,9 +48,23 @@ func _process(delta: float) -> void:
 		
 		if(_invincible_cool_down <= 0) :
 			_is_invincible = false
-
+	
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	if(direction.x < 0) :
+		sprite_2d.flip_h = true
+	else :
+		sprite_2d.flip_h = false
+	
+	if(direction.length() <= 0) :
+		if(not sprite_2d.is_playing() or not sprite_2d.animation == "idle") :
+			sprite_2d.play("idle")
+		# idle
+	else : 
+		if(not sprite_2d.is_playing() or not sprite_2d.animation == "walk") :
+			sprite_2d.play("walk")
+		
+		
 
 	if not is_dashing:
 		velocity = direction * speed
@@ -69,6 +84,12 @@ func start_dash(dir: Vector2) -> void:
 		return
 	is_dashing = true
 	velocity = dir.normalized() * dash_scalar
+	sprite_2d.stop()
+	sprite_2d.play("dash")
+	if(dir.x < 0) :
+		sprite_2d.flip_h = true
+	else :
+		sprite_2d.flip_h = false
 	await get_tree().create_timer(dash_length).timeout
 	is_dashing = false
 

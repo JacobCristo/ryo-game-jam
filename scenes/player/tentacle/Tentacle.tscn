@@ -1,25 +1,24 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc12acdrvox18"]
+[gd_scene load_steps=10 format=3 uid="uid://dc12acdrvox18"]
 
 [ext_resource type="Texture2D" uid="uid://dmkkfii4vlmyg" path="res://assets/player/placeholder_player-tentbase.png" id="1_um86v"]
-[ext_resource type="Texture2D" uid="uid://cotxckrehf611" path="res://assets/player/tentacle/placeholder_player-repeated-tentsegment.png" id="2_ii5g1"]
+[ext_resource type="Texture2D" uid="uid://bgvh44d0865cm" path="res://assets/player/tentacle/tent-2.png" id="2_r7cm7"]
 [ext_resource type="PackedScene" uid="uid://dq1as3lwocm1p" path="res://scenes/player/tentacle/tentaclesegment.tscn" id="2_um86v"]
-[ext_resource type="Texture2D" uid="uid://ct4dbfbcbootx" path="res://assets/player/placeholder_player-tentend.png" id="3_13sd1"]
 [ext_resource type="Script" uid="uid://bqbm8l0nmrwsa" path="res://scenes/player/tentacle/tentacle_spline.gd" id="5_2veqc"]
 [ext_resource type="Script" uid="uid://10ah5vdt40y6" path="res://scenes/player/tentacle/segment.gd" id="5_ii5g1"]
 [ext_resource type="Script" uid="uid://pp05hxyswiwu" path="res://scenes/player/tentacle/tentacle_move.gd" id="6_r7cm7"]
+[ext_resource type="Texture2D" uid="uid://4pj4n6yqx0li" path="res://assets/player/tentacle/tentacle-tip.png" id="7_r7cm7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mm2in"]
 radius = 5.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_ii5g1"]
-diffuse_texture = ExtResource("2_ii5g1")
-texture_repeat = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_kxgin"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r7cm7"]
+radius = 9.0
+height = 58.69992
 
 [node name="Tentacle" type="Node2D"]
 
 [node name="TentacleBase" type="StaticBody2D" parent="."]
+position = Vector2(0, 10)
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 14
@@ -41,7 +40,7 @@ node_b = NodePath("../../Line2D/Segment")
 unique_name_in_owner = true
 points = PackedVector2Array(0.9655762, 0.3547058)
 width = 20.0
-texture = SubResource("CanvasTexture_ii5g1")
+texture = ExtResource("2_r7cm7")
 texture_mode = 1
 script = ExtResource("5_2veqc")
 
@@ -131,22 +130,24 @@ gravity_scale = 0.0
 script = ExtResource("5_ii5g1")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="Line2D/Segment9"]
-position = Vector2(0, 10)
 node_a = NodePath("..")
 node_b = NodePath("../../End")
 
 [node name="End" type="RigidBody2D" parent="Line2D"]
 unique_name_in_owner = true
-position = Vector2(0, 200)
+modulate = Color(0.827451, 0.31764707, 0.31764707, 1)
+position = Vector2(0, 190)
 collision_layer = 8
 collision_mask = 6
 gravity_scale = 0.0
 script = ExtResource("6_r7cm7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/End"]
-shape = SubResource("CircleShape2D_kxgin")
+rotation = -0.035067275
+shape = SubResource("CapsuleShape2D_r7cm7")
 
 [node name="Sprite2D" type="Sprite2D" parent="Line2D/End"]
 position = Vector2(8.940697e-08, -1.1920929e-07)
-scale = Vector2(0.347, 0.347)
-texture = ExtResource("3_13sd1")
+rotation = -1.5707964
+scale = Vector2(0.1, 0.3)
+texture = ExtResource("7_r7cm7")
