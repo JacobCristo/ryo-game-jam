@@ -6,7 +6,7 @@ class_name TentacleEnd extends Node2D
 @onready var tentacle_base: StaticBody2D = %TentacleBase
 @onready var tentacle: Node2D = $"../.."
 
-var all_rigidbodies: Array[Node]
+var all_collision_shapes: Array[Node]
 
 var _input_dir
 var _force : Vector2
@@ -29,7 +29,7 @@ func _ready() -> void:
 	
 	base_to_end = tentacle_base.global_position.distance_to(_r_body.global_position)
 	
-	all_rigidbodies = tentacle.find_children("*", "RigidBody2D", true, false)
+	all_collision_shapes = tentacle.find_children("*", "CollisionShape2D", true, false)
 	pass # Replace with function body.
 
 
@@ -58,13 +58,17 @@ func _physics_process(delta: float) -> void:
 		print("overstretch")
 		is_overstretched = true
 		
-		for rb : RigidBody2D in all_rigidbodies :
-			#rb.collision_mask
+		for cs : CollisionShape2D in all_collision_shapes :
+			cs.disabled = true
 			print("test")
 		
 	elif (is_overstretched) :
 		print("stretch fixed")
 		is_overstretched = false
+		
+		for cs : CollisionShape2D in all_collision_shapes :
+			cs.disabled = false
+			print("test")
 		
 	
 func _read_input() -> void:
