@@ -17,7 +17,7 @@ visible = false
 z_index = 99
 offset_left = -987.0
 offset_top = -557.0
-offset_right = 961.0
+offset_right = 602.0
 offset_bottom = 552.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
