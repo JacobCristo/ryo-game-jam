@@ -21,7 +21,7 @@ texture_repeat = 2
 
 [node name="TentacleBase" type="StaticBody2D" parent="."]
 collision_layer = 0
-collision_mask = 14
+collision_mask = 6
 
 [node name="Sprite2D" type="Sprite2D" parent="TentacleBase"]
 visible = false
@@ -39,7 +39,6 @@ node_b = NodePath("../../Line2D/Segment")
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
 points = PackedVector2Array(0.9655762, 0.3547058)
-width = 20.0
 texture = SubResource("CanvasTexture_ii5g1")
 texture_mode = 1
 script = ExtResource("5_2veqc")
@@ -137,7 +136,7 @@ node_b = NodePath("../../End")
 [node name="End" type="RigidBody2D" parent="Line2D"]
 unique_name_in_owner = true
 position = Vector2(0, 200)
-collision_layer = 8
+collision_layer = 0
 collision_mask = 6
 gravity_scale = 0.0
 script = ExtResource("6_r7cm7")
