@@ -3,7 +3,7 @@
 [ext_resource type="Shader" uid="uid://qnb3nmmjrecj" path="res://assets/shaders/fisheye.gdshader" id="1_o68o6"]
 [ext_resource type="Script" uid="uid://cymhr8kg87lkc" path="res://scenes/effects/post_processing.gd" id="1_os2ix"]
 [ext_resource type="Shader" uid="uid://cweyhtfrr3j4e" path="res://assets/shaders/noise_overlay.gdshader" id="2_cuabf"]
-[ext_resource type="Shader" path="res://assets/shaders/sobel.gdshader" id="2_os2ix"]
+[ext_resource type="Shader" uid="uid://72s3hktat6a1" path="res://assets/shaders/sobel.gdshader" id="2_os2ix"]
 [ext_resource type="Shader" uid="uid://j560bwknfqim" path="res://assets/shaders/dither.gdshader" id="3_cov25"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0qhy5"]
@@ -50,7 +50,6 @@ scale = Vector2(16.605, 9.714998)
 copy_mode = 2
 
 [node name="FisheyeShader" type="ColorRect" parent="."]
-visible = false
 z_index = 99
 material = SubResource("ShaderMaterial_1hava")
 custom_minimum_size = Vector2(1920, 1080)
@@ -61,7 +60,6 @@ offset_right = 2201.0
 offset_bottom = 1141.0
 
 [node name="Buffer2" type="BackBufferCopy" parent="."]
-visible = false
 z_index = 99
 position = Vector2(379.5, 580.49994)
 scale = Vector2(16.605, 9.714998)

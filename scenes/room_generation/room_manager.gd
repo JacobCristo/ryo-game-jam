@@ -19,8 +19,8 @@ const END_J =  GRID_SIZE - 1;
 # rules for map generation / regeneration
 const MAX_ROOM_COUNT = 20;
 const MIN_ROOM_COUNT = 12;
-enum ROOM_TYPES {ROOM_1, ROOM_2, ROOM_3, ROOM_4, ROOM_5, 
-ROOM_6, ROOM_7, ROOM_8, ROOM_9, ROOM_10, START, END};
+# TODO: add rooms that are broken once fixed
+enum ROOM_TYPES {ROOM_1, ROOM_2, ROOM_3, ROOM_4, START, END};
 
 # Stores whether the room is a START, GOAL STATE, or lowkey chill with it
 enum ROOM_TYPE {START, GOAL, NEITHER};
@@ -176,10 +176,10 @@ func path_to_rooms(path: Array) -> void:
 			ROOM_TYPES.ROOM_2: room = ROOM_2.instantiate()
 			ROOM_TYPES.ROOM_3: room = ROOM_4.instantiate()
 			ROOM_TYPES.ROOM_4: room = ROOM_4.instantiate()
-			# ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
+			#ROOM_TYPES.ROOM_5: room = ROOM_5.instantiate()
 			#ROOM_TYPES.ROOM_6: room = ROOM_6.instantiate()
-			ROOM_TYPES.ROOM_7: room = ROOM_7.instantiate()
-			ROOM_TYPES.ROOM_8: room = ROOM_8.instantiate()
+			#ROOM_TYPES.ROOM_7: room = ROOM_7.instantiate()
+			#ROOM_TYPES.ROOM_8: room = ROOM_8.instantiate()
 			#ROOM_TYPES.ROOM_9: room = ROOM_9.instantiate()
 			#ROOM_TYPES.ROOM_10: room = ROOM_10.instantiate()
 		

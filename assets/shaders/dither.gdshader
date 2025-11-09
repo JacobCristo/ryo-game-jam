@@ -5,8 +5,8 @@ uniform float viginette_radius: hint_range(0, 1) = 0.1;
 uniform float edge: hint_range(0.0, 5.0) = 5.0;
 uniform vec2 center = vec2(0.5);
 
-float sd_circle(vec2 uv, float r) {
-	return length(uv - center) - r;
+float sd_circle(vec2 uv) {
+	return length(uv - center) * 1.414;
 }
 
 vec4 bayer(int x, int y) {
@@ -30,8 +30,8 @@ void fragment() {
     int bx = px.x % 4;
     int by = px.y % 4;
     float thresh = bayer(bx, by).r;
-    float dithered = lum < thresh ? 0.0 : 1.0;
-
+    vec3 dithered = vec3(lum < thresh ? 0.0 : 1.0);
+	dithered *= sd_circle(UV);
     // Distance from center
     float dist = length(UV - center);
 
@@ -42,5 +42,5 @@ void fragment() {
     vec3 fx = vec3(vig_alpha * dithered);
     vec3 no_fx = color.rgb;
 
-    COLOR = vec4(fx + no_fx, 1.0);
+    COLOR = vec4(dithered + no_fx, 1.0);
 }
