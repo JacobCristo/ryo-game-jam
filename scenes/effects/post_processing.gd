@@ -11,14 +11,14 @@ func tween_fisheye(intensity: float, zoom: float) -> void:
 	var start_intensity: float = mat.get_shader_parameter("fisheye_intensity")
 	var start_zoom: float = mat.get_shader_parameter("zoom")
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("fisheye_intensity", value),
 		mat.get_shader_parameter("fisheye_intensity"),
 		intensity,
 		0.25
 	).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("zoom", value),
 		mat.get_shader_parameter("zoom"),
 		zoom,
@@ -28,14 +28,14 @@ func tween_fisheye(intensity: float, zoom: float) -> void:
 	await tween.finished
 	tween = create_tween()
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("fisheye_intensity", value),
 		mat.get_shader_parameter("fisheye_intensity"),
 		start_intensity,
 		0.2
 	)
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("zoom", value),
 		mat.get_shader_parameter("zoom"),
 		start_zoom,
@@ -48,7 +48,7 @@ func tween_sobel(intensity: float) -> void:
 	
 	var start_intensity = mat.get_shader_parameter("intensity")
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("intensity", value),
 		mat.get_shader_parameter("intensity"),
 		intensity,
@@ -58,7 +58,7 @@ func tween_sobel(intensity: float) -> void:
 	await tween.finished
 	tween = create_tween()
 	
-	tween.tween_method(
+	tween.parallel().tween_method(
 		func(value): mat.set_shader_parameter("intensity", value),
 		mat.get_shader_parameter("intensity"),
 		start_intensity,
