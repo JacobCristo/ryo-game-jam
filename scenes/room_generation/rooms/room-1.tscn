@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://nwhqrixlnb1d"]
+[gd_scene load_steps=9 format=4 uid="uid://nwhqrixlnb1d"]
 
-[ext_resource type="Shader" uid="uid://qnb3nmmjrecj" path="res://assets/shaders/fisheye.gdshader" id="1_l1h6x"]
+[ext_resource type="Shader" path="res://assets/shaders/fisheye.gdshader" id="1_l1h6x"]
 [ext_resource type="PackedScene" uid="uid://cjtgyy1dsejxh" path="res://scenes/player/player.tscn" id="1_n5ae5"]
 [ext_resource type="PackedScene" uid="uid://b06byf7gpsk0o" path="res://scenes/enemies/sniper_enemy.tscn" id="2_60kw0"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="3_1hava"]
+[ext_resource type="PackedScene" uid="uid://d2gvoap78moq6" path="res://scenes/ui/pick_three.tscn" id="5_1hava"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07256"]
 shader = ExtResource("1_l1h6x")
@@ -135,3 +136,6 @@ offset_right = 5669.0
 offset_bottom = 4455.0
 color = Color(0, 0.008380051, 0.15998203, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="PickThree" parent="." instance=ExtResource("5_1hava")]
+visible = false
