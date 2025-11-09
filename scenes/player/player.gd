@@ -1,5 +1,8 @@
 class_name Player extends CharacterBody2D
 
+const INVINCIBLE_COOLDOWN_MAX: float = 1.0
+
+@onready var flash_animation: AnimationPlayer = %FlashAnimation
 @onready var music_bus_index = AudioServer.get_bus_index("Music")
 @onready var low_pass_filter = AudioServer.get_bus_effect(music_bus_index, 0)
 
@@ -13,6 +16,9 @@ class_name Player extends CharacterBody2D
 @export var strength: float = 20.0
 @export var max_health: float = 100.0
 @export var max_goop: float = 100.0
+
+var _invincible_cool_down: float
+var _is_invincible: bool
 
 var health: float = max_health:
 	set(value):
@@ -32,6 +38,13 @@ var goop: float = max_goop:
 
 var dash_timer: float = 0.0
 var is_dashing: bool = false
+
+func _process(delta: float) -> void:
+	if(_is_invincible) :
+		_invincible_cool_down -= delta
+		
+		if(_invincible_cool_down <= 0) :
+			_is_invincible = false
 
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -55,12 +68,20 @@ func start_dash(dir: Vector2) -> void:
 	is_dashing = false
 
 func take_damage(damage: float) -> void:
+	if _is_invincible:
+		return
 	if is_dashing:
 		return
+		
+	flash_animation.play("flash")
 
 	health -= damage
 	apply_damage_effect()
 	Global.shake_camera(damage, 0.25)
+	Global.playerHit.emit(damage, health)
+	
+	_invincible_cool_down = INVINCIBLE_COOLDOWN_MAX
+	_is_invincible = true
 
 	if health <= 0:
 		die()

@@ -8,8 +8,8 @@ var _input_dir
 var _force : Vector2
 
 const DEADZONE = 0.1
-const FORCE_AMT = 10000.0
-const IMPULSE_AMT = 5000.0
+const FORCE_AMT = 20000.0
+const IMPULSE_AMT = 50000.0
 
 # TODO: Set up thing to change this when actually using MKB
 var mouse_control = false
@@ -27,9 +27,10 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if(Input.is_action_pressed("boost_chain")) :
 		_apply_impulse_to_chain(delta)
-		get_tree().get_first_node_in_group("player").goop -= 0.05
+		get_tree().get_first_node_in_group("player").goop -= 0.5
 		
 	else :
+		get_tree().get_first_node_in_group("player").goop += 0.03
 		_apply_force_to_chain(delta)
 		
 	# TODO: 

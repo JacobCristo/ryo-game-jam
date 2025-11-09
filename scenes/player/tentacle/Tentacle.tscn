@@ -39,6 +39,7 @@ node_b = NodePath("../../Line2D/Segment")
 [node name="Line2D" type="Line2D" parent="."]
 unique_name_in_owner = true
 points = PackedVector2Array(0.9655762, 0.3547058)
+width = 20.0
 texture = SubResource("CanvasTexture_ii5g1")
 texture_mode = 1
 script = ExtResource("5_2veqc")
