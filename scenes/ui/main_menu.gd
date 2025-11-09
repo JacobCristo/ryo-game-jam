@@ -7,14 +7,18 @@ const EXPLOD = preload("uid://db54u7e8s3dc4")
 
 @onready var label: RichTextLabel = $VBoxContainer/Label
 
+var loading: bool = false
+
 func _ready() -> void:
 	create_tween().tween_property(label, "modulate:a", 1.0, 1.0)
 
 func _input(event: InputEvent) -> void:
+	if loading: return
 	if event is InputEventJoypadButton or event is InputEventMouseButton or event is InputEventKey:
 		change_to_game()
 
 func change_to_game() -> void:
+	loading = true
 	texture_rect.texture = EXPLOD
 	
 	var tween = create_tween()

@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnyuek30mdyyu"]
+
+[ext_resource type="Script" uid="uid://dqht54tpyarpa" path="res://scenes/ui/health_bar.gd" id="1_s4ogp"]
+[ext_resource type="Script" uid="uid://d0causvi6v25" path="res://scenes/ui/stamina_bar.gd" id="2_2sf84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vu4vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vu4vs"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s4ogp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sf84"]
+bg_color = Color(0.69627774, 0.0003668526, 0.6962729, 1)
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Spacing" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(955, 955)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxEmpty_vu4vs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vu4vs")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_s4ogp")
+
+[node name="ChunkBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/HealthBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_s4ogp")
+value = 100.0
+show_percentage = false
+
+[node name="ChunkTimer" type="Timer" parent="MarginContainer/VBoxContainer/HBoxContainer/HealthBar"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Spacing" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="StaminaBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/background = SubResource("StyleBoxEmpty_vu4vs")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2sf84")
+value = 100.0
+show_percentage = false
+script = ExtResource("2_2sf84")
+
+[node name="ChunkBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/StaminaBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_s4ogp")
+value = 100.0
+show_percentage = false
+
+[node name="ChunkTimer" type="Timer" parent="MarginContainer/VBoxContainer/HBoxContainer/StaminaBar"]
+wait_time = 0.2
+one_shot = true
