@@ -4,6 +4,9 @@ class_name Room extends Node2D
 @export var neighbors = []
 @export var enemies = []
 @export var room_coordinate = null;
+@export var doors = []
 
-func _ready() -> void:
-	pass
+func open_doors() -> void:
+	for door in doors:
+		door.open_door()
+	

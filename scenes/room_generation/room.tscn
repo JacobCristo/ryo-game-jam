@@ -110,10 +110,10 @@ tile_set = SubResource("TileSet_u3e6m")
 
 [node name="BGColor" type="ColorRect" parent="."]
 z_index = -2
-offset_left = -3220.0
-offset_top = -3015.0
-offset_right = 5347.0
-offset_bottom = 4249.0
+offset_left = -3243.0
+offset_top = -2862.0
+offset_right = 5324.0
+offset_bottom = 4402.0
 color = Color(0, 0.008380051, 0.15998203, 1)
 metadata/_edit_use_anchors_ = true
 
