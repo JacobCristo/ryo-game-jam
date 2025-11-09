@@ -10,7 +10,8 @@ const DEADZONE = 0.1
 const FORCE_AMT = 10000.0
 const IMPULSE_AMT = 5000.0
 
-var mouse_control = true
+# TODO: Set up thing to change this when actually using MKB
+var mouse_control = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

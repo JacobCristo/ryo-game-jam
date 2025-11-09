@@ -7,8 +7,10 @@ const STUNNED_COOLDOWN_MAX: float = 1.0
 const END_DMG_MULT: float = 2.0
 const VELOCITY_DMG_SCALER: float = 100.0
 
+
 @export var speed: float = 5000.0
-@export var stunned_speed: float = 5000.0
+@export var stunned_speed: float = 30000.0
+@export var stunned_speed_falloff: float = 500.0
 @export var max_health: float = 25.0
 
 @export_group("Firing Stats")
@@ -23,6 +25,7 @@ var health: float
 var stunned_cool_down: float
 var state: EnemyState
 var _stunned_dir: Vector2
+var _just_stunned: bool
 
 enum EnemyState {
 	ACTIVE,
@@ -33,6 +36,8 @@ enum EnemyState {
 func _ready() -> void:
 	health = max_health
 	_stunned_dir = Vector2.ZERO
+	stunned_cool_down = STUNNED_COOLDOWN_MAX
+	_just_stunned = false
 	
 	# set raycast length to sightline range
 	sightline.target_position.x = sightline_range
@@ -51,11 +56,15 @@ func _process(delta: float) -> void:
 		return
 	
 	if(state == EnemyState.STUNNED) :
+		modulate = Color.BLACK
 		stunned_cool_down -= delta
 		if(stunned_cool_down <= 0) :
 			state = EnemyState.ACTIVE
 			stunned_cool_down = STUNNED_COOLDOWN_MAX
 			velocity = Vector2.ZERO
+			
+	if(state == EnemyState.ACTIVE) :
+		modulate = Color.WHITE
 			
 			
 		
@@ -66,8 +75,12 @@ func _physics_process(delta: float) -> void:
 		_stunned_physics_process(delta)
 		
 func _stunned_physics_process(delta: float) -> void:
-	velocity = _stunned_dir * stunned_speed * delta
-	move_and_slide()
+	if(_just_stunned) :
+		velocity = _stunned_dir * stunned_speed * delta
+		_just_stunned = false
+	else :
+		velocity = velocity.move_toward(Vector2.ZERO, stunned_speed_falloff * delta)
+		move_and_slide()
 	
 	
 func _active_physics_process(delta: float) -> void:
@@ -132,9 +145,7 @@ func _determine_correct_animation() :
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	# if stunned return
-	print("BODY: " + body.name)
 	if(state == EnemyState.STUNNED) :
-		print("STUNNED")
 		return
 	
 	if(body is Segment or body is TentacleEnd) :
@@ -153,15 +164,16 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 		take_damage(_dmg_amt)
 		
 		# Calculate stun direction
-		var r_body = body.get_parent()
+		var r_body = body
 		if(r_body is RigidBody2D) :
 			_stunned_dir = r_body.linear_velocity.normalized()
+			_just_stunned = true
 	
 	
 func _calc_dmg_amt_segment(body: Node2D) -> float:
 	var dmg_amt: float = 0.0
 	
-	var r_body = body.get_parent()
+	var r_body = body
 	if(r_body is RigidBody2D) :
 		dmg_amt = r_body.linear_velocity.length() / VELOCITY_DMG_SCALER
 	
@@ -170,7 +182,7 @@ func _calc_dmg_amt_segment(body: Node2D) -> float:
 func _calc_dmg_amt_end(body: Node2D) -> float:
 	var dmg_amt: float = 0.0
 	
-	var r_body = body.get_parent()
+	var r_body = body
 	if(r_body is RigidBody2D) :
 		dmg_amt = (r_body.linear_velocity.length() / VELOCITY_DMG_SCALER) * END_DMG_MULT
 	

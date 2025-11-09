@@ -12,10 +12,6 @@ func _ready() -> void:
 	await get_tree().process_frame
 	player = get_tree().get_first_node_in_group("player")
 
-func _physics_process(delta: float) -> void:
-	if(state == EnemyState.ACTIVE):
-		_active_physics_process(delta)
-
 func _active_physics_process(delta: float) -> void:
 	if not player:
 		return
