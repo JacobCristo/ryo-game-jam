@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://c1xkovv87d6ko"]
+[gd_scene load_steps=6 format=4 uid="uid://c1xkovv87d6ko"]
 
 [ext_resource type="Script" uid="uid://q8vghw3ll8xl" path="res://scenes/room_generation/room.gd" id="1_n1q5r"]
 [ext_resource type="Texture2D" uid="uid://43rm1d3cukrm" path="res://assets/env tileset/Klaxon_Tileset.png" id="2_n1q5r"]
+[ext_resource type="AudioStream" uid="uid://dho53gassr7ub" path="res://assets/audio/KLAXON SFX/Reactor Ambiance.mp3" id="3_n1q5r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6tss"]
 texture = ExtResource("2_n1q5r")
@@ -108,3 +109,9 @@ offset_right = 4819.0
 offset_bottom = 4490.0
 color = Color(0, 0.008380051, 0.15998203, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_n1q5r")
+volume_db = -11.016
+autoplay = true
+parameters/looping = true

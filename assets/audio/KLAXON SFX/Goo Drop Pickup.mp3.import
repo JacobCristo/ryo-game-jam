@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://hrohf4rcvdfx"
+path="res://.godot/imported/Goo Drop Pickup.mp3-840eb0fcebb491c64c8e1a94069afdd9.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/KLAXON SFX/Goo Drop Pickup.mp3"
+dest_files=["res://.godot/imported/Goo Drop Pickup.mp3-840eb0fcebb491c64c8e1a94069afdd9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
